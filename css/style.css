@@ -1,0 +1,37 @@
+body {
+    background-color: #ffffff;
+}
+
+.county {
+    stroke-width: 0.1;
+    stroke: #ccc;
+}
+
+.selected {
+    stroke-width: 2;
+    stroke: #000;
+}
+
+rect {
+    stroke-width: 0.1;
+    stroke: #ccc;
+}
+
+text {
+    fill: rgb(5, 0, 0);
+    font-weight: lighter;
+    font-size: small;
+}
+
+text.title {
+    font-size: 10px;
+}
+
+h1 {
+    text-align: center;
+}
+
+circle {
+    fill: lightblue; 
+    stroke: black;
+}

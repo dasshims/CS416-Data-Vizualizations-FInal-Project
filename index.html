@@ -1,0 +1,37 @@
+<html>
+<script src="https://d3js.org/d3.v5.js"></script>
+<script src='./js/housing.js'></script>
+<link rel="stylesheet" href="./css/style.css" type="text/css">
+
+<head>
+    <title>Interactive Visualization of Housing prices in the US </title>
+    <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+
+<body onload='drawChart(1996)'>
+    <h3>Interactive Visualization of Housing prices in the US</h3>
+    <p>This data visualization shows how the housing prices in the US increases over time.</p>
+
+    <textbox id "text"> Navigate year</textbox>
+    <button id="prev" onclick="subtractYear()"><</button>
+    <select 'date' id='date-dropdown' onchange="drawChart(this.value)">
+        <script>
+            let dateDropdown = document.getElementById('date-dropdown');
+            let currentYear = 2017;
+            let earliestYear = 1996;
+            while (currentYear >= earliestYear) {
+                let dateOption = document.createElement('option');
+                dateOption.text = currentYear;
+                dateOption.value = currentYear;
+                dateDropdown.add(dateOption);
+                currentYear -= 1;
+            }
+        </script>
+    </select>
+    <button id="next" onclick="addYear()">></button>
+    <svg width=800 height=800>
+    </svg>
+
+</body>
+
+</html>
