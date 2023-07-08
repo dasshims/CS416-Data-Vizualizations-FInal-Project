@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 
-<body onload='drawChart(1996)'>
+<body onload='animateChart()' >
     <h3>Interactive Visualization of Housing prices in the US</h3>
     <p>This data visualization shows how the housing prices in the US increases over time.</p>
 
@@ -18,7 +18,7 @@
         <script>
             let dateDropdown = document.getElementById('date-dropdown');
             let currentYear = 2017;
-            let earliestYear = 1996;
+            let earliestYear = 2000;
             while (currentYear >= earliestYear) {
                 let dateOption = document.createElement('option');
                 dateOption.text = currentYear;
@@ -29,6 +29,7 @@
         </script>
     </select>
     <button id="next" onclick="addYear()">></button>
+    <button id="animate-chart" onclick="animateChart()">Animate</button>
     <svg width=800 height=800>
     </svg>
 
