@@ -9,29 +9,25 @@
 </head>
 
 <body onload='animateChart()' >
-    <h3>Interactive Visualization of Housing prices in the US</h3>
-    <p>This data visualization shows how the housing prices in the US increases over time.</p>
-
+    <h1>Interactive Visualization of Housing prices in the US</h1>
+    <!-- <p>This data visualization shows how the housing prices in the US change from 2000 to 2017.</p> -->
+    <div>
     <textbox id "text"> Navigate year</textbox>
     <button id="prev" onclick="subtractYear()"><</button>
     <select 'date' id='date-dropdown' onchange="drawChart(this.value)">
         <script>
-            let dateDropdown = document.getElementById('date-dropdown');
-            let currentYear = 2017;
-            let earliestYear = 2000;
-            while (currentYear >= earliestYear) {
-                let dateOption = document.createElement('option');
-                dateOption.text = currentYear;
-                dateOption.value = currentYear;
-                dateDropdown.add(dateOption);
-                currentYear -= 1;
-            }
+            populateYear()
         </script>
     </select>
     <button id="next" onclick="addYear()">></button>
     <button id="animate-chart" onclick="animateChart()">Animate</button>
+</div>
+    <!-- <br> Overall Housing Market Sentiment <strong id="sentiment" style="background-color:rgb(0, 168, 0); color:rgb(200, 168, 0);"> Positive </strong> </br> -->
     <svg width=800 height=800>
     </svg>
+
+    <div id="events" margin-top=20></div>
+
 
 </body>
 

@@ -1,5 +1,5 @@
 body {
-    background-color: #ffffff;
+    background-color: #effef4;
 }
 
 .county {
@@ -13,11 +13,17 @@ body {
 }
 
 rect {
-    stroke-width: 0.1;
+    stroke-width: 0.2;
     stroke: #ccc;
 }
 
 text {
+    fill: rgb(5, 0, 0);
+    font-weight: lighter;
+    font-size: small;
+}
+
+p {
     fill: rgb(5, 0, 0);
     font-weight: lighter;
     font-size: small;
@@ -32,6 +38,85 @@ h1 {
 }
 
 circle {
-    fill: lightblue; 
+    fill: lightblue;
     stroke: black;
+}
+
+div {
+    margin-left: 60;
+    margin-top: 20;
+    /* background-color: rgb(255, 255, 255); */
+    height: 30px;
+    width: 800px;
+    text-align: left;
+    margin-block-start: 2;
+    text-transform: capitalize;
+
+    -webkit-transition: opacity 2s ease-in;
+    -moz-transition: opacity 2s ease-in;
+    -ms-transition: opacity 2s ease-in;
+    -o-transition: opacity 2s ease-in;
+    transition: opacity 2s ease-in;
+}
+
+.animate-text {
+    animation: fade-in 1s;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+
+/* AXES */
+/* ticks */
+.axis line {
+    stroke: #706f6f;
+    stroke-width: 0.5;
+    shape-rendering: crispEdges;
+}
+
+/* axis contour */
+.axis path {
+    stroke: #706f6f;
+    stroke-width: 0.7;
+    shape-rendering: crispEdges;
+}
+
+/* axis text */
+.axis text {
+    fill: #2b2929;
+    font-family: Georgia;
+    font-size: 120%;
+}
+
+/* LINE CHART */
+path.line-0 {
+    fill: none;
+    stroke: #ed3700;
+}
+
+path.line-1 {
+    fill: none;
+    stroke: #2b2929;
+    stroke-dasharray: 2;
+}
+
+path.line-2 {
+    fill: none;
+    stroke: #9c9c9c;
+    stroke-dasharray: 6;
+}
+
+.serie_label {
+    fill: #2b2929;
+    font-family: Georgia;
+    font-size: 80%;
 }
