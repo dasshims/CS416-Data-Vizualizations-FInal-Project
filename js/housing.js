@@ -1,7 +1,7 @@
 
 var data, margin, svg, x, y;
-var data_link = 'https://dasshims.github.io/State_time_series_edited'
-//var data_link = 'https://dasshims.github.io/State_zhvi_uc_sfrcondo_tier.csv'
+//var data_link = 'https://dasshims.github.io/State_time_series_edited'
+var data_link = 'https://dasshims.github.io/State_zhvi_uc_sfrcondo_tier.csv'
 
 async function drawAxis() {
     return await drawAxis2(false)
@@ -16,7 +16,7 @@ async function drawAxis2(sort) {
     if (sort) {
         data = data.sort(function (a, b) {
             console.log("sortin")
-            return d3.descending(+a.ZHVI_SingleFamilyResidence, +b.ZHVI_SingleFamilyResidence);
+            return d3.descending(+a.price, +b.price);
         })
     }
 
@@ -77,22 +77,21 @@ async function drawChart2(year, sort) {
     console.log("Rendering Year " + year)
 
     data = await data.filter(function (d) {
-        return d.Date == year + "-12-31" && d.RegionName != "United States"
+        return d.year == year + "-12-31" && d.RegionName != "United States"
     })
 
     if (sort) {
         data = data.sort(function (a, b) {
             console.log("sortin")
-            return d3.descending(+a.ZHVI_SingleFamilyResidence, +b.ZHVI_SingleFamilyResidence);
+            return d3.descending(+a.price, +b.price);
         })
     }
 
     var tooltip = d3.select("body")
         .append("div")
         .style("position", "absolute")
-        .style("z-index", "10")
+        .style("z-index", "0")
         .style("visibility", "hidden")
-        .style("background", "White")
         .style("boarder", "black")
         .text("a simple tooltip");
 
@@ -108,32 +107,40 @@ async function drawChart2(year, sort) {
         .attr("x", function (d) { return x(d.RegionName); })
         .attr("width", x.bandwidth())
         .style("margin-top", "20px")
-        .attr("height", function (d) { return height - y(0); }) // always equal to 0
+        .attr("height", function (d) { return height - y(0); })
         .attr("y", function (d) { return y(0); })
-        .attr("fill", function (d) { return color(d.ZHVI_SingleFamilyResidence) });
+        .attr("fill", function (d) { return color(d.price) });
+
+        //Not working - todo
+    bars.append("text")
+        .attr("y", function (d) { return x(d.RegionName) - 3; })
+        .attr("x", function (d) { console.log((height - y(d.price))); return (height - y(d.price)); })
+        .attr("dy", "35em")
+        .text(function (d) { return d.price; });
+
 
     bars.transition()
         .duration(1000)
-        .attr("height", function (d) { return height - y(d.ZHVI_SingleFamilyResidence); })
-        .attr("y", function (d) { return y(d.ZHVI_SingleFamilyResidence); })
+        .attr("height", function (d) { return height - y(d.price); })
+        .attr("y", function (d) { return y(d.price); })
         .delay(function (d, i) { return (i * 10) });
 
-    bars.on("mousemove", function (d) {
+    bars.on("mouseover", function (d) {
         d3.select(this)
             .transition()
             .duration('50')
             .attr('opacity', '.60');
         tooltip.html("<br><strong> " + d.RegionName + "</strong> click to open wiki!!</br>")
-            .style('top', d3.event.pageY - 12 + 'px')
+            .style('top', d3.event.pageY + 12 + 'px')
             .style('left', d3.event.pageX + 25 + 'px')
-            .style("opacity", 0);
+            .style("opacity", .8);
         return tooltip.style("visibility", "visible");
     });
 
     bars.on("mouseout", function () {
         d3.select(this).transition()
             .duration('50')
-            .attr('opacity', '1');
+            .attr('opacity', '0');
         return tooltip.style("visibility", "hidden");
     });
 
@@ -154,11 +161,11 @@ function getYearFromDropDown() {
 function addYear() {
     svg.selectAll("rect").remove();
     const currentYear = getYearFromDropDown();
-    let prevYear = 2017
-    if (currentYear < 2017) {
+    let prevYear = 2022
+    if (currentYear < 2022) {
         prevYear = +currentYear + 1;
     } else {
-        window.alert("We have data only till 2017");
+        window.alert("We have data only till 2022");
     }
     let selectElement = document.getElementById('date-dropdown')
     selectElement.value = prevYear
@@ -183,19 +190,19 @@ function subtractYear() {
 
 async function animateChart() {
     let currentYear = 2000;
-    let maxYear = 2017;
+    let maxYear = 2022;
     while (currentYear <= maxYear) {
         let selectElement = document.getElementById('date-dropdown')
         selectElement.value = currentYear
         d3.selectAll("svg").select("rect").remove();
         await drawChart(currentYear);
         await setEvents(currentYear)
-        await sleep(2000)
+        await sleep(1000)
         currentYear += 1;
     }
 }
 
-async function setEvents(year){
+async function setEvents(year) {
     const events = {
         2000: "Year 2000: Bursting of the Dot.com (or Technology) Bubble",
         2001: "Year 2001: September 11 Terrorist Attacks. \nEnron, the Emergence of Corporate Fraud, and Corporate Governance",
@@ -218,13 +225,13 @@ async function setEvents(year){
     }
 
     var event_el = document.getElementById('events');
-        setTimeout(() => {
-            event_el.innerHTML = "<strong>" + events[year] + "</strong>"
-            console.log("animating tedxt")
-            event_el.classList.add('animate-text')
-          }, 10);
-        event_el.innerText = ""
-        event_el.classList.remove('animate-text')
+    setTimeout(() => {
+        event_el.innerHTML = "<strong>" + events[year] + "</strong>"
+        console.log("animating tedxt")
+        event_el.classList.add('animate-text')
+    }, 10);
+    event_el.innerText = ""
+    event_el.classList.remove('animate-text')
 }
 
 async function loadPopulation(RegionName, popYear) {
@@ -252,7 +259,7 @@ async function sortChart() {
 
 async function populateYear() {
     let dateDropdown = document.getElementById('date-dropdown');
-    let currentYear = 2017;
+    let currentYear = 2022;
     let earliestYear = 2000;
     while (currentYear >= earliestYear) {
         let dateOption = document.createElement('option');
