@@ -15,7 +15,6 @@ async function drawAxis2(sort) {
 
     if (sort) {
         data = data.sort(function (a, b) {
-            console.log("sortin")
             return d3.descending(+a.price, +b.price);
         })
     }
@@ -26,7 +25,7 @@ async function drawAxis2(sort) {
         height = 400 - margin.top - margin.bottom;
 
     //append the svg object to the body of the page
-    svg = d3.select("svg")
+    svg = d3.select("#main_chart")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
@@ -40,7 +39,7 @@ async function drawAxis2(sort) {
 
 
     y = d3.scaleLinear()
-        .domain([0, 800000])
+        .domain([0, 850000])
         .range([height, 0]);
 
     svg.append("g")
@@ -69,6 +68,7 @@ async function drawChart(year) {
 }
 
 async function drawChart2(year, sort) {
+    //svg.selectAll("rect").remove();
 
     data = await d3.csv(data_link, function (data) {
         return data;
@@ -82,7 +82,6 @@ async function drawChart2(year, sort) {
 
     if (sort) {
         data = data.sort(function (a, b) {
-            console.log("sortin")
             return d3.descending(+a.price, +b.price);
         })
     }
@@ -111,28 +110,28 @@ async function drawChart2(year, sort) {
         .attr("y", function (d) { return y(0); })
         .attr("fill", function (d) { return color(d.price) });
 
-        //Not working - todo
-    bars.append("text")
-        .attr("y", function (d) { return x(d.RegionName) - 3; })
-        .attr("x", function (d) { console.log((height - y(d.price))); return (height - y(d.price)); })
-        .attr("dy", "35em")
-        .text(function (d) { return d.price; });
-
-
     bars.transition()
         .duration(1000)
         .attr("height", function (d) { return height - y(d.price); })
         .attr("y", function (d) { return y(d.price); })
-        .delay(function (d, i) { return (i * 10) });
+        .delay(function (d, i) { return (i * 20) });
+
+    //Not working - todo
+    bars.append("text")
+        .attr("fill", "black")
+        .attr("x", 100)
+        .attr("y", 100)
+        .attr("dy", "0.35em")
+        .text(d => d.price);
 
     bars.on("mouseover", function (d) {
         d3.select(this)
             .transition()
             .duration('50')
             .attr('opacity', '.60');
-        tooltip.html("<br><strong> " + d.RegionName + "</strong> click to open wiki!!</br>")
-            .style('top', d3.event.pageY + 12 + 'px')
-            .style('left', d3.event.pageX + 25 + 'px')
+        tooltip.html("<br><strong> " + d.RegionName + ": $" + Math.trunc(d.price) + "</strong></br>")
+            .style("left", d3.select(this).attr("x") + "px")
+            .style("top", d3.select(this).attr("y") + "px")
             .style("opacity", .8);
         return tooltip.style("visibility", "visible");
     });
@@ -140,17 +139,31 @@ async function drawChart2(year, sort) {
     bars.on("mouseout", function () {
         d3.select(this).transition()
             .duration('50')
-            .attr('opacity', '0');
+            .attr('opacity', '1');
         return tooltip.style("visibility", "hidden");
     });
 
     bars.on('click', function (d) {
-        console.log('open tab')
-        window.open('http://en.wikipedia.org/wiki/' + d.RegionName, '_blank');
+        drawLineChart(d.RegionName);
+        //window.open('http://en.wikipedia.org/wiki/' + d.RegionName, '_blank');
     });
 
-    bars.exit().remove();
+    //bars.exit().remove();
 
+    bars.append('g')
+        .attr('class', 'grid')
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom()
+            .scale(x)
+            .tickSize(-height, 0, 0)
+            .tickFormat(''))
+
+    bars.append('g')
+        .attr('class', 'grid')
+        .call(d3.axisLeft()
+            .scale(y)
+            .tickSize(-width, 0, 0)
+            .tickFormat(''))
 }
 
 function getYearFromDropDown() {
@@ -227,7 +240,6 @@ async function setEvents(year) {
     var event_el = document.getElementById('events');
     setTimeout(() => {
         event_el.innerHTML = "<strong>" + events[year] + "</strong>"
-        console.log("animating tedxt")
         event_el.classList.add('animate-text')
     }, 10);
     event_el.innerText = ""
@@ -271,3 +283,74 @@ async function populateYear() {
 }
 
 const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
+
+
+async function drawChart3() {
+    let data = {
+        "FACEBOOK": 30,
+        "GITHUB": 44,
+        "GOOGLE": 64,
+        "TWITTER": 17,
+        "WEIBO": 19
+    };
+    let margin = { top: 20, right: 20, bottom: 30, left: 40 };
+    let svgWidth = 720, svgHeight = 300;
+    let height = svgHeight - margin.top - margin.bottom, width = svgWidth - margin.left - margin.right;
+    let sourceNames = [], sourceCount = [];
+
+    let x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
+        y = d3.scaleLinear().rangeRound([height, 0]);
+    for (let key in data) {
+        if (data.hasOwnProperty(key)) {
+            sourceNames.push(key);
+            sourceCount.push(parseInt(data[key]));
+        }
+    }
+    x.domain(sourceNames);
+    y.domain([0, d3.max(sourceCount, function (d) { return d; })]);
+
+    let svg = d3.select("#account_group").append("svg");
+    svg.attr('height', svgHeight)
+        .attr('width', svgWidth);
+
+    svg = svg.append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    svg.append("g")
+        .attr("class", "axis axis--x")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x));
+
+    svg.append("g")
+        .attr("class", "axis axis--y")
+        .call(d3.axisLeft(y).ticks(5))
+        ;
+
+    // Create rectangles
+    let bars = svg.selectAll('.bar')
+        .data(sourceNames)
+        .enter()
+        .append("g");
+
+    bars.append('rect')
+        .attr('class', 'bar')
+        .attr("x", function (d) { return x(d); })
+        .attr("y", function (d) { return y(data[d]); })
+        .attr("width", x.bandwidth())
+        .attr("height", function (d) { return height - y(data[d]); });
+
+    bars.append("text")
+        .text(function (d) {
+            return data[d];
+        })
+        .attr("x", function (d) {
+            return x(d) + x.bandwidth() / 2;
+        })
+        .attr("y", function (d) {
+            return y(data[d]) - 5;
+        })
+        .attr("font-family", "sans-serif")
+        .attr("font-size", "14px")
+        .attr("fill", "black")
+        .attr("text-anchor", "middle");
+}

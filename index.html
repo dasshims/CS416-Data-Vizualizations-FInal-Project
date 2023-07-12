@@ -1,6 +1,8 @@
 <html>
 <script src="https://d3js.org/d3.v5.js"></script>
+<script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
 <script src='./js/housing.js'></script>
+<script src='./js/line_chart.js'></script>
 <link rel="stylesheet" href="./css/style.css" type="text/css">
 
 <head>
@@ -8,24 +10,30 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 
-<body onload='animateChart()' >
-    <h1>Interactive Visualization of Housing prices in the US</h1>
+<body onload='drawChart2(2020, true)'>
+    <h1>Interactive Visualization of Housing prices in the US : Single Family House</h1>
     <!-- <p>This data visualization shows how the housing prices in the US change from 2000 to 2017.</p> -->
     <div>
-    <textbox id "text"> Navigate year</textbox>
-    <button id="prev" onclick="subtractYear()"><</button>
-    <select 'date' id='date-dropdown' onchange="drawChart(this.value)">
-        <script>
-            populateYear()
-        </script>
-    </select>
-    <button id="next" onclick="addYear()">></button>
-    <button id="animate-chart" onclick="animateChart()">Animate</button>
-</div>
-    <!-- <br> Overall Housing Market Sentiment <strong id="sentiment" style="background-color:rgb(0, 168, 0); color:rgb(200, 168, 0);"> Positive </strong> </br> -->
-    <svg width=800 height=800></svg>
+        
+        <textbox id "text"> Navigate year</textbox>
+        <button id="prev" onclick="subtractYear()"><</button>
+                <select 'date' id='date-dropdown' onchange="drawChart(this.value)">
+                    <script>
+                        populateYear()
+                    </script>
+                </select>
+                <button id="next" onclick="addYear()">></button>
+                <button id="animate-chart" onclick="animateChart()">Animate</button>
+                <button id="sort-chart" onclick="drawChart2(2020, true)">Sort</button>
+                <svg id="main_chart"></svg>
+                <div id="events" margin-top=20 margin-below=20></div>
+    <!-- </div> -->
 
-    <div id="events" margin-top=20></div>
+    <!-- Create a div where the graph will take place -->
+    <!-- <div id="my_dataviz"> -->
+        <svg id="side_chart" width=1000 height=400></svg>
+        <!-- <script> drawLineChart() </script> -->
+    </div>
 
 </body>
 
