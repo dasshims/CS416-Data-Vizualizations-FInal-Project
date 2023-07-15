@@ -10,29 +10,52 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 
-<body onload='drawChart2(2020, true)'>
+<body onload='drawChart2(2022, true)'>
     <h1>Interactive Visualization of Housing prices in the US : Single Family House</h1>
-    <!-- <p>This data visualization shows how the housing prices in the US change from 2000 to 2017.</p> -->
     <div>
-        
-        <textbox id "text"> Navigate year</textbox>
-        <button id="prev" onclick="subtractYear()"><</button>
-                <select 'date' id='date-dropdown' onchange="drawChart(this.value)">
-                    <script>
-                        populateYear()
-                    </script>
-                </select>
-                <button id="next" onclick="addYear()">></button>
-                <button id="animate-chart" onclick="animateChart()">Animate</button>
-                <button id="sort-chart" onclick="drawChart2(2020, true)">Sort</button>
-                <svg id="main_chart"></svg>
-                <div id="events" margin-top=20 margin-below=20></div>
-    <!-- </div> -->
 
-    <!-- Create a div where the graph will take place -->
-    <!-- <div id="my_dataviz"> -->
-        <svg id="side_chart" width=1000 height=400></svg>
-        <!-- <script> drawLineChart() </script> -->
+        <div class="slider">
+            <label for="date-dropdown">Year </label>
+            <input id="date-dropdown" type="range" min="2000" max="2020" value="1" step="1"
+                list="volsettings" oninput="drawChart(this.value)">
+            <datalist id="volsettings">
+                <option>2000</option>
+                <option>2001</option>
+                <option>2002</option>
+                <option>2003</option>
+                <option>2004</option>
+                <option>2005</option>
+                <option>2006</option>
+                <option>2007</option>
+                <option>2008</option>
+                <option>2009</option>
+                <option>2010</option>
+                <option>2011</option>
+                <option>2012</option>
+                <option>2013</option>
+                <option>2014</option>
+                <option>2015</option>
+                <option>2016</option>
+                <option>2017</option>
+                <option>2018</option>
+                <option>2019</option>
+                <option>2020</option>
+            </datalist>
+
+
+            <!-- <button id="prev" onclick="subtractYear()">
+                < /button> -->
+
+                <p>
+                    <button id="next" onclick="addYear()">></button>
+                    <button id="animate-chart" onclick="animateChart()">Animate</button>
+                    <button id="clear-chart" onclick="clearBars()">Clear</button>
+                    <button id="sort-chart" onclick="drawChart2(2020, true)">Sort</button>
+                </p>
+        </div>
+        <svg class="mainchart" id="main_chart"></svg>
+        <div class="events" id="events"> <label for="events">Bulletin </label> <br> </br> </div>
+        <svg class="sidechart" id="side_chart" width=1000 height=400></svg>
     </div>
 
 </body>

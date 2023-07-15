@@ -1,6 +1,5 @@
 
 var data, margin, svg, x, y;
-//var data_link = 'https://dasshims.github.io/State_time_series_edited'
 var data_link = 'https://dasshims.github.io/State_zhvi_uc_sfrcondo_tier.csv'
 
 async function drawAxis() {
@@ -20,7 +19,7 @@ async function drawAxis2(sort) {
     }
 
     // set the dimensions and margins of the graph
-    margin = { top: 30, right: 30, bottom: 70, left: 60 },
+    margin = { top: 30, right: 30, bottom: 100, left: 70 },
         width = 960 - margin.left - margin.right,
         height = 400 - margin.top - margin.bottom;
 
@@ -39,7 +38,7 @@ async function drawAxis2(sort) {
 
 
     y = d3.scaleLinear()
-        .domain([0, 850000])
+        .domain([0, 900000])
         .range([height, 0]);
 
     svg.append("g")
@@ -59,17 +58,32 @@ async function drawAxis2(sort) {
         .attr("stroke", "dark grey")
         .attr("stroke-width", "2")
         .attr("opacity", ".8");
+
+    svg.append('g')
+        .attr('class', 'grid')
+        .attr("opacity", ".1")
+        .call(d3.axisLeft()
+            .scale(y)
+            .tickSize(-width, 0, 0)
+            .tickFormat(''))
+        .attr("stroke-dasharray", "3,3");
+
+    svg.append('text')
+        .attr('class', 'source')
+        .attr('x', width - 150)
+        .attr('y', height + 80)
+        .attr('text-anchor', 'start')
+        .text('Data source: Zillow-https://www.zillow.com/research/data/')
+        .href
 }
 
-window.onload = drawAxis();
+window.onload = drawAxis(), populateYear();
 
 async function drawChart(year) {
     return await drawChart2(year, false)
 }
 
 async function drawChart2(year, sort) {
-    //svg.selectAll("rect").remove();
-
     data = await d3.csv(data_link, function (data) {
         return data;
     });
@@ -117,12 +131,13 @@ async function drawChart2(year, sort) {
         .delay(function (d, i) { return (i * 20) });
 
     //Not working - todo
-    bars.append("text")
-        .attr("fill", "black")
-        .attr("x", 100)
-        .attr("y", 100)
-        .attr("dy", "0.35em")
-        .text(d => d.price);
+    bars
+        .append('text')
+        .attr('class', 'value')
+        .attr("x", 100) //function (d) { return x(d.RegionName); })
+        .attr("y", 100) //function (d) { return y(d.price) + 30; })
+        .attr('text-anchor', 'middle')
+        .text("sometext")
 
     bars.on("mouseover", function (d) {
         d3.select(this)
@@ -148,22 +163,37 @@ async function drawChart2(year, sort) {
         //window.open('http://en.wikipedia.org/wiki/' + d.RegionName, '_blank');
     });
 
-    //bars.exit().remove();
+    // National Average
+    const avg = d3.sum(data, d => d.price) / 52;
+    console.log(y(100))
+    console.log(y(500))
+    svg.append("path")
+        .datum(data)
+        .attr("fill", "none")
+        .attr("stroke", "blue")
+        .attr("transform", "translate(0,0)")
+        .attr("d", d3.line()
+            .x(function (d) { return x(d.RegionName); })
+            .y(y(100))
+        )
+        .attr("stroke-width", "1")
+        .attr("opacity", ".2");
 
-    bars.append('g')
-        .attr('class', 'grid')
-        .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom()
-            .scale(x)
-            .tickSize(-height, 0, 0)
-            .tickFormat(''))
+    svg.append('g')
+        .classed('labels-group', true)
+        .selectAll('text')
+        .data(data)
+        .enter()
+        .append('text')
+        .filter(function (i) { return i === (data.length - 1) })
+        .classed('label', true)
+        .attr("transform", "translate(0,0)")
+        .attr("x", 100) // function (d) { return x(d.date) + 5; })
+        .attr("y", 100) //function (d) { return y(avg) - 5; })
+        .text('National Average');
 
-    bars.append('g')
-        .attr('class', 'grid')
-        .call(d3.axisLeft()
-            .scale(y)
-            .tickSize(-width, 0, 0)
-            .tickFormat(''))
+    // After drawing the bars, set events
+    setEvents(year);
 }
 
 function getYearFromDropDown() {
@@ -172,7 +202,7 @@ function getYearFromDropDown() {
 }
 
 function addYear() {
-    svg.selectAll("rect").remove();
+    clearBars();
     const currentYear = getYearFromDropDown();
     let prevYear = 2022
     if (currentYear < 2022) {
@@ -187,7 +217,7 @@ function addYear() {
 }
 
 function subtractYear() {
-    svg.selectAll("rect").remove();
+    clearBars();
     const currentYear = getYearFromDropDown();
     let prevYear = 2000
     if (currentYear > 2000) {
@@ -202,6 +232,7 @@ function subtractYear() {
 }
 
 async function animateChart() {
+    await clearBars();
     let currentYear = 2000;
     let maxYear = 2022;
     while (currentYear <= maxYear) {
@@ -209,7 +240,7 @@ async function animateChart() {
         selectElement.value = currentYear
         d3.selectAll("svg").select("rect").remove();
         await drawChart(currentYear);
-        await setEvents(currentYear)
+        //await setEvents(currentYear)
         await sleep(1000)
         currentYear += 1;
     }
@@ -224,26 +255,37 @@ async function setEvents(year) {
         2004: "Year 2004: Real GDP grew 4.4 percent in 2004, the strongest since 1999.",
         2005: "Year 2005: China and India Grow as World Financial Powers \nHurricanes Katrina and Rita        ",
         2006: "Year 2006: Bursting of the Dot.com (or Technology) Bubble",
-        2007: "Year 2007: Sub-Prime Housing Crisis and the Housing Bubble",
-        2008: "Year 2008: Bernard Madoff and the Biggest Ponzi Scheme in History        ",
+        2007: "Year 2007: Sub-Prime Housing Crisis and the Housing Bubble bursts",
+        2008: "Year 2008: The Federal Reserve rescues some of the nation’s largest investment firms, including Bear Stearns and AIG, but allows Lehman Brothers to collapse.",
         2009: "Year 2009: The Global Recession and the Collapse of Wall Street",
-        2010: "Year 2001: September 11 Terrorist Attacks        ",
-        2011: "Year 2001: Enron, the Emergence of Corporate Fraud, and Corporate Governance",
-        2012: "Year 2012: Crisis in Venezuela. \n2012–2013 Cypriot financial crisis      ",
-        //2013: "Year 2001: September 11 Terrorist Attacks        ",
+        2010: "Year 2010: Congress passes the Financial Regulations Bill, aimed at preventing the risky behavior and regulatory failures that brought the economy to the brink of collapse and cost millions of Americans their jobs and savings. | Congress passes the Health Care Reform Bill, aimed at providing affordable, quality health care for all Americans.",
+        2011: "Year 2011: Congress votes for and the president signs a bill authorizing an increase in the U.S. debt. ",
+        2012: "Year 2012: Crisis in Venezuela. \n2012–2013 Cypriot financial crisis.\nFacebook’s IPO",
+        2013: "Year 2013: September 11 Terrorist Attacks        ",
         2014: "Year 2014: Russian financial crisis",
         2015: "Year 2015: Chinese stock market crash",
-        2016: "Year 2016: Brexit Vote",
-        2017: "Year 2007: Enron, the Emergence of Corporate Fraud, and Corporate Governance",
+        2016: "Year 2016: Brexit Vote.\nOil prices collapse        ",
+        2017: "Year 2017: Price of bitcoin skyrocketed from under $800 in late 2016 to an all-time high of $19,783 in December 2017",
+        2018: "Year 2018: Russian financial crisis",
+        2019: "Year 2019: Chinese stock market crash",
+        2020: "Year 2020: Covid hit",
+        2021: "Year 2021: Vaccinations picked up and economy start to recover",
+        2022: "Year 2022: Inflation and Interest Rates slows down economy"
     }
 
     var event_el = document.getElementById('events');
+    //event_el.style.height = '350px'
+    event_el.style.overflow = 'auto';
+    //event_el.style.background = 'rgb(222, 241, 249)'
     setTimeout(() => {
-        event_el.innerHTML = "<strong>" + events[year] + "</strong>"
+        event_el.innerHTML += '' + events[year] +'</br>'
         event_el.classList.add('animate-text')
+        event_el.style.position = "absolute";
+        //event_el.style.left = (width + 100) + 'px';
+        //event_el.style.top = '50px';
     }, 10);
-    event_el.innerText = ""
-    event_el.classList.remove('animate-text')
+    // event_el.innerText = ""
+    // event_el.classList.remove('animate-text')
 }
 
 async function loadPopulation(RegionName, popYear) {
@@ -264,7 +306,7 @@ async function loadPopulation(RegionName, popYear) {
 }
 
 async function sortChart() {
-    svg.selectAll("*").remove();
+    clearBars()
     drawAxis2(true)
     drawChart2(document.getElementById('date-dropdown').value, true)
 }
@@ -284,73 +326,7 @@ async function populateYear() {
 
 const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 
-
-async function drawChart3() {
-    let data = {
-        "FACEBOOK": 30,
-        "GITHUB": 44,
-        "GOOGLE": 64,
-        "TWITTER": 17,
-        "WEIBO": 19
-    };
-    let margin = { top: 20, right: 20, bottom: 30, left: 40 };
-    let svgWidth = 720, svgHeight = 300;
-    let height = svgHeight - margin.top - margin.bottom, width = svgWidth - margin.left - margin.right;
-    let sourceNames = [], sourceCount = [];
-
-    let x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
-        y = d3.scaleLinear().rangeRound([height, 0]);
-    for (let key in data) {
-        if (data.hasOwnProperty(key)) {
-            sourceNames.push(key);
-            sourceCount.push(parseInt(data[key]));
-        }
-    }
-    x.domain(sourceNames);
-    y.domain([0, d3.max(sourceCount, function (d) { return d; })]);
-
-    let svg = d3.select("#account_group").append("svg");
-    svg.attr('height', svgHeight)
-        .attr('width', svgWidth);
-
-    svg = svg.append("g")
-        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-    svg.append("g")
-        .attr("class", "axis axis--x")
-        .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x));
-
-    svg.append("g")
-        .attr("class", "axis axis--y")
-        .call(d3.axisLeft(y).ticks(5))
-        ;
-
-    // Create rectangles
-    let bars = svg.selectAll('.bar')
-        .data(sourceNames)
-        .enter()
-        .append("g");
-
-    bars.append('rect')
-        .attr('class', 'bar')
-        .attr("x", function (d) { return x(d); })
-        .attr("y", function (d) { return y(data[d]); })
-        .attr("width", x.bandwidth())
-        .attr("height", function (d) { return height - y(data[d]); });
-
-    bars.append("text")
-        .text(function (d) {
-            return data[d];
-        })
-        .attr("x", function (d) {
-            return x(d) + x.bandwidth() / 2;
-        })
-        .attr("y", function (d) {
-            return y(data[d]) - 5;
-        })
-        .attr("font-family", "sans-serif")
-        .attr("font-size", "14px")
-        .attr("fill", "black")
-        .attr("text-anchor", "middle");
+async function clearBars() {
+    svg.selectAll("rect").remove();
+    //d3.select("svg").selectAll("rect").html = ""
 }

@@ -1,9 +1,6 @@
 async function drawLineChart(region_name) {
     console.log("Inside drawLineChart. RegionName :" + region_name)
 
-    // d3.select("#side_chart")
-    //     .select("*").remove();
-
     const margin = { top: 30, right: 30, bottom: 70, left: 60 },
         width = 900 - margin.left - margin.right,
         height = 400 - margin.top - margin.bottom;
@@ -18,7 +15,7 @@ async function drawLineChart(region_name) {
 
     svg.append('text')
         .attr('x', 200)
-        .attr('y', 0)
+        .attr('y', 30)
         .attr('text-anchor', 'middle')
         .style('font-family', 'Helvetica')
         .style('font-size', 20)
@@ -47,12 +44,26 @@ async function drawLineChart(region_name) {
         .attr("opacity", ".8");
 
     const y = d3.scaleLinear()
-        .domain([0, 900000]) //d3.max(data, function (d) { return +d.value; })])
+        .domain([0, 900000])
         .range([height, 10]);
     svg.append("g")
         .call(d3.axisLeft(y))
         .attr("stroke-width", "2")
         .attr("opacity", ".8");
+
+    // Todo
+    // svg.append('text')
+    //     .attr('x', (height / 2) - margin)
+    //     .attr('y', margin / 2.4)
+    //     .attr('transform', 'rotate(-90)')
+    //     .attr('text-anchor', 'middle')
+    //     .text('Avg price in $ ->)')
+
+    // svg.append('text')
+    //     .attr('x', width / 2 + margin)
+    //     .attr('y', 40)
+    //     .attr('text-anchor', 'middle')
+    //     .text('Year ->')
 
     var paths = svg.append("path")
         .datum(data)
@@ -111,12 +122,10 @@ async function drawLineChart(region_name) {
             if (curr_year == 2008) {
                 return '2008 Housing crisis'
             } else if (curr_year == 2020) {
-                return 'Growth slows because of covid'
-            } else if (curr_year == 2021) {
-                return 'Sharp growth post covid'
-            }else if (curr_year == 2022) {
+                return 'Covid Housing crisis '
+            } else if (curr_year == 2022) {
                 return region_name
-            }else{
+            } else {
                 return '';
             }
         })
@@ -149,6 +158,10 @@ async function drawLineChart(region_name) {
             .attr('opacity', 1);
         return tooltip.style("visibility", "hidden");
     });
+
+    // d3.select("#side_chart")
+    // .select("g")
+    // .remove()
 
     //Add annotations
     var labels = [{
