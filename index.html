@@ -10,13 +10,13 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 
-<body onload='drawChart2(2022, true)'>
+<body onload='drawChart2(2000, true)'>
     <h1>Interactive Visualization of Housing prices in the US : Single Family House</h1>
     <div>
 
         <div class="slider">
-            <label for="date-dropdown">Year </label>
-            <input id="date-dropdown" type="range" min="2000" max="2020" value="1" step="1" list="volsettings"
+            <label for="date-dropdown">Year Slider </label>
+            <input id="date-dropdown" type="range" min="2000" max="2022" value="1" step="1" list="volsettings"
                 oninput="drawChart(this.value)">
             <datalist id="volsettings">
                 <option>2000</option>
@@ -40,22 +40,23 @@
                 <option>2018</option>
                 <option>2019</option>
                 <option>2020</option>
+                <option>2021</option>
+                <option>2022</option>
             </datalist>
         </div>
 
 
         <div class="controls">
-            <label" for="controls" id="lable-for-controls">Triggers</label>
+            <label for="controls" id="lable-for-controls">Triggers</label>
             <button id="prev" onclick="subtractYear()"><</button>
-            <!-- <input id "text">Year</input> -->
             <button id="next" onclick="addYear()">></button>
             <button id="animate-chart" onclick="animateChart()">Animate</button>
-            <button id="clear-chart" onclick="clearBars()">Clear</button>
+            <button id="clear-chart" onclick="document.getElementById('events').innerHTML = '';clearBars()">Clear</button>
             <button id="sort-chart" onclick="drawChart2(2020, true)">Sort</button>
         </div>
 
         <svg class="mainchart" id="main_chart"></svg>
-        <div class="events" id="events"> <label for="events" id="lable-for-events">Bulletin</label> <br> </br> </div>
+        <div class="events" id="events"> <br> </br> </div>
         <svg id="side_chart" width=1000 height=400></svg>
     </div>
 

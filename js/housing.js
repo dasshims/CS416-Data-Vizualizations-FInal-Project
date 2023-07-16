@@ -191,6 +191,7 @@ async function drawChart2(year, sort) {
         .attr("stroke-width", "1.5")
         .attr("opacity", ".5");
 
+    await new Promise(r => setTimeout(r, 1000));
     svg.append('g')
         .classed('labels-group', true)
         .selectAll('text')
@@ -255,6 +256,7 @@ function subtractYear() {
 
 async function animateChart() {
     await clearBars();
+    document.getElementById('events').innerHTML = '';
     let currentYear = 2000;
     let maxYear = 2022;
     while (currentYear <= maxYear) {

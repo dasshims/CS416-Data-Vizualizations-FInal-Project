@@ -133,7 +133,7 @@ body {
     position: absolute;
     top: 5%;
     left: -3%;
-    width: 500;
+    width: 600;
     height: 20;
     padding: 20px;
     padding-left: 20px;
@@ -145,10 +145,11 @@ body {
 }
 
 .slider label {
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 400;
     font-family: Open Sans;
     padding-right: 10px;
+    padding-left: 0px;
     color: black;
 }
 
@@ -189,7 +190,7 @@ body {
 }
 
 .controls label {
-    font-size: 24px;
+    font-size: 18px;
     font-weight: 400;
     font-family: Open Sans;
     padding-right: 10px;
@@ -207,7 +208,7 @@ body {
     background: #e0f0ff;
     border-radius: 20px;
     display: flex;
-    align-items: top;
+    align-items: bottom;
     box-shadow: 0px 15px 40px #8ecbe466;
 }
 
