@@ -1,3 +1,5 @@
+var data_link = 'data/State_zhvi_uc_sfrcondo_tier.csv'
+
 async function drawLineChart(region_name) {
     console.log("Inside drawLineChart. RegionName :" + region_name)
 
@@ -22,7 +24,8 @@ async function drawLineChart(region_name) {
         .style("color", "#333333")
         .text('Price chart over the years');
 
-    var data = await d3.csv("https://dasshims.github.io/State_zhvi_uc_sfrcondo_tier.csv", function (d) {
+    //var data = await d3.csv("https://dasshims.github.io/State_zhvi_uc_sfrcondo_tier.csv", function (d) {
+    var data = await d3.csv(data_link, function (d) {
         return { date: d3.timeParse("%Y-%m-%d")(d.year), value: d.price, RegionName: d.RegionName, year: d.year }
     });
 
