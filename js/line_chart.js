@@ -86,7 +86,6 @@ async function drawLineChart(region_name) {
         .attr("stroke-dashoffset", 0)
         .duration(3000)
         .style("stroke", "steelblue");
-    //.on("end", () => setTimeout(repeat, 1000)); 
 
     var dots = svg.append('g')
         .selectAll("dot")

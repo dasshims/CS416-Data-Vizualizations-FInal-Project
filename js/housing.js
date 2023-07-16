@@ -19,7 +19,7 @@ async function drawAxis2(sort) {
     }
 
     // set the dimensions and margins of the graph
-    margin = { top: 30, right: 30, bottom: 100, left: 60 },
+    margin = { top: 30, right: 60, bottom: 100, left: 70 },
         width = 960 - margin.left - margin.right,
         height = 400 - margin.top - margin.bottom;
 
@@ -46,7 +46,8 @@ async function drawAxis2(sort) {
         .call(d3.axisLeft(y))
         .attr("stroke", "dark grey")
         .attr("stroke-width", "2")
-        .attr("opacity", ".8");
+        .attr("opacity", ".8")
+        .attr('font-family', 'Courier New');
 
     svg.append("g")
         .attr("id", "x-axis")
@@ -57,7 +58,8 @@ async function drawAxis2(sort) {
         .style("text-anchor", "end")
         .attr("stroke", "dark grey")
         .attr("stroke-width", "2")
-        .attr("opacity", ".8");
+        .attr("opacity", ".8")
+        .attr('font-family', 'Courier New');
 
     svg.append('g')
         .attr('class', 'grid')
@@ -67,14 +69,6 @@ async function drawAxis2(sort) {
             .tickSize(-width, 0, 0)
             .tickFormat(''))
         .attr("stroke-dasharray", "3,3");
-
-    svg.append('text')
-        .attr('class', 'source')
-        .attr('x', width - 150)
-        .attr('y', height + 80)
-        .attr('text-anchor', 'start')
-        .text('Data source: Zillow-https://www.zillow.com/research/data/')
-        .href
 }
 
 window.onload = drawAxis();
@@ -99,6 +93,17 @@ async function drawChart2(year, sort) {
             return d3.descending(+a.price, +b.price);
         })
     }
+
+    svg.append('text')
+        .attr('x', 50)
+        .attr('y', -18)
+        .attr("id", "year-text")
+        .attr('text-anchor', 'middle')
+        .style('font-family', 'Courier New')
+        .style('font-size', 18)
+        .style('font-weight', 400)
+        .style("color", "#333333")
+        .text('Year ' + getYearFromDropDown());
 
     var tooltip = d3.select("body")
         .append("div")
@@ -161,7 +166,7 @@ async function drawChart2(year, sort) {
     bars.on('click', function (d) {
         var popup = document.getElementById("side_chart");
         popup.classList.toggle("show");
-        //drawLineChart(d.RegionName);
+        window.open('./side_chart.html', d.RegionName);
         //window.open('http://en.wikipedia.org/wiki/' + d.RegionName, '_blank');
     });
 
@@ -191,30 +196,19 @@ async function drawChart2(year, sort) {
         .attr("stroke-width", "1.5")
         .attr("opacity", ".5");
 
-    await new Promise(r => setTimeout(r, 1000));
-    svg.append('g')
-        .classed('labels-group', true)
-        .selectAll('text')
-        .data(data)
-        .enter()
-        .append('text')
-        .filter(function (d, i) { return i === (data.length - 1) })
-        .classed('label', true)
-        .attr("id", "nat-avg-txt")
-        .attr("x", function (d) { return x(d.RegionName); })
-        .attr("y", function (d) { return y(avg) + 3; })
-        .text("National avg")
-
-
-    svg.append('text')
-        .attr('x', 50)
-        .attr('y', -5)
-        .attr("id", "year-text")
-        .attr('text-anchor', 'middle')
-        .style('font-family', 'Helvetica')
-        .style('font-size', 20)
-        .style("color", "#333333")
-        .text('Year ' + getYearFromDropDown());
+    // await new Promise(r => setTimeout(r, 1000));
+    // svg.append('g')
+    //     .classed('labels-group', true)
+    //     .selectAll('text')
+    //     .data(data)
+    //     .enter()
+    //     .append('text')
+    //     .filter(function (d, i) { return i === (data.length - 1) })
+    //     .classed('label', true)
+    //     .attr("id", "nat-avg-txt")
+    //     .attr("x", function (d) { return +x(d.RegionName) + 15; })
+    //     .attr("y", function (d) { return y(avg) + 3; })
+    //     .text(function(d) {return "National avg "+d.year})
 
     // After drawing the bars, set events
     setEvents(year);
@@ -255,15 +249,14 @@ function subtractYear() {
 }
 
 async function animateChart() {
-    await clearBars();
-    document.getElementById('events').innerHTML = '';
     let currentYear = 2000;
     let maxYear = 2022;
     while (currentYear <= maxYear) {
         let selectElement = document.getElementById('date-dropdown')
         selectElement.value = currentYear
-        d3.selectAll("svg").select("rect").remove();
-        await clearBars();
+        d3.selectAll('svg').selectAll("#year-text").remove();
+        d3.selectAll('svg').selectAll("#nat-avg").remove();
+        d3.selectAll('svg').selectAll("#nat-avg-txt").remove();
         await drawChart(currentYear);
         await sleep(2000)
         currentYear += 1;
@@ -299,12 +292,13 @@ async function setEvents(year) {
 
     var event_el = document.getElementById('events');
     event_el.style.overflow = 'auto';
-    setTimeout(() => {
-        event_el.innerHTML += '' + events[year] + '</br>'
-        event_el.classList.add('animate-text')
-        event_el.style.position = "absolute";
-    }, 10);
     event_el.scrollTop = event_el.scrollHeight;
+    event_el.innerHTML += '<br>' + events[year] + '</br>'
+    event_el.scrollTop = event_el.scrollHeight;
+    event_el.style.fontSize= 14;
+    event_el.style.fontWeight= 400;
+    event_el.style.fontFamily = 'Courier New';
+    event_el.style.color = 'black';
 }
 
 async function loadPopulation(RegionName, popYear) {
@@ -346,10 +340,10 @@ async function sortChart() {
 const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 
 async function clearBars() {
-    svg.selectAll("rect").remove();
-    svg.selectAll("#nat-avg").remove();
-    svg.selectAll("#nat-avg-txt").remove();
-    svg.selectAll("#year-text").remove();
+    d3.selectAll('svg').selectAll("rect").remove();
+    d3.selectAll('svg').selectAll("#nat-avg").remove();
+    d3.selectAll('svg').selectAll("#nat-avg-txt").remove();
+    d3.selectAll('svg').selectAll("#year-text").remove();
 }
 
 function myFunction() {

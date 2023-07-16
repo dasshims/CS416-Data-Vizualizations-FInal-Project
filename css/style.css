@@ -1,8 +1,7 @@
-body {
-    background-color: hsl(0, 0%, 100%);
-    /* background: url('https://plus.unsplash.com/premium_photo-1663931932694-7c53568815ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat; */
-    background-image: url('https://plus.unsplash.com/premium_photo-1663931932694-7c53568815ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat;
-}
+:root {
+    --left: -50;
+    --width: 1000
+  }
 
 .selected {
     stroke-width: 2;
@@ -32,22 +31,12 @@ text.title {
 
 h1 {
     text-align: center;
+    color: #000000;
 }
-
-circle {
-    fill: lightblue;
-    stroke: black;
-}
-
-
-/* svg {
-    background: url('https://www.google.nl/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png') no-repeat;
-} */
 
 div {
     margin-left: 60;
     margin-top: 20;
-    /* background-color: rgb(255, 255, 255); */
     height: 30px;
     width: 800px;
     text-align: left;
@@ -61,78 +50,14 @@ div {
     transition: opacity 2s ease-in;
 }
 
-.animate-text {
-    animation: fade-in 1s;
-}
-
-@keyframes fade-in {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-
-
-/* AXES */
-/* ticks */
-.axis line {
-    stroke: #706f6f;
-    stroke-width: 0.5;
-    shape-rendering: crispEdges;
-}
-
-/* axis contour */
-.axis path {
-    stroke: #706f6f;
-    stroke-width: 0.7;
-    shape-rendering: crispEdges;
-}
-
-/* axis text */
-.axis text {
-    fill: #2b2929;
-    font-family: Georgia;
-    font-size: 120%;
-}
-
-/* LINE CHART */
-path.line-0 {
-    fill: none;
-    stroke: #ed3700;
-}
-
-path.line-1 {
-    fill: none;
-    stroke: #2b2929;
-    stroke-dasharray: 2;
-}
-
-path.line-2 {
-    fill: none;
-    stroke: #9c9c9c;
-    stroke-dasharray: 6;
-}
-
-.serie_label {
-    fill: #2b2929;
-    font-family: Georgia;
-    font-size: 80%;
-}
-
-
-
 body {
-    background: white;
+    background: #ffffff;
 }
 
 .slider {
     position: absolute;
-    top: 5%;
-    left: -3%;
+    top: 50;
+    left: var(--left);
     width: 600;
     height: 20;
     padding: 20px;
@@ -145,9 +70,9 @@ body {
 }
 
 .slider label {
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 400;
-    font-family: Open Sans;
+    font-family: 'Courier New';
     padding-right: 10px;
     padding-left: 0px;
     color: black;
@@ -163,10 +88,9 @@ body {
 
 .controls {
     position: absolute;
-    top: 5%;
-    /* left: 50%; */
-    right: 8%;
-    width: 300;
+    top: 50;
+    left: 600;
+    width: 350;
     height: 20;
     padding: 20px;
     padding-left: 20px;
@@ -185,38 +109,46 @@ body {
     align-items: left;
     font-size: 15px;
     font-weight: 400;
-    font-family: 'Courier New', Courier, monospace Sans;
+    font-family: 'Courier New';
     color: rgb(90, 1, 1);
 }
 
 .controls label {
     font-size: 18px;
     font-weight: 400;
-    font-family: Open Sans;
+    font-family: 'Courier New';
+    padding-right: 10px;
+    color: black;
+}
+
+label {
+    font-size: 18px;
+    font-weight: 400;
+    font-family: 'Courier New';
     padding-right: 10px;
     color: black;
 }
 
 .events {
     position: absolute;
-    top: 68%;
-    left: -3%;
-    width: 950;
+    top: 570;
+    left: var(--left);;
+    width: var(--width);
     height: 100;
     padding: 20px;
     padding-left: 20px;
-    background: #e0f0ff;
+    background: #ffffff;
     border-radius: 20px;
     display: flex;
-    align-items: bottom;
+    align-items: top;
     box-shadow: 0px 15px 40px #8ecbe466;
 }
 
 .mainchart {
     position: absolute;
-    top: 15%;
-    left: 2%;
-    width: 950;
+    top: 140;
+    left: 10;
+    width: var(--width);
     height: 400;
     padding: 20px;
     padding-left: 20px;
@@ -231,8 +163,7 @@ body {
 .sidechart {
     position: absolute;
     top: 65%;
-    left: 2%;
-    /* transform: translate(-50%, -50%); */
+    left: 0;
     width: 950;
     height: 400;
     padding: 20px;

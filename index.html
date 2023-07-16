@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 
-<body onload='drawChart2(2000, true)'>
+<body onload='animateChart()'>
     <h1>Interactive Visualization of Housing prices in the US : Single Family House</h1>
     <div>
 
@@ -50,7 +50,7 @@
             <label for="controls" id="lable-for-controls">Triggers</label>
             <button id="prev" onclick="subtractYear()"><</button>
             <button id="next" onclick="addYear()">></button>
-            <button id="animate-chart" onclick="animateChart()">Animate</button>
+            <button id="animate-chart" onclick="clearBars();animateChart()">Animate</button>
             <button id="clear-chart" onclick="document.getElementById('events').innerHTML = '';clearBars()">Clear</button>
             <button id="sort-chart" onclick="drawChart2(2020, true)">Sort</button>
         </div>
