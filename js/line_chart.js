@@ -113,7 +113,6 @@ async function drawLineChart(region_name) {
         .data(data)
         .enter()
         .append('text')
-        //.filter(function (d, i) { return i === (data.length - 1) })
         .classed('label', true)
         .attr("x", function (d) { return x(d.date) + 5; })
         .attr("y", function (d) { return y(d.value) - 5; })

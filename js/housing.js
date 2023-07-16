@@ -19,14 +19,14 @@ async function drawAxis2(sort) {
     }
 
     // set the dimensions and margins of the graph
-    margin = { top: 30, right: 30, bottom: 100, left: 70 },
+    margin = { top: 30, right: 30, bottom: 100, left: 60 },
         width = 960 - margin.left - margin.right,
         height = 400 - margin.top - margin.bottom;
 
     //append the svg object to the body of the page
     svg = d3.select("#main_chart")
         .attr("width", width + margin.left + margin.right)
-        .attr("height", height + margin.top + margin.bottom)
+        .attr("height", height + margin.top + margin.bottom + 40)
         .append("g")
         .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
@@ -77,7 +77,7 @@ async function drawAxis2(sort) {
         .href
 }
 
-window.onload = drawAxis(), populateYear();
+window.onload = drawAxis();
 
 async function drawChart(year) {
     return await drawChart2(year, false)
@@ -146,7 +146,7 @@ async function drawChart2(year, sort) {
             .attr('opacity', '.60');
         tooltip.html("<br><strong> " + d.RegionName + ": $" + Math.trunc(d.price) + "</strong></br>")
             .style("left", d3.select(this).attr("x") + "px")
-            .style("top", d3.select(this).attr("y") + "px")
+            .style("top", (d3.select(this).attr("y")) + "px")
             .style("opacity", .8);
         return tooltip.style("visibility", "visible");
     });
@@ -159,25 +159,37 @@ async function drawChart2(year, sort) {
     });
 
     bars.on('click', function (d) {
-        drawLineChart(d.RegionName);
+        var popup = document.getElementById("side_chart");
+        popup.classList.toggle("show");
+        //drawLineChart(d.RegionName);
         //window.open('http://en.wikipedia.org/wiki/' + d.RegionName, '_blank');
     });
 
     // National Average
     const avg = d3.sum(data, d => d.price) / 52;
-    console.log(y(100))
-    console.log(y(500))
-    svg.append("path")
+    const nat_avg_path = svg.append("path")
         .datum(data)
+        .attr("id", "nat-avg")
         .attr("fill", "none")
-        .attr("stroke", "blue")
+        .attr("stroke", "red")
         .attr("transform", "translate(0,0)")
         .attr("d", d3.line()
             .x(function (d) { return x(d.RegionName); })
-            .y(y(100))
+            .y(y(height))
         )
-        .attr("stroke-width", "1")
-        .attr("opacity", ".2");
+        .attr("stroke-width", ".5")
+        .attr("opacity", "0");
+
+    nat_avg_path.transition()
+        .ease(d3.easeLinear)
+        .attr("stroke-dashoffset", 0)
+        .duration(1000)
+        .attr("d", d3.line()
+            .x(function (d) { return x(d.RegionName); })
+            .y(y(avg))
+        )
+        .attr("stroke-width", "1.5")
+        .attr("opacity", ".5");
 
     svg.append('g')
         .classed('labels-group', true)
@@ -185,12 +197,23 @@ async function drawChart2(year, sort) {
         .data(data)
         .enter()
         .append('text')
-        .filter(function (i) { return i === (data.length - 1) })
+        .filter(function (d, i) { return i === (data.length - 1) })
         .classed('label', true)
-        .attr("transform", "translate(0,0)")
-        .attr("x", 100) // function (d) { return x(d.date) + 5; })
-        .attr("y", 100) //function (d) { return y(avg) - 5; })
-        .text('National Average');
+        .attr("id", "nat-avg-txt")
+        .attr("x", function (d) { return x(d.RegionName); })
+        .attr("y", function (d) { return y(avg) + 3; })
+        .text("National avg")
+
+
+    svg.append('text')
+        .attr('x', 50)
+        .attr('y', -5)
+        .attr("id", "year-text")
+        .attr('text-anchor', 'middle')
+        .style('font-family', 'Helvetica')
+        .style('font-size', 20)
+        .style("color", "#333333")
+        .text('Year ' + getYearFromDropDown());
 
     // After drawing the bars, set events
     setEvents(year);
@@ -213,7 +236,7 @@ function addYear() {
     let selectElement = document.getElementById('date-dropdown')
     selectElement.value = prevYear
     drawChart(selectElement.value)
-    setEvents(prevYear)
+    //setEvents(prevYear)
 }
 
 function subtractYear() {
@@ -228,7 +251,6 @@ function subtractYear() {
     let selectElement = document.getElementById('date-dropdown')
     selectElement.value = prevYear
     drawChart(selectElement.value)
-    setEvents(prevYear)
 }
 
 async function animateChart() {
@@ -239,9 +261,9 @@ async function animateChart() {
         let selectElement = document.getElementById('date-dropdown')
         selectElement.value = currentYear
         d3.selectAll("svg").select("rect").remove();
+        await clearBars();
         await drawChart(currentYear);
-        //await setEvents(currentYear)
-        await sleep(1000)
+        await sleep(2000)
         currentYear += 1;
     }
 }
@@ -250,7 +272,7 @@ async function setEvents(year) {
     const events = {
         2000: "Year 2000: Bursting of the Dot.com (or Technology) Bubble",
         2001: "Year 2001: September 11 Terrorist Attacks. \nEnron, the Emergence of Corporate Fraud, and Corporate Governance",
-        2002: "Year 2001: Stock Market Crash, post 9/11",
+        2002: "Year 2002: Stock Market Crash, post 9/11",
         2003: "Year 2003: War on Terror and Iraq War",
         2004: "Year 2004: Real GDP grew 4.4 percent in 2004, the strongest since 1999.",
         2005: "Year 2005: China and India Grow as World Financial Powers \nHurricanes Katrina and Rita        ",
@@ -274,18 +296,13 @@ async function setEvents(year) {
     }
 
     var event_el = document.getElementById('events');
-    //event_el.style.height = '350px'
     event_el.style.overflow = 'auto';
-    //event_el.style.background = 'rgb(222, 241, 249)'
     setTimeout(() => {
-        event_el.innerHTML += '' + events[year] +'</br>'
+        event_el.innerHTML += '' + events[year] + '</br>'
         event_el.classList.add('animate-text')
         event_el.style.position = "absolute";
-        //event_el.style.left = (width + 100) + 'px';
-        //event_el.style.top = '50px';
     }, 10);
-    // event_el.innerText = ""
-    // event_el.classList.remove('animate-text')
+    event_el.scrollTop = event_el.scrollHeight;
 }
 
 async function loadPopulation(RegionName, popYear) {
@@ -311,22 +328,29 @@ async function sortChart() {
     drawChart2(document.getElementById('date-dropdown').value, true)
 }
 
-async function populateYear() {
-    let dateDropdown = document.getElementById('date-dropdown');
-    let currentYear = 2022;
-    let earliestYear = 2000;
-    while (currentYear >= earliestYear) {
-        let dateOption = document.createElement('option');
-        dateOption.text = currentYear;
-        dateOption.value = currentYear;
-        dateDropdown.add(dateOption);
-        currentYear -= 1;
-    }
-}
+// async function populateYear() {
+//     let dateDropdown = document.getElementById('date-dropdown');
+//     let currentYear = 2022;
+//     let earliestYear = 2000;
+//     while (currentYear >= earliestYear) {
+//         let dateOption = document.createElement('option');
+//         dateOption.text = currentYear;
+//         dateOption.value = currentYear;
+//         dateDropdown.add(dateOption);
+//         currentYear -= 1;
+//     }
+// }
 
 const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 
 async function clearBars() {
     svg.selectAll("rect").remove();
-    //d3.select("svg").selectAll("rect").html = ""
+    svg.selectAll("#nat-avg").remove();
+    svg.selectAll("#nat-avg-txt").remove();
+    svg.selectAll("#year-text").remove();
+}
+
+function myFunction() {
+    var popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
 }

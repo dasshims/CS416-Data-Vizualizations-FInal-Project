@@ -16,8 +16,8 @@
 
         <div class="slider">
             <label for="date-dropdown">Year </label>
-            <input id="date-dropdown" type="range" min="2000" max="2020" value="1" step="1"
-                list="volsettings" oninput="drawChart(this.value)">
+            <input id="date-dropdown" type="range" min="2000" max="2020" value="1" step="1" list="volsettings"
+                oninput="drawChart(this.value)">
             <datalist id="volsettings">
                 <option>2000</option>
                 <option>2001</option>
@@ -41,21 +41,22 @@
                 <option>2019</option>
                 <option>2020</option>
             </datalist>
-
-
-            <!-- <button id="prev" onclick="subtractYear()">
-                < /button> -->
-
-                <p>
-                    <button id="next" onclick="addYear()">></button>
-                    <button id="animate-chart" onclick="animateChart()">Animate</button>
-                    <button id="clear-chart" onclick="clearBars()">Clear</button>
-                    <button id="sort-chart" onclick="drawChart2(2020, true)">Sort</button>
-                </p>
         </div>
+
+
+        <div class="controls">
+            <label" for="controls" id="lable-for-controls">Triggers</label>
+            <button id="prev" onclick="subtractYear()"><</button>
+            <!-- <input id "text">Year</input> -->
+            <button id="next" onclick="addYear()">></button>
+            <button id="animate-chart" onclick="animateChart()">Animate</button>
+            <button id="clear-chart" onclick="clearBars()">Clear</button>
+            <button id="sort-chart" onclick="drawChart2(2020, true)">Sort</button>
+        </div>
+
         <svg class="mainchart" id="main_chart"></svg>
-        <div class="events" id="events"> <label for="events">Bulletin </label> <br> </br> </div>
-        <svg class="sidechart" id="side_chart" width=1000 height=400></svg>
+        <div class="events" id="events"> <label for="events" id="lable-for-events">Bulletin</label> <br> </br> </div>
+        <svg id="side_chart" width=1000 height=400></svg>
     </div>
 
 </body>
