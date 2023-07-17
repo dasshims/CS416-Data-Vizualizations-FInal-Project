@@ -1,10 +1,11 @@
-var data_link = 'data/State_zhvi_uc_sfrcondo_tier.csv'
+//var data_link = 'data/State_zhvi_uc_sfrcondo_tier.csv'
+var data_link = 'https://dasshims.github.io/State_zhvi_uc_sfrcondo_tier.csv'
 
 async function drawLineChart(region_name) {
     console.log("Inside drawLineChart. RegionName :" + region_name)
 
-    const margin = { top: 30, right: 30, bottom: 70, left: 60 },
-        width = 900 - margin.left - margin.right,
+    margin = { top: 30, right: 60, bottom: 100, left: 70 },
+        width = 960 - margin.left - margin.right,
         height = 400 - margin.top - margin.bottom;
 
     const svg = d3.select("#side_chart")
@@ -17,9 +18,9 @@ async function drawLineChart(region_name) {
 
     svg.append('text')
         .attr('x', 200)
-        .attr('y', 30)
+        .attr('y', -10)
         .attr('text-anchor', 'middle')
-        .style('font-family', 'Helvetica')
+        .style('font-family', 'Courier New')
         .style('font-size', 20)
         .style("color", "#333333")
         .text('Price chart over the years');
@@ -44,7 +45,10 @@ async function drawLineChart(region_name) {
         .attr("transform", "translate(0," + height + ")")
         .call(d3.axisBottom(x))
         .attr("stroke-width", "2")
-        .attr("opacity", ".8");
+        .style("text-anchor", "centre")
+        .attr("stroke", "dark grey")
+        .attr("opacity", ".8")
+        .attr('font-family', 'Courier New');
 
     const y = d3.scaleLinear()
         .domain([0, 900000])
@@ -52,7 +56,10 @@ async function drawLineChart(region_name) {
     svg.append("g")
         .call(d3.axisLeft(y))
         .attr("stroke-width", "2")
-        .attr("opacity", ".8");
+        .style("text-anchor", "end")
+        .attr("stroke", "dark grey")
+        .attr("opacity", ".8")
+        .attr('font-family', 'Courier New');
 
     // Todo
     // svg.append('text')
@@ -70,6 +77,7 @@ async function drawLineChart(region_name) {
 
     var paths = svg.append("path")
         .datum(data)
+        .attr("id", "line-chart")
         .attr("fill", "none")
         .attr("stroke", "steelblue")
         .attr("transform", "translate(0,0)")
@@ -116,6 +124,7 @@ async function drawLineChart(region_name) {
         .enter()
         .append('text')
         .classed('label', true)
+        .attr("id", "annotations")
         .attr("x", function (d) { return x(d.date) + 5; })
         .attr("y", function (d) { return y(d.value) - 5; })
         .text(function (d, i) {
@@ -227,4 +236,12 @@ async function drawLineChart(region_name) {
     // svg.selectAll("g.annotation-connector, g.annotation-note").classed("hidden", true);
 
 
+}
+
+
+async function clearLines() {
+    d3.selectAll('svg').selectAll("#path").remove();
+    d3.selectAll('svg').selectAll("#annotations").remove();
+    // d3.selectAll('svg').selectAll("#nat-avg-txt").remove();
+    // d3.selectAll('svg').selectAll("#year-text").remove();
 }

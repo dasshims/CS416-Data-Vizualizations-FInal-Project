@@ -1,6 +1,6 @@
 var data, margin, svg, x, y;
-//var data_link = 'https://dasshims.github.io/State_zhvi_uc_sfrcondo_tier.csv'
-var data_link = 'data/State_zhvi_uc_sfrcondo_tier.csv'
+var data_link = 'https://dasshims.github.io/State_zhvi_uc_sfrcondo_tier.csv'
+//var data_link = 'data/State_zhvi_uc_sfrcondo_tier.csv'
 
 async function drawAxis() {
     return await drawAxis2(false)
@@ -164,9 +164,11 @@ async function drawChart2(year, sort) {
     });
 
     bars.on('click', function (d) {
-        var popup = document.getElementById("side_chart");
-        popup.classList.toggle("show");
-        window.open('./side_chart.html', d.RegionName);
+        // var popup = document.getElementById("side_chart");
+        // popup.classList.toggle("show");
+        // window.open('./side_chart.html', d.RegionName);
+        window.scroll(0 , height);
+        drawLineChart(d.RegionName);
         //window.open('http://en.wikipedia.org/wiki/' + d.RegionName, '_blank');
     });
 
