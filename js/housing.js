@@ -1,4 +1,4 @@
-var data, margin, svg, x, y;
+var data, margin, svg, bx, by;
 var data_link = 'https://dasshims.github.io/State_zhvi_uc_sfrcondo_tier.csv'
 //var data_link = 'data/State_zhvi_uc_sfrcondo_tier.csv'
 
@@ -29,19 +29,19 @@ async function drawAxis2(sort) {
         .attr("transform",
             "translate(" + margin.left + "," + margin.top + ")");
 
-    x = d3.scaleBand()
+    bx = d3.scaleBand()
         .range([0, width])
         .domain(data.map(function (d) { return d.RegionName; }))
         .padding(0.2);
 
 
-    y = d3.scaleLinear()
+    by = d3.scaleLinear()
         .domain([0, 900000])
         .range([height, 0]);
 
     svg.append("g")
         .attr("id", "y-axis")
-        .call(d3.axisLeft(y))
+        .call(d3.axisLeft(by))
         .attr("stroke", "#1f00aa")
         .attr("stroke-width", "1")
         .attr("opacity", ".8")
@@ -50,7 +50,7 @@ async function drawAxis2(sort) {
     svg.append("g")
         .attr("id", "x-axis")
         .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x))
+        .call(d3.axisBottom(bx))
         .selectAll("text")
         .attr("transform", "translate(-10,0)rotate(-45)")
         .style("text-anchor", "end")
@@ -62,7 +62,7 @@ async function drawAxis2(sort) {
     svg.append('g')
         .attr("opacity", ".1")
         .call(d3.axisLeft()
-            .scale(y)
+            .scale(by)
             .tickSize(-width, 0, 0)
             .tickFormat(''))
         .attr("stroke-dasharray", "3,3");
@@ -121,17 +121,17 @@ async function drawChart2(year, sort) {
         .enter()
         .append("rect")
         .attr("id", "rect")
-        .attr("x", function (d) { return x(d.RegionName); })
-        .attr("width", x.bandwidth())
-        //.style("margin-top", "20px")
-        .attr("height", function (d) { return height - y(0); })
-        .attr("y", function (d) { return y(0); })
+        .attr("x", function (d) { return bx(d.RegionName); })
+        .attr("width", bx.bandwidth())
+        .style("margin-top", "20px")
+        .attr("height", function (d) { return height - by(0); })
+        .attr("y", function (d) { return by(0); })
         .attr("fill", function (d) { return color(d.price) });
 
     bars.transition()
         .duration(1000)
-        .attr("height", function (d) { return height - y(d.price); })
-        .attr("y", function (d) { return y(d.price); })
+        .attr("height", function (d) { return height - by(d.price); })
+        .attr("y", function (d) { return by(d.price); })
         .delay(function (d, i) { return (i * 20) });
 
     bars.append("text")
@@ -139,10 +139,10 @@ async function drawChart2(year, sort) {
             return d.price;
         })
         .attr("x", function (d) {
-            return x(d.RegionName);
+            return bx(d.RegionName);
         })
         .attr("y", function (d) {
-            return y(d.price) - 5;
+            return by(d.price) - 5;
         })
         .attr("font-family", "sans-serif")
         .attr("font-size", "14px")
@@ -169,13 +169,7 @@ async function drawChart2(year, sort) {
     });
 
     bars.on('click', function (d) {
-        
-        console.log(d.RegionName)
         window.open('./line_chart.html?state='+ d.RegionName);
-        // let selectElement = document.getElementById('state-dropdown')
-        // console.log(selectElement)
-        // selectElement.value = d.RegionName
-
         //window.open('http://en.wikipedia.org/wiki/' + d.RegionName, '_blank');
     });
 
@@ -188,8 +182,8 @@ async function drawChart2(year, sort) {
         .attr("stroke", "#f51f1f")
         .attr("transform", "translate(0,0)")
         .attr("d", d3.line()
-            .x(function (d) { return x(d.RegionName); })
-            .y(y(height))
+            .x(function (d) { return bx(d.RegionName); })
+            .y(by(height))
         )
         .attr("stroke-width", ".5")
         .attr("opacity", "0");
@@ -199,8 +193,8 @@ async function drawChart2(year, sort) {
         .attr("stroke-dashoffset", 0)
         .duration(1000)
         .attr("d", d3.line()
-            .x(function (d) { return x(d.RegionName); })
-            .y(y(avg))
+            .x(function (d) { return bx(d.RegionName); })
+            .y(by(avg))
         )
         .attr("stroke-width", "1.5")
         .attr("opacity", ".5");
@@ -361,12 +355,6 @@ async function loadPopulation(RegionName, popYear) {
     pop_data = await pop_data.filter(function (d) {
         return d.Description == RegionName && d.Year == popYear;
     })
-
-    console.log(RegionName);
-    console.log(popYear);
-    console.log(pop_data.size);
-    console.log(typeof pop_data);
-
     return pop_data[0];
 }
 

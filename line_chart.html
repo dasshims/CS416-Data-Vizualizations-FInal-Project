@@ -1,7 +1,7 @@
 <html>
 <script src="https://d3js.org/d3.v5.js"></script>
 <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
-<script src='./js/housing.js'></script>
+<!-- <script src='./js/housing.js'></script> -->
 <script src='./js/line_chart.js'></script>
 <link rel="stylesheet" href="./css/style.css" type="text/css">
 
@@ -12,14 +12,15 @@
 
 <!-- <body onload='animateChart()'> -->
 
-<body  id="line_chart_body">
+<body id="line_chart_body">
     <h1>Interactive Visualization of Housing prices in the US : Single Family House</h1>
 
-    <div class="controls" hidden>
-        <select id="state-dropdown" class="button"
-            onchange="drawLineChart(this.value)">
+    <div class="controls_line_chart">
+        <label for="controls" id="lable-for-controls">Triggers</label>
+        <button id="populate-all-states" onclick="clearLineChart();drawAllStates()">Compare States</button>
+        <select id="state-dropdown" class="button" onchange="drawLineChart(this.value)">
             </option>
-            <option value="ALL">Compare All</option>
+            <!-- <option value="ALL">Compare All</option> -->
             <option value="Alabama">Alabama</option>
             <option value="Alaska">Alaska</option>
             <option value="Arizona">Arizona</option>
@@ -28,10 +29,9 @@
             <option value="Colorado">Colorado</option>
             <option value="Connecticut">Connecticut</option>
             <option value="Delaware">Delaware</option>
-            <option value="District of Columbia">District of Columbia</option>
+            <option value="DC">District of Columbia</option>
             <option value="Florida">Florida</option>
             <option value="Georgia">Georgia</option>
-            <option value="Guam">Guam</option>
             <option value="Hawaii">Hawaii</option>
             <option value="Idaho">Idaho</option>
             <option value="Illinois">Illinois</option>
@@ -56,7 +56,6 @@
             <option value="New York">New York</option>
             <option value="North Carolina">North Carolina</option>
             <option value="North Dakota">North Dakota</option>
-            <option value="Northern Marianas Islands">Northern Marianas Islands</option>
             <option value="Ohio">Ohio</option>
             <option value="Oklahoma">Oklahoma</option>
             <option value="Oregon">Oregon</option>
@@ -70,21 +69,13 @@
             <option value="Utah">Utah</option>
             <option value="Vermont">Vermont</option>
             <option value="Virginia">Virginia</option>
-            <option value="Virgin Islands">Virgin Islands</option>
             <option value="Washington">Washington</option>
-            <option value="West Virginia">West Virginia</option>
             <option value="Wisconsin">Wisconsin</option>
             <option value="Wyoming">Wyoming</option>
         </select>
         </select>
-        <label for="controls" id="lable-for-controls">Triggers</label>
-        <button id="prev" onclick="subtractYear()">
-            << /button>
-                <button id="next" onclick="addYear()">></button>
-                <button id="animate-chart"
-                    onclick="document.getElementById('events').innerHTML = '';clearBars();animateChart()">Animate</button>
-                <button id="clear-chart"
-                    onclick="document.getElementById('events').innerHTML = '';clearBars()">Clear</button>
+        <button id="clear-chart" onclick="clearLineChart()">Clear</button>
+
     </div>
     <svg class="mainchart" id="side_chart" width=1000 height=400> <button id="populate-state-button"
             class="controls button">Populate all states</button> </svg>
