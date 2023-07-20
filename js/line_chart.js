@@ -1,5 +1,6 @@
 var data, margin, svg, lx, ly, region_name;
-var data_link = 'https://dasshims.github.io/State_zhvi_uc_sfrcondo_tier.csv'
+//var data_link = 'https://dasshims.github.io/State_zhvi_uc_sfrcondo_tier.csv'
+var data_link = 'data/State_zhvi_uc_sfrcondo_tier.csv'
 
 region_name = (new URL(document.location)).searchParams.get("state");
 

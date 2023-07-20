@@ -1,7 +1,6 @@
 var data, margin, svg, bx, by;
-var data_link = 'https://dasshims.github.io/State_zhvi_uc_sfrcondo_tier.csv'
-
-//var data_link = 'data/State_zhvi_uc_sfrcondo_tier.csv'
+//var data_link = 'https://dasshims.github.io/State_zhvi_uc_sfrcondo_tier.csv'
+var data_link = 'data/State_zhvi_uc_sfrcondo_tier.csv'
 
 async function drawAxis() {
     return await drawAxis2(false)
@@ -305,6 +304,7 @@ async function animateChart() {
         d3.selectAll('svg').selectAll("#nat-avg").remove();
         d3.selectAll('svg').selectAll("#nat-avg-txt").remove();
         d3.selectAll('svg').selectAll('rect').remove();
+        d3.selectAll('svg').selectAll("#min-max-annotations").remove();
         await drawChart(currentYear);
         await sleep(3000)
         currentYear += 1;
