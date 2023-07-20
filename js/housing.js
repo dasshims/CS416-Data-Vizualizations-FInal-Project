@@ -18,12 +18,10 @@ async function drawAxis2(sort) {
         })
     }
 
-    // set the dimensions and margins of the graph
-    margin = { top: 30, right: 60, bottom: 100, left: 70 },
+    margin = { top: 30, right: 0, bottom: 100, left: 70 },
         width = 960 - margin.left - margin.right,
         height = 400 - margin.top - margin.bottom;
 
-    //append the svg object to the body of the page
     svg = d3.select("#main_chart")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom + 40)
@@ -44,8 +42,8 @@ async function drawAxis2(sort) {
     svg.append("g")
         .attr("id", "y-axis")
         .call(d3.axisLeft(y))
-        .attr("stroke", "dark grey")
-        .attr("stroke-width", "2")
+        .attr("stroke", "#1f00aa")
+        .attr("stroke-width", "1")
         .attr("opacity", ".8")
         .attr('font-family', 'Courier New');
 
@@ -56,19 +54,20 @@ async function drawAxis2(sort) {
         .selectAll("text")
         .attr("transform", "translate(-10,0)rotate(-45)")
         .style("text-anchor", "end")
-        .attr("stroke", "dark grey")
-        .attr("stroke-width", "2")
+        .attr("stroke", "#006e1f")
+        .attr("stroke-width", "1")
         .attr("opacity", ".8")
         .attr('font-family', 'Courier New');
 
     svg.append('g')
-        .attr('class', 'grid')
         .attr("opacity", ".1")
         .call(d3.axisLeft()
             .scale(y)
             .tickSize(-width, 0, 0)
             .tickFormat(''))
         .attr("stroke-dasharray", "3,3");
+
+    addLegendsForBarChart();
 }
 
 window.onload = drawAxis();
@@ -124,7 +123,7 @@ async function drawChart2(year, sort) {
         .attr("id", "rect")
         .attr("x", function (d) { return x(d.RegionName); })
         .attr("width", x.bandwidth())
-        .style("margin-top", "20px")
+        //.style("margin-top", "20px")
         .attr("height", function (d) { return height - y(0); })
         .attr("y", function (d) { return y(0); })
         .attr("fill", function (d) { return color(d.price) });
@@ -135,14 +134,20 @@ async function drawChart2(year, sort) {
         .attr("y", function (d) { return y(d.price); })
         .delay(function (d, i) { return (i * 20) });
 
-    //Not working - todo
-    bars
-        .append('text')
-        .attr('class', 'value')
-        .attr("x", 100) //function (d) { return x(d.RegionName); })
-        .attr("y", 100) //function (d) { return y(d.price) + 30; })
-        .attr('text-anchor', 'middle')
-        .text("sometext")
+    bars.append("text")
+        .text(function (d) {
+            return d.price;
+        })
+        .attr("x", function (d) {
+            return x(d.RegionName);
+        })
+        .attr("y", function (d) {
+            return y(d.price) - 5;
+        })
+        .attr("font-family", "sans-serif")
+        .attr("font-size", "14px")
+        .attr("fill", "black")
+        .attr("text-anchor", "middle");
 
     bars.on("mouseover", function (d) {
         d3.select(this)
@@ -164,21 +169,23 @@ async function drawChart2(year, sort) {
     });
 
     bars.on('click', function (d) {
-        // var popup = document.getElementById("side_chart");
-        // popup.classList.toggle("show");
-        // window.open('./side_chart.html', d.RegionName);
-        window.scroll(0 , height);
-        drawLineChart(d.RegionName);
+        
+        console.log(d.RegionName)
+        window.open('./line_chart.html?state='+ d.RegionName);
+        // let selectElement = document.getElementById('state-dropdown')
+        // console.log(selectElement)
+        // selectElement.value = d.RegionName
+
         //window.open('http://en.wikipedia.org/wiki/' + d.RegionName, '_blank');
     });
 
     // National Average
-    const avg = d3.sum(data, d => d.price) / 52;
+    const avg = d3.sum(data, d => d.price) / 50;
     const nat_avg_path = svg.append("path")
         .datum(data)
         .attr("id", "nat-avg")
         .attr("fill", "none")
-        .attr("stroke", "red")
+        .attr("stroke", "#f51f1f")
         .attr("transform", "translate(0,0)")
         .attr("d", d3.line()
             .x(function (d) { return x(d.RegionName); })
@@ -198,22 +205,49 @@ async function drawChart2(year, sort) {
         .attr("stroke-width", "1.5")
         .attr("opacity", ".5");
 
-    // await new Promise(r => setTimeout(r, 1000));
-    // svg.append('g')
-    //     .classed('labels-group', true)
-    //     .selectAll('text')
-    //     .data(data)
-    //     .enter()
-    //     .append('text')
-    //     .filter(function (d, i) { return i === (data.length - 1) })
-    //     .classed('label', true)
-    //     .attr("id", "nat-avg-txt")
-    //     .attr("x", function (d) { return +x(d.RegionName) + 15; })
-    //     .attr("y", function (d) { return y(avg) + 3; })
-    //     .text(function(d) {return "National avg "+d.year})
-
     // After drawing the bars, set events
     setEvents(year);
+    
+
+    // Adding annotations
+    // var max = d3.max(data, function(d) { return d.price; });
+    // console.log("max "+max)
+    // const type = d3.annotationLabel
+    // const annotations = [
+    //     {
+    //       note: {
+    //         label: "Here is the annotation label",
+    //         title: "Annotation title"
+    //       },
+    //       connector: {
+    //         end: "arrow",        // none, or arrow or dot
+    //         type: "curve",       // Line or curve
+    //         points: 3,           // Number of break in the curve
+    //         lineType : "horizontal"
+    //       },
+    //       color: ["grey"],
+    //       x: 0,
+    //       y: 0,
+    //       dy: 70,
+    //       dx: 70
+    //     }
+    //   ]
+
+    // console.log("x val "+x('California'))
+    // console.log("y val "+y(max))
+    // const makeAnnotations = d3.annotation()
+    //     .editMode(true)
+    //     .type(type)
+    //     .accessors({
+    //         x: 150, //d => x('California'),
+    //         y: 240 // => y(max)
+    //     })
+    //     .annotations(annotations)
+    // d3.select("svg")
+    //     .append("g")
+    //     .attr("id", "annotations")
+    //     .attr("transform", "translate(0,0)")
+    //     .call(makeAnnotations)
 }
 
 function getYearFromDropDown() {
@@ -259,8 +293,9 @@ async function animateChart() {
         d3.selectAll('svg').selectAll("#year-text").remove();
         d3.selectAll('svg').selectAll("#nat-avg").remove();
         d3.selectAll('svg').selectAll("#nat-avg-txt").remove();
+        d3.selectAll('svg').selectAll('rect').remove();
         await drawChart(currentYear);
-        await sleep(2000)
+        await sleep(3000)
         currentYear += 1;
     }
 }
@@ -279,7 +314,7 @@ async function setEvents(year) {
         2009: "Year 2009: The Global Recession and the Collapse of Wall Street",
         2010: "Year 2010: Congress passes the Financial Regulations Bill, aimed at preventing the risky behavior and regulatory failures that brought the economy to the brink of collapse and cost millions of Americans their jobs and savings. | Congress passes the Health Care Reform Bill, aimed at providing affordable, quality health care for all Americans.",
         2011: "Year 2011: Congress votes for and the president signs a bill authorizing an increase in the U.S. debt. ",
-        2012: "Year 2012: Crisis in Venezuela. \n2012–2013 Cypriot financial crisis.\nFacebook’s IPO",
+        2012: "Year 2012: Crisis in Venezuela. \n2012–2013 Cypriot financial crisis.\nFacebook IPO",
         2013: "Year 2013: September 11 Terrorist Attacks        ",
         2014: "Year 2014: Russian financial crisis",
         2015: "Year 2015: Chinese stock market crash",
@@ -295,12 +330,27 @@ async function setEvents(year) {
     var event_el = document.getElementById('events');
     event_el.style.overflow = 'auto';
     event_el.scrollTop = event_el.scrollHeight;
-    event_el.innerHTML += '<br>' + events[year] + '</br>'
+    event_el.innerHTML += '<br>' + events[year] + '</br> <br> </br>'
     event_el.scrollTop = event_el.scrollHeight;
-    event_el.style.fontSize= 14;
-    event_el.style.fontWeight= 400;
+    event_el.style.fontSize = 14;
+    event_el.style.fontWeight = 400;
     event_el.style.fontFamily = 'Courier New';
     event_el.style.color = 'black';
+
+
+    // d3.select('svg')
+    // .append('text')
+    //     .attr('x', 300)
+    //     .attr('y', 12)
+    //     .attr("class", "box")
+    //     .attr("id", "year-text")
+    //     .attr('text-anchor', 'left')
+    //     .style('font-family', 'Courier New')
+    //     .style('font-size', 16)
+    //     .style('font-weight', 200)
+    //     .style('overflow-wrap', 'break-word')
+    //     .style("color", "#333333")
+    //     .text(events[year]);
 }
 
 async function loadPopulation(RegionName, popYear) {
@@ -326,19 +376,6 @@ async function sortChart() {
     drawChart2(document.getElementById('date-dropdown').value, true)
 }
 
-// async function populateYear() {
-//     let dateDropdown = document.getElementById('date-dropdown');
-//     let currentYear = 2022;
-//     let earliestYear = 2000;
-//     while (currentYear >= earliestYear) {
-//         let dateOption = document.createElement('option');
-//         dateOption.text = currentYear;
-//         dateOption.value = currentYear;
-//         dateDropdown.add(dateOption);
-//         currentYear -= 1;
-//     }
-// }
-
 const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 
 async function clearBars() {
@@ -346,9 +383,33 @@ async function clearBars() {
     d3.selectAll('svg').selectAll("#nat-avg").remove();
     d3.selectAll('svg').selectAll("#nat-avg-txt").remove();
     d3.selectAll('svg').selectAll("#year-text").remove();
+    d3.selectAll('svg').selectAll("#annotations").remove();
 }
 
-function myFunction() {
-    var popup = document.getElementById("myPopup");
-    popup.classList.toggle("show");
+// async function addAnnotations() {
+    
+// }
+
+
+async function addLegendsForBarChart(){
+    const innerHtml = "<br><strong> Legends:  </strong>"
+    + "<p style='color: #006e1f'> <strong>all US states plotted -> x-axis"
+    + "<p style='color: #1f00aa'>price in US Dollars plotted -> y-axis"
+    + "<p style='color: steelblue'>Each bar represents a US State"
+    + "<p style='color: f51f1f'> The red line represents National Average for that year</strong></p>"
+    + "<br> Click on the bars to dril down on Each state"
+    + "<br> Data Source: <a href='https://www.zillow.com/research/data/'>Zillow Research</a>"
+    
+    d3.select("#main_chart_body")
+        .append("div")
+        .style("position", "absolute")
+        .style("z-index", "0")
+        .style("visibility", "visible")
+        .html(innerHtml)
+            .style("right", width - 600)
+            .style("top", height + 250)
+            .style('font-family', 'Courier New')
+            .style('text-align', 'right')
+            .style('font-size', 15)
+            .style("opacity", .8);
 }

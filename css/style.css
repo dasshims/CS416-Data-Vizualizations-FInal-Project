@@ -1,6 +1,7 @@
 :root {
-    --left: -50;
-    --width: 1000
+    --left: 40;
+    --width: 1000;
+    --controlleft: 690
   }
 
 .selected {
@@ -35,7 +36,7 @@ h1 {
 }
 
 div {
-    margin-left: 60;
+    margin-left: var(--left);
     margin-top: 20;
     height: 30px;
     width: 800px;
@@ -89,7 +90,7 @@ body {
 .controls {
     position: absolute;
     top: 50;
-    left: 600;
+    left: var(--controlleft);
     width: 350;
     height: 20;
     padding: 20px;
@@ -131,13 +132,13 @@ label {
 
 .events {
     position: absolute;
-    top: 570;
-    left: var(--left);;
-    width: var(--width);
-    height: 110;
+    top: 120;
+    left: 590;
+    width: 450; 
+    height: 70;
     padding: 20px;
     padding-left: 20px;
-    background: #ffffff;
+    background: #d3f3ff;
     border-radius: 20px;
     display: flex;
     align-items: top;
@@ -147,9 +148,9 @@ label {
 .mainchart {
     position: absolute;
     top: 140;
-    left: 10;
+    left: 80;
     width: var(--width);
-    height: 400;
+    height: 600;
     padding: 20px;
     padding-left: 20px;
     background: #fffefe;
@@ -162,8 +163,8 @@ label {
 
 .sidechart {
     position: absolute;
-    top: 750;
-    left: 10;
+    top: 1000;
+    left: var(--left);
     width: var(--width);
     height: 400;
     padding: 20px;
@@ -176,3 +177,28 @@ label {
     box-shadow: 0px 15px 40px #8ecbe466;
 }
 
+
+.button {
+    fill: #007bbf;
+    text-anchor: end;
+    font-family: 'Courier New';
+    font-size: 16;
+    color: #333333"
+}
+.button:hover {
+    fill: #1f00aa;
+}
+
+
+hr { 
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: 0;
+    margin-right: 0;
+    border-width: 0px;
+    width: 30px;
+    background-color:#e35e5e ;
+    height:3px;
+    text-align: end;
+} 

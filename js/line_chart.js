@@ -1,14 +1,30 @@
-//var data_link = 'data/State_zhvi_uc_sfrcondo_tier.csv'
+var data, margin, svg, x, y, region_name;
 var data_link = 'https://dasshims.github.io/State_zhvi_uc_sfrcondo_tier.csv'
 
-async function drawLineChart(region_name) {
-    console.log("Inside drawLineChart. RegionName :" + region_name)
+region_name = (new URL(document.location)).searchParams.get("state");
+
+async function drawAxisForLineChart(region_name) {
+    console.log("Inside drawAxisForLineChart. RegionName :" + region_name)
 
     margin = { top: 30, right: 60, bottom: 100, left: 70 },
         width = 960 - margin.left - margin.right,
         height = 400 - margin.top - margin.bottom;
 
-    const svg = d3.select("#side_chart")
+    data = await d3.csv(data_link, function (d) {
+        return { date: d3.timeParse("%Y-%m-%d")(d.year), value: d.price, RegionName: d.RegionName, year: d.year }
+    });
+
+    data = await data.filter(function (d) {
+        return d.RegionName == region_name && JSON.stringify(d.year).substring(6, 11) == '12-31'
+    })
+
+    data = data = data.sort(function (a, b) {
+        return d3.ascending(a.date, b.date);
+    })
+
+    console.log(data)
+
+    svg = d3.select("#side_chart")
         .append("svg")
         .attr("width", width + margin.left + margin.right + 100)
         .attr("height", height + margin.top + margin.bottom)
@@ -25,8 +41,61 @@ async function drawLineChart(region_name) {
         .style("color", "#333333")
         .text('Price chart over the years');
 
-    //var data = await d3.csv("https://dasshims.github.io/State_zhvi_uc_sfrcondo_tier.csv", function (d) {
-    var data = await d3.csv(data_link, function (d) {
+    x = d3.scaleTime()
+        .domain(d3.extent(data, function (d) { return d.date; }))
+        .range([0, width + 10]);
+    svg.append("g")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x))
+        .attr("stroke-width", "1")
+        .style("text-anchor", "centre")
+        .attr("stroke", "#006e1f")
+        .attr("opacity", ".8")
+        .attr('font-family', 'Courier New');
+
+    y = d3.scaleLinear()
+        .domain([0, 900000])
+        .range([height, 10]);
+    svg.append("g")
+        .call(d3.axisLeft(y))
+        .attr("stroke-width", "1")
+        .style("text-anchor", "end")
+        .attr("stroke", "#1f00aa")
+        .attr("opacity", ".8")
+        .attr('font-family', 'Courier New');
+
+
+    addLegendsForLineChart()
+}
+
+
+window.onload = drawAxisForLineChart(region_name); console.log(svg); drawLineChart(region_name)
+
+async function drawLineChart(region_name) {
+    console.log("Inside drawLineChart. RegionName :" + region_name)
+
+    // margin = { top: 30, right: 60, bottom: 100, left: 70 },
+    //     width = 960 - margin.left - margin.right,
+    //     height = 400 - margin.top - margin.bottom;
+
+    // svg = d3.select("#side_chart")
+    //     .append("svg")
+    //     .attr("width", width + margin.left + margin.right + 100)
+    //     .attr("height", height + margin.top + margin.bottom)
+    //     .append("g")
+    //     .attr("transform",
+    //         "translate(" + margin.left + "," + margin.top + ")");
+
+    // svg.append('text')
+    //     .attr('x', 200)
+    //     .attr('y', -10)
+    //     .attr('text-anchor', 'middle')
+    //     .style('font-family', 'Courier New')
+    //     .style('font-size', 20)
+    //     .style("color", "#333333")
+    //     .text('Price chart over the years');
+
+    data = await d3.csv(data_link, function (d) {
         return { date: d3.timeParse("%Y-%m-%d")(d.year), value: d.price, RegionName: d.RegionName, year: d.year }
     });
 
@@ -38,28 +107,31 @@ async function drawLineChart(region_name) {
         return d3.ascending(a.date, b.date);
     })
 
-    const x = d3.scaleTime()
-        .domain(d3.extent(data, function (d) { return d.date; }))
-        .range([0, width + 10]);
-    svg.append("g")
-        .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x))
-        .attr("stroke-width", "2")
-        .style("text-anchor", "centre")
-        .attr("stroke", "dark grey")
-        .attr("opacity", ".8")
-        .attr('font-family', 'Courier New');
+    // const x = d3.scaleTime()
+    //     .domain(d3.extent(data, function (d) { return d.date; }))
+    //     .range([0, width + 10]);
+    // svg.append("g")
+    //     .attr("transform", "translate(0," + height + ")")
+    //     .call(d3.axisBottom(x))
+    //     .attr("stroke-width", "1")
+    //     .style("text-anchor", "centre")
+    //     .attr("stroke", "#006e1f")
+    //     .attr("opacity", ".8")
+    //     .attr('font-family', 'Courier New');
 
-    const y = d3.scaleLinear()
-        .domain([0, 900000])
-        .range([height, 10]);
-    svg.append("g")
-        .call(d3.axisLeft(y))
-        .attr("stroke-width", "2")
-        .style("text-anchor", "end")
-        .attr("stroke", "dark grey")
-        .attr("opacity", ".8")
-        .attr('font-family', 'Courier New');
+    // const y = d3.scaleLinear()
+    //     .domain([0, 900000])
+    //     .range([height, 10]);
+    // svg.append("g")
+    //     .call(d3.axisLeft(y))
+    //     .attr("stroke-width", "1")
+    //     .style("text-anchor", "end")
+    //     .attr("stroke", "#1f00aa")
+    //     .attr("opacity", ".8")
+    //     .attr('font-family', 'Courier New');
+
+
+    // addLegendsForLineChart()
 
     // Todo
     // svg.append('text')
@@ -169,79 +241,111 @@ async function drawLineChart(region_name) {
         return tooltip.style("visibility", "hidden");
     });
 
-    // d3.select("#side_chart")
-    // .select("g")
-    // .remove()
-
     //Add annotations
-    var labels = [{
-        data: { date: "2008-12-31", close: 109653.4952000697 },
-        dy: 37,
-        dx: -142
-    }, {
-        data: { date: "2020-12-31", close: 109653.4952000697 },
-        dy: -137,
-        dx: 0,
-        note: { align: "middle" }
-    }, {
-        data: { date: "2016-12-31", close: 109653.4952000697 },
-        dy: 37,
-        dx: 42
-    }].map(function (l) {
-        l.note = Object.assign({}, l.note, {
-            title: "Close: " + l.data.close,
-            label: "" + l.data.date
-        });
-        l.subject = { radius: 3 };
+    const type = d3.annotationLabel
 
-        return l;
-    });
+    const annotations = [{
+        note: {
+            label: "Housing market slows down after Sub-Prime Housing Crisis",
+            bgPadding: 20,
+            title: "2008"
+        },
+        //can use x, y directly instead of data
+        data: { date: "2008-12-31", close: 185.02 },
+        className: "show-bg",
+        // x: 100,
+        y: 50,
+        dy: 100,
+        dx: 100
+        // dy: 137,
+        // dx: 162
+    }]
 
-    console.log(labels)
-    var parseTime = d3.timeParse("%d-%b-%y");
-    var timeFormat = d3.timeFormat("%d-%b-%y");
+    const parseTime = d3.timeParse("%Y-%m-%d")
+    const timeFormat = d3.timeFormat("%d-%b-%y")
 
-    // window.makeAnnotations = d3.annotation()
-    //     .annotations(labels)
-    //     .type(d3.annotationCalloutCircle)
+    const makeAnnotations = d3.annotation()
+        .editMode(true)
+        .notePadding(15)
+        .type(type)
+        .accessors({
+            x: function (d) { console.log(x(parseTime('2008-12-31'))); return x(parseTime('2008-12-31')) },
+            y: 50 // function(d) { console.log(d.price); console.log(y(d.price)); return y(d.price)}
+        })
+        .annotations(annotations)
+
+    svg
+        .append("g")
+        .call(makeAnnotations)
+
+    // const makeAnnotations = d3.annotation()
+    //     .editMode(true)
+    //     //also can set and override in the note.padding property
+    //     //of the annotation object
+    //     .notePadding(15)
+    //     .type(type)
+    //     //accessors & accessorsInverse not needed
+    //     //if using x, y in annotations JSON
     //     .accessors({
-    //         y: function x(d) {
-    //             const close = typeof d.close == 'undefined' ? 0 : d.close
-    //             return x(close);
-    //         },
-    //         x: function x(d) {
-    //             //const date = typeof d.date == 'undefined' ? 0 : d.date
-    //             return x(parseTime('2008-12-31')); //date));
-    //         }
+    //         x: d => x(parseTime(d.date)),
+    //         y: d => y(d.close)
     //     })
-    // .accessorsInverse({
-    //     date: function date(d) {
-    //         return timeFormat(x.invert(d.x));
-    //     },
-    //     close: function close(d) {
-    //         return y.invert(d.y);
-    //     }
-    // }).on('subjectover', function (annotation) {
-    //     console.log("subjectover "+annotation)
-    //     annotation.type.a.selectAll("g.annotation-connector, g.annotation-note").classed("hidden", false);
-    // }).on('subjectout', function (annotation) {
-    //     console.log("subjectout "+annotation)
-    //     annotation.type.a.selectAll("g.annotation-connector, g.annotation-note").classed("hidden", true);
-    // });
+    //     .accessorsInverse({
+    //         date: d => timeFormat(x.invert(d.x)),
+    //         close: d => y.invert(d.y)
+    //     })
+    //     .annotations(annotations)
 
-    // svg.append("g")
-    //     .attr("class", "annotation-test")
-    //     .call(makeAnnotations);
-
-    // svg.selectAll("g.annotation-connector, g.annotation-note").classed("hidden", true);
-
-
+    //     .append("g")
+    //     .attr("class", "annotation-group")
+    //     .call(makeAnnotations)
 }
-
 
 async function clearLines() {
     d3.selectAll('svg').selectAll("#path").remove();
     d3.selectAll('svg').selectAll("#annotations").remove();
     // d3.selectAll('svg').selectAll("#nat-avg-txt").remove();
     // d3.selectAll('svg').selectAll("#year-text").remove();
+}
+
+async function addButtonAndText(svg) {
+
+    svg.append('text')
+        .attr('x', 200)
+        .attr('y', -10)
+        .attr('id', 'year-text')
+        .attr('text-anchor', 'middle')
+        .style('font-family', 'Courier New')
+        .style('font-size', 20)
+        .style("color", "#333333")
+        .text('Price chart over the years');
+
+    console.log(document.getElementById("populate-state-button").svg)
+    document.getElementById("populate-state-button").svg
+
+}
+
+async function addLegendsForLineChart() {
+    const innerHtml = "<br><strong> Legends:  </strong>"
+        + "<p style='color: #006e1f'> <strong>Years from 2000 to 2022 -> x-axis"
+        + "<p style='color: #1f00aa'>price in US Dollars plotted -> y-axis"
+        + "<p style='color: f51f1f'>Each red dot represents a year mark </p>"
+        + "<br> Data Source: <a href='https://www.zillow.com/research/data/'>Zillow Research</a>"
+    d3.select("#line_chart_body")
+        .append("div")
+        .style("position", "absolute")
+        .style("z-index", "0")
+        .style("visibility", "visible")
+        .html(innerHtml)
+        .style("right", width + margin.right)
+        .style("top", height + 250)
+        .style('font-family', 'Courier New')
+        .style('text-align', 'right')
+        .style('font-size', 15)
+        .style("opacity", .8);
+}
+
+function getStateFromDropDown() {
+    let selectElement = document.getElementById('state-dropdown')
+    return selectElement.value;
 }
