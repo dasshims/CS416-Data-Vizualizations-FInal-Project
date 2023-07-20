@@ -1,6 +1,6 @@
 var data, margin, svg, bx, by;
-//var data_link = 'https://dasshims.github.io/State_zhvi_uc_sfrcondo_tier.csv'
-var data_link = 'data/State_zhvi_uc_sfrcondo_tier.csv'
+//const data_link = 'https://dasshims.github.io/State_zhvi_uc_sfrcondo_tier.csv'
+const data_link = 'data/State_zhvi_uc_sfrcondo_tier.csv'
 
 async function drawAxis() {
     return await drawAxis2(false)
