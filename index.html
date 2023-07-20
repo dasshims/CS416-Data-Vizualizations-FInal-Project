@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 
-<body onload='clearBars();animateChart()' id="main_chart_body">
+<body onload='clearBars();drawChart(2020)' id="main_chart_body">
     <h1>Interactive Visualization of Housing prices in the US : Single Family House</h1>
     <div >
 
@@ -45,9 +45,8 @@
             </datalist>
         </div>
 
-
-        <div class="controls" hidden>
-            <label for="controls" id="lable-for-controls">Triggers</label>
+        <div class="controls" id="controls">
+            <label for="controls" id="label-for-controls">Triggers</label>
             <button id="prev" onclick="subtractYear()"><</button>
             <button id="next" onclick="addYear()">></button>
             <button id="animate-chart" onclick="document.getElementById('events').innerHTML = '';clearBars();animateChart()">Animate</button>
@@ -56,9 +55,7 @@
         </div>
 
         <svg class="mainchart" id="main_chart"></svg>
-        <div class="events" id="events"> <br> </br> </div>
-       
-        <!-- <svg class="sidechart" id="side_chart" width=1000 height=400>  <button id="populate-state-button" class="controls button" >Populate all states</button> </svg> -->
+        <div class="events" id="events"> <br> </br> </div>       
     </div>
 
 </body>

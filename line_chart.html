@@ -10,12 +10,10 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 
-<!-- <body onload='animateChart()'> -->
-
 <body id="line_chart_body">
     <h1>Interactive Visualization of Housing prices in the US : Single Family House</h1>
 
-    <div class="controls_line_chart">
+    <div class="controls_line_chart", id="controls">
         <label for="controls" id="lable-for-controls">Triggers</label>
         <button id="populate-all-states" onclick="clearLineChart();drawAllStates()">Compare States</button>
         <select id="state-dropdown" class="button" onchange="drawLineChart(this.value)">

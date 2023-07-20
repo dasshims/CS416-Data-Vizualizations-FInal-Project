@@ -1,5 +1,6 @@
 var data, margin, svg, bx, by;
 var data_link = 'https://dasshims.github.io/State_zhvi_uc_sfrcondo_tier.csv'
+
 //var data_link = 'data/State_zhvi_uc_sfrcondo_tier.csv'
 
 async function drawAxis() {
@@ -18,7 +19,7 @@ async function drawAxis2(sort) {
         })
     }
 
-    margin = { top: 30, right: 0, bottom: 100, left: 70 },
+    margin = {top: 30, right: 0, bottom: 100, left: 70},
         width = 960 - margin.left - margin.right,
         height = 400 - margin.top - margin.bottom;
 
@@ -31,7 +32,9 @@ async function drawAxis2(sort) {
 
     bx = d3.scaleBand()
         .range([0, width])
-        .domain(data.map(function (d) { return d.RegionName; }))
+        .domain(data.map(function (d) {
+            return d.RegionName;
+        }))
         .padding(0.2);
 
 
@@ -67,7 +70,7 @@ async function drawAxis2(sort) {
             .tickFormat(''))
         .attr("stroke-dasharray", "3,3");
 
-    addLegendsForBarChart();
+    await addLegendsForBarChart();
 }
 
 window.onload = drawAxis();
@@ -85,6 +88,14 @@ async function drawChart2(year, sort) {
 
     data = await data.filter(function (d) {
         return d.year == year + "-12-31" && d.RegionName != "United States"
+    })
+
+    data.forEach(function (d) {
+        d.SizeRank = d.SizeRank;
+        d.RegionName = d.RegionName;
+        d.RegionType = d.RegionType;
+        d.year = d.year;
+        d.price = parseFloat(d.price)
     })
 
     if (sort) {
@@ -121,33 +132,35 @@ async function drawChart2(year, sort) {
         .enter()
         .append("rect")
         .attr("id", "rect")
-        .attr("x", function (d) { return bx(d.RegionName); })
-        .attr("width", bx.bandwidth())
-        .style("margin-top", "20px")
-        .attr("height", function (d) { return height - by(0); })
-        .attr("y", function (d) { return by(0); })
-        .attr("fill", function (d) { return color(d.price) });
-
-    bars.transition()
-        .duration(1000)
-        .attr("height", function (d) { return height - by(d.price); })
-        .attr("y", function (d) { return by(d.price); })
-        .delay(function (d, i) { return (i * 20) });
-
-    bars.append("text")
-        .text(function (d) {
-            return d.price;
-        })
         .attr("x", function (d) {
             return bx(d.RegionName);
         })
-        .attr("y", function (d) {
-            return by(d.price) - 5;
+        .attr("width", bx.bandwidth())
+        .style("margin-top", "20px")
+        .attr("height", function (d) {
+            return height - by(0);
         })
-        .attr("font-family", "sans-serif")
-        .attr("font-size", "14px")
-        .attr("fill", "black")
-        .attr("text-anchor", "middle");
+        .attr("y", function (d) {
+            return by(0);
+        })
+        .attr("fill", function (d) {
+            return color(d.price)
+        });
+
+    bars.transition()
+        .duration(1000)
+        .attr("height", function (d) {
+            return height - by(d.price);
+        })
+        .attr("y", function (d) {
+            return by(d.price);
+        })
+        .delay(function (d, i) {
+            return (i * 20)
+        });
+
+    await addMinMaxAnnotations(svg, data);
+    //addBarLabel(svg, data,bx, by);
 
     bars.on("mouseover", function (d) {
         d3.select(this)
@@ -169,7 +182,7 @@ async function drawChart2(year, sort) {
     });
 
     bars.on('click', function (d) {
-        window.open('./line_chart.html?state='+ d.RegionName);
+        window.open('./line_chart.html?state=' + d.RegionName);
         //window.open('http://en.wikipedia.org/wiki/' + d.RegionName, '_blank');
     });
 
@@ -182,7 +195,9 @@ async function drawChart2(year, sort) {
         .attr("stroke", "#f51f1f")
         .attr("transform", "translate(0,0)")
         .attr("d", d3.line()
-            .x(function (d) { return bx(d.RegionName); })
+            .x(function (d) {
+                return bx(d.RegionName);
+            })
             .y(by(height))
         )
         .attr("stroke-width", ".5")
@@ -193,7 +208,9 @@ async function drawChart2(year, sort) {
         .attr("stroke-dashoffset", 0)
         .duration(1000)
         .attr("d", d3.line()
-            .x(function (d) { return bx(d.RegionName); })
+            .x(function (d) {
+                return bx(d.RegionName);
+            })
             .y(by(avg))
         )
         .attr("stroke-width", "1.5")
@@ -201,7 +218,7 @@ async function drawChart2(year, sort) {
 
     // After drawing the bars, set events
     setEvents(year);
-    
+
 
     // Adding annotations
     // var max = d3.max(data, function(d) { return d.price; });
@@ -372,32 +389,85 @@ async function clearBars() {
     d3.selectAll('svg').selectAll("#nat-avg-txt").remove();
     d3.selectAll('svg').selectAll("#year-text").remove();
     d3.selectAll('svg').selectAll("#annotations").remove();
+    d3.selectAll('svg').selectAll("#min-max-annotations").remove();
+
 }
 
-// async function addAnnotations() {
-    
-// }
-
-
-async function addLegendsForBarChart(){
+async function addLegendsForBarChart() {
     const innerHtml = "<br><strong> Legends:  </strong>"
-    + "<p style='color: #006e1f'> <strong>all US states plotted -> x-axis"
-    + "<p style='color: #1f00aa'>price in US Dollars plotted -> y-axis"
-    + "<p style='color: steelblue'>Each bar represents a US State"
-    + "<p style='color: f51f1f'> The red line represents National Average for that year</strong></p>"
-    + "<br> Click on the bars to dril down on Each state"
-    + "<br> Data Source: <a href='https://www.zillow.com/research/data/'>Zillow Research</a>"
-    
+        + "<p style='color: #006e1f'> <strong>all US states plotted -> x-axis"
+        + "<p style='color: #1f00aa'>price in US Dollars plotted -> y-axis"
+        + "<p style='color: steelblue'>Each bar represents a US State"
+        + "<p style='color: f51f1f'> The red line represents National Average for that year</strong></p>"
+        + "<br> Click on the bars to dril down on Each state"
+        + "<br> Data Source: <a href='https://www.zillow.com/research/data/'>Zillow Research</a>"
+
     d3.select("#main_chart_body")
         .append("div")
         .style("position", "absolute")
         .style("z-index", "0")
         .style("visibility", "visible")
         .html(innerHtml)
-            .style("right", width - 600)
-            .style("top", height + 250)
-            .style('font-family', 'Courier New')
-            .style('text-align', 'right')
-            .style('font-size', 15)
-            .style("opacity", .8);
+        .style("right", width - 600)
+        .style("top", height + 250)
+        .style('font-family', 'Courier New')
+        .style('text-align', 'right')
+        .style('font-size', 15)
+        .style("opacity", .8);
+}
+
+
+async function addMinMaxAnnotations(svg, data) {
+    const max_val = d3.max(data, function (d) {
+        return d.price;
+    });
+    const min_val = d3.min(data, function (d) {
+        return d.price;
+    });
+
+    await new Promise(r => setTimeout(r, 1000));
+
+    var texts = svg
+        .selectAll("mybartexts")
+        .data(data)
+        .enter()
+        .append("text")
+        .attr("id", "min-max-annotations")
+        .attr('transform', 'translate(0,0)')
+        .text(function (d) {
+            if (d.price == max_val) {
+                return '<-- Max Price ' + Math.trunc(max_val)
+            } else if (d.price == min_val) {
+                return '<-- Min Price ' + Math.trunc(min_val)
+            }
+        })
+        .attr("x", function (d) {
+            return bx(d.RegionName) + 10;
+        })
+        .attr("y", function (d) {
+            return by(d.price) + 5;
+        })
+        .attr('text-anchor', 'left')
+        .style('font-family', 'Courier New')
+        .style('font-size', 14)
+        .style('font-weight', 1000)
+        .style("fill", "#ee3434")
+    //.attr("transform", "rotate(-90)")
+}
+
+async function addBarLabel(svg, date, bx, by){
+    var ed1_numbers = svg.selectAll(".ed1numbers")
+        .data(data)
+        .enter()
+        .append("text")
+        .attr("class","ed1numbers")
+        .text(function(d){return d.price;})
+        .attr("width",20)
+        .attr("fill","#292215")
+        .attr("text-anchor","middle")
+        .attr("font-family","Franklin Gothic")
+        .attr("x",function(d,i){return dx(d.RegionName);})
+        .attr("height",function(d){return dy(d.price);})
+        .attr("y",function(d){return dy(d.price)})
+        .attr("font-size","1em");
 }
