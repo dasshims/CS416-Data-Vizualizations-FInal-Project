@@ -1,6 +1,5 @@
 let data, margin, svg, lx, ly, region_name;
-const data_link = 'https://dasshims.github.io/State_zhvi_uc_sfrcondo_tier.csv'
-//const data_link = 'data/State_zhvi_uc_sfrcondo_tier.csv';
+const data_link = 'data/State_zhvi_uc_sfrcondo_tier.csv';
 
 const events = {
     2000: "the Dot.com (or Technology) Bubble",
@@ -30,16 +29,15 @@ async function unHideControls() {
     element_prev.style.visibility = 'visible';
 }
 
-async function drawAxisForLineChart2(data, region_name, lx, ly) {
+async function drawAxisForLineChart(data, region_name, lx, ly) {
     console.log("Inside drawAxisForLineChart2. RegionName :" + region_name)
+
+    d3.selectAll('svg').selectAll("#x-axis").remove();
+    d3.selectAll('svg').selectAll("#y-axis").remove();
 
     data = await d3.csv(data_link, function (d) {
         return {date: d3.timeParse("%Y-%m-%d")(d.year), value: d.price, RegionName: d.RegionName, year: d.year}
     });
-
-    data = data = data.sort(function (a, b) {
-        return d3.ascending(a.date, b.date);
-    })
 
     svg = d3.select("#side_chart")
         .append("svg")
@@ -51,11 +49,13 @@ async function drawAxisForLineChart2(data, region_name, lx, ly) {
     //"translate(" + margin.left + "," + margin.top + ")");
 
     lx = d3.scaleTime()
-        .domain(d3.extent(data, function (d) {
-            return d.date;
-        }))
+        // .domain(d3.extent(data, function (d) {
+        //     return d.date;
+        // }))
+        .domain([new Date("2000-01-01"), new Date("2023-03-03")])
         .range([0, width + 25]);
     svg.append("g")
+        .attr("id", "x-axis")
         .attr("transform", "translate(0," + height + ")")
         .call(d3.axisBottom(lx))
         .attr("stroke-width", "1")
@@ -69,6 +69,7 @@ async function drawAxisForLineChart2(data, region_name, lx, ly) {
         .domain([0, 900000])
         .range([height, 10]);
     svg.append("g")
+        .attr("id", "y-axis")
         .call(d3.axisLeft(ly))
         .attr("stroke-width", "1")
         .style("text-anchor", "end")
@@ -85,8 +86,8 @@ async function drawAxisForLineChart2(data, region_name, lx, ly) {
         .attr("stroke-dasharray", "3,3");
 }
 
-window.onload = region_name = 'California';
-drawAxisForLineChart2(data, region_name, lx, ly);
+window.onload = region_name = 'US';
+drawAxisForLineChart(data, region_name, lx, ly);
 
 async function drawLineChart(region_name, trigger_year) {
 
@@ -131,6 +132,7 @@ async function drawLineChart(region_name, trigger_year) {
             && d.date.getFullYear() >= trigger_year - 1
             && d.date.getFullYear() <= year
     })
+    console.log(data)
 
 
     await addPaths();
@@ -348,7 +350,7 @@ async function addAnnotations() {
     const parseTime = d3.timeParse("%Y-%m-%d")
     const timeFormat = d3.timeFormat("%d-%b-%y")
 
-    const makeAnnotations = d3.annotation()
+   /* const makeAnnotations = d3.annotation()
         .editMode(true)
         .notePadding(15)
         .type(type)
@@ -359,31 +361,31 @@ async function addAnnotations() {
             },
             y: 50 // function(d) { console.log(d.price); console.log(y(d.price)); return y(d.price)}
         })
+        .annotations(annotations)*/
+
+    svg
+        .append("g")
+        .call(makeAnnotations)
+
+    const makeAnnotations = d3.annotation()
+        .editMode(true)
+        //also can set and override in the note.padding property
+        //of the annotation object
+        .notePadding(15)
+        .type(type)
+        //accessors & accessorsInverse not needed
+        //if using x, y in annotations JSON
+        .accessors({
+            x: d => x(parseTime(d.date)),
+            y: d => y(d.close)
+        })
+        .accessorsInverse({
+            date: d => timeFormat(x.invert(d.x)),
+            close: d => y.invert(d.y)
+        })
         .annotations(annotations)
 
-    // svg
-    //     .append("g")
-    //     .call(makeAnnotations)
-
-    // const makeAnnotations = d3.annotation()
-    //     .editMode(true)
-    //     //also can set and override in the note.padding property
-    //     //of the annotation object
-    //     .notePadding(15)
-    //     .type(type)
-    //     //accessors & accessorsInverse not needed
-    //     //if using x, y in annotations JSON
-    //     .accessors({
-    //         x: d => x(parseTime(d.date)),
-    //         y: d => y(d.close)
-    //     })
-    //     .accessorsInverse({
-    //         date: d => timeFormat(x.invert(d.x)),
-    //         close: d => y.invert(d.y)
-    //     })
-    //     .annotations(annotations)
-
-    //     .append("g")
-    //     .attr("class", "annotation-group")
-    //     .call(makeAnnotations)
+        .append("g")
+        .attr("class", "annotation-group")
+        .call(makeAnnotations)
 }
