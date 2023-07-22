@@ -10,13 +10,38 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 
-<body id="line_chart_body">
-    <h1>Interactive Visualization of Housing prices in the US : Single Family House</h1>
+<body id="line_chart_body" onload="hideControls();drawLineChart('California', 2000)">
+    <h1>Interactive Visualization of the US Housing prices: Single Family House</h1>
+    <p>Through this interactive visualization, witness the rise and fall of housing prices during each crisis and gain valuable insights into the factors that triggered these market upheavals. Engage with dynamic charts, explore state-wise trends, and uncover the lasting effects of these economic downturns on the nation's real estate landscape. Join us on this data-driven expedition that paints a vivid picture of the housing market's resilience and transformation amidst the challenges of the past two decades.</p>
+    <p>The narrative visualization depicting the US housing prices crash by recession serves as a poignant reminder of the cyclical nature of the economy. The story serves as a beacon of hope, showing that even in the face of adversity, the American dream of homeownership endures, standing strong against the winds of uncertainty.</p>
+
+
+<!--     <br> Legends:  </strong>"-->
+<!--    <p style='color: #006e1f'> <strong>Years from 2000 to 2022 -> x-axis"-->
+<!--    <p style='color: #1f00aa'>price in US Dollars plotted -> y-axis"-->
+<!--    <p style='color: #f51f1f'>Each red dot represents a year mark </p>"-->
+        <br> Data Source: <a href='https://www.zillow.com/research/data/'>Zillow Research</a></strong>
 
     <div class="controls_line_chart", id="controls">
-        <label for="controls" id="lable-for-controls">Triggers</label>
-        <button id="populate-all-states" onclick="clearLineChart();drawAllStates()">Compare States</button>
-        <select id="state-dropdown" class="button" onchange="drawLineChart(this.value)">
+
+<!--        <button id="prev" onclick="nextScene()"><</button>-->
+        <label for="controls" id="lable-for-year">Select Year</label>
+        <button id="2000" onclick="drawLineChart(region_name, 2000)">2000</button>
+        <button id="2008" onclick="drawLineChart(region_name, 2008)">2008</button>
+        <button id="2020" onclick="drawLineChart(region_name, 2020)">2020</button>
+   <!--     <input id="date-dropdown" type="range" min="2000" max="2022" value="1" step="10" list="volsettings"
+               oninput="clearBars();drawChart(this.value)">
+        <datalist id="volsettings">
+            <option>2000</option>
+            <option>2010</option>
+            <option>2020</option>
+        </datalist>-->
+        <button id="next" onclick="addYear()">></button>
+
+<!--        <button id="populate-all-states" onclick="clearLineChart();drawAllStates()">Compare States</button>-->
+
+        <label for="controls" id="lable-for-controls">Find your State</label>
+        <select id="state-dropdown" class="button" onchange="clearLineChart();drawLineChart(this.value, 2000)">
             </option>
             <!-- <option value="ALL">Compare All</option> -->
             <option value="Alabama">Alabama</option>
@@ -75,9 +100,11 @@
         <button id="clear-chart" onclick="clearLineChart()">Clear</button>
 
     </div>
-    <svg class="mainchart" id="side_chart" width=1000 height=400> <button id="populate-state-button"
+    <svg class="sidechart" id="side_chart" width=1200 height=400> <button id="populate-state-button"
             class="controls button">Populate all states</button> </svg>
+    <div class="events" id="events" hidden="hidden"> <br> </br> </div>
     </div>
+
 
 </body>
 

@@ -16,41 +16,43 @@
 
         <div class="slider">
             <label for="date-dropdown">Year Slider </label>
-            <input id="date-dropdown" type="range" min="2000" max="2022" value="1" step="1" list="volsettings"
+            <input id="date-dropdown" type="range" min="2000" max="2022" value="1" step="5" list="volsettings"
                 oninput="clearBars();drawChart(this.value)">
             <datalist id="volsettings">
                 <option>2000</option>
-                <option>2001</option>
+                <!--<option>2001</option>
                 <option>2002</option>
                 <option>2003</option>
-                <option>2004</option>
+                <option>2004</option>-->
                 <option>2005</option>
-                <option>2006</option>
+                <!--<option>2006</option>
                 <option>2007</option>
                 <option>2008</option>
-                <option>2009</option>
+                <option>2009</option>-->
                 <option>2010</option>
-                <option>2011</option>
+                <!--<option>2011</option>
                 <option>2012</option>
                 <option>2013</option>
-                <option>2014</option>
+                <option>2014</option>-->
                 <option>2015</option>
-                <option>2016</option>
+               <!-- <option>2016</option>
                 <option>2017</option>
                 <option>2018</option>
-                <option>2019</option>
+                <option>2019</option>-->
                 <option>2020</option>
-                <option>2021</option>
-                <option>2022</option>
+               <!-- <option>2021</option>
+                <option>2022</option>-->
             </datalist>
-        </div>
 
-        <div class="controls" id="controls">
-            <label for="controls" id="label-for-controls">Triggers</label>
             <button id="prev" onclick="subtractYear()"><</button>
             <button id="next" onclick="addYear()">></button>
             <button id="animate-chart" onclick="document.getElementById('events').innerHTML = '';clearBars();animateChart()">Animate</button>
             <button id="clear-chart" onclick="document.getElementById('events').innerHTML = '';clearBars()">Clear</button>
+        </div>
+
+        <div class="controls" id="controls">
+            <label for="controls" id="label-for-controls">Triggers</label>
+
             <button id="sort-chart" onclick="drawChart2(2020, true)">Sort</button>
         </div>
 

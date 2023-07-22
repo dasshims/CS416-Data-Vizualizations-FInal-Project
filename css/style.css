@@ -1,6 +1,6 @@
 :root {
     --left: 40;
-    --width: 1000;
+    --width: 1100;
     --controlleft: 690
   }
 
@@ -88,6 +88,7 @@ body {
 }
 
 .controls {
+    visibility: hidden;
     position: absolute;
     top: 50;
     left: var(--controlleft);
@@ -134,16 +135,16 @@ label {
 
 .events {
     position: absolute;
-    top: 120;
-    left: 590;
-    width: 450; 
+    top: 280;
+    left: var(--left);
+    width: var(--width);
     height: 70;
     padding: 20px;
     padding-left: 20px;
-    background: #d3f3ff;
+    background: whitesmoke;
     border-radius: 20px;
     display: flex;
-    align-items: top;
+    align-items: start;
     box-shadow: 0px 15px 40px #8ecbe466;
 }
 
@@ -165,10 +166,10 @@ label {
 
 .sidechart {
     position: absolute;
-    top: 1000;
-    left: var(--left);
+    top: 300;
+    left: 80;
     width: var(--width);
-    height: 400;
+    height: 500;
     padding: 20px;
     padding-left: 20px;
     background: #fffefe;
@@ -208,9 +209,9 @@ hr {
 
 .controls_line_chart {
     position: absolute;
-    top: 50;
+    top: 200;
     left: var(--left);
-    width: 1000;
+    width: var(--width);
     height: 20;
     padding: 20px;
     padding-left: 20px;
