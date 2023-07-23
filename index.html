@@ -12,95 +12,112 @@
 
 <body id="line_chart_body" onload="drawLineChart('US', 2000)">
 <h1>Interactive Visualization of the US Housing prices: Single Family House</h1>
-<p>Through this interactive visualization, witness the rise and fall of housing prices during each crisis and gain
+<!--<p>Through this interactive visualization, witness the rise and fall of housing prices during each crisis and gain
     valuable insights into the factors that triggered these market upheavals. Engage with dynamic charts, explore
     state-wise trends, and uncover the lasting effects of these economic downturns on the nation's real estate
     landscape. Join us on this data-driven expedition that paints a vivid picture of the housing market's resilience and
-    transformation amidst the challenges of the past two decades.</p>
-<p>The narrative visualization depicting the US housing prices crash by recession serves as a poignant reminder of the
-    cyclical nature of the economy. The story serves as a beacon of hope, showing that even in the face of adversity,
-    the American dream of homeownership endures, standing strong against the winds of uncertainty.</p>
+    transformation amidst the challenges of the past two decades.</p>-->
 
-<br> Data Source: <a href='https://www.zillow.com/research/data/'>Zillow Research</a></strong>
+<div class="modal" id="modal">
+    The Early 2000s Recession Was A Decline In Economic Activity Which Mainly Occurred In Developed Countries. The Recession Affected The European Union During 2000 And 2001 And The United States From March To November 2001. After That The US Housing Market Was On A Steady Ascent.
+    Economic Conditions Were Favorable, With Steady Job Growth, Low-Interest Rates, And Increasing Demand For Housing.
+    <!--<div class="modal-header" id="modal-header">
+        <div class="title" id="modal-title">Scene 1</div>
+        <button data-close-button class="close-button" onclick="closeModal()">&times;</button>
+    </div>-->
+    <div class="modal-body" id="modal-body">
+        The Early 2000s Recession Was A Decline In Economic Activity Which Mainly Occurred In Developed Countries. The Recession Affected The European Union During 2000 And 2001 And The United States From March To November 2001. After That The US Housing Market Was On A Steady Ascent.
+        Economic Conditions Were Favorable, With Steady Job Growth, Low-Interest Rates, And Increasing Demand For Housing.
+    </div>
+</div>
+<!--<div id="overlay"></div>-->
 
-<div class="controls_line_chart" , id="controls">
-<!--    <div class="popup" onclick="showPopup()">Click me to toggle the popup!-->
-<!--        <span class="popuptext" id="myPopup">Next Scene</span>-->
-<!--    </div>-->
-    <label for="controls" id="lable-for-year" hidden="hidden">Select Slide</label>
-    <button id="2000" onclick="drawLineChart('US', 2000)" hidden="hidden">2000</button>
-    <span class="popuptext" id="myPopup">Next Scene</span>
-    <button id="2008" onclick="drawLineChart('US', 2008)"  hidden="hidden">2008</button>
-    <button id="2020" onclick="drawLineChart('US', 2020)"  hidden="hidden">2020</button>
-    <button id="next" onclick="addYear()"  hidden="hidden">></button>
+<div id="controls" style="width:1100;text-align:left;margin-left:40">
+    <p>The narrative visualization depicting the US housing prices crash by recession serves as a poignant reminder of
+        the
+        cyclical nature of the economy. The story serves as a beacon of hope, showing that even in the face of
+        adversity,
+        the American dream of homeownership endures, standing strong against the winds of uncertainty.</p>
 
-    <label for="controls" id="lable-state-dropdown" hidden="hidden">Explore your State</label>
-    <select hidden="hidden" id="state-dropdown" class="button" onchange="clearLineChart();drawLineChart(this.value, 2020)">
-        </option>
-        <option value="US">United States</option>
-        <option value="Alabama">Alabama</option>
-        <option value="Alaska">Alaska</option>
-        <option value="Arizona">Arizona</option>
-        <option value="Arkansas">Arkansas</option>
-        <option value="California">California</option>
-        <option value="Colorado">Colorado</option>
-        <option value="Connecticut">Connecticut</option>
-        <option value="Delaware">Delaware</option>
-        <option value="DC">District of Columbia</option>
-        <option value="Florida">Florida</option>
-        <option value="Georgia">Georgia</option>
-        <option value="Hawaii">Hawaii</option>
-        <option value="Idaho">Idaho</option>
-        <option value="Illinois">Illinois</option>
-        <option value="Indiana">Indiana</option>
-        <option value="Iowa">Iowa</option>
-        <option value="Kansas">Kansas</option>
-        <option value="Kentucky">Kentucky</option>
-        <option value="Louisiana">Louisiana</option>
-        <option value="Maine">Maine</option>
-        <option value="Maryland">Maryland</option>
-        <option value="Massachusetts">Massachusetts</option>
-        <option value="Michigan">Michigan</option>
-        <option value="Minnesota">Minnesota</option>
-        <option value="Mississippi">Mississippi</option>
-        <option value="Missouri">Missouri</option>
-        <option value="Montana">Montana</option>
-        <option value="Nebraska">Nebraska</option>
-        <option value="Nevada">Nevada</option>
-        <option value="New Hampshire">New Hampshire</option>
-        <option value="New Jersey">New Jersey</option>
-        <option value="New Mexico">New Mexico</option>
-        <option value="New York">New York</option>
-        <option value="North Carolina">North Carolina</option>
-        <option value="North Dakota">North Dakota</option>
-        <option value="Ohio">Ohio</option>
-        <option value="Oklahoma">Oklahoma</option>
-        <option value="Oregon">Oregon</option>
-        <option value="Pennsylvania">Pennsylvania</option>
-        <option value="Puerto Rico">Puerto Rico</option>
-        <option value="Rhode Island">Rhode Island</option>
-        <option value="South Carolina">South Carolina</option>
-        <option value="South Dakota">South Dakota</option>
-        <option value="Tennessee">Tennessee</option>
-        <option value="Texas">Texas</option>
-        <option value="Utah">Utah</option>
-        <option value="Vermont">Vermont</option>
-        <option value="Virginia">Virginia</option>
-        <option value="Washington">Washington</option>
-        <option value="Wisconsin">Wisconsin</option>
-        <option value="Wyoming">Wyoming</option>
-    </select>
-    </select>
-    <button id="clear-chart" onclick="clearLineChart()">Clear</button>
-    <button id="reload-chart" onclick="drawLineChart('US', 2000)">Reload</button>
+    <br style="text-align:right"> Data Source: <a href='https://www.zillow.com/research/data/'>Zillow
+    Research</a></strong>
+    <hr style="width:100%;text-align:left;margin-left:0">
 
+    <!--<div class="popup" onclick="showPopup()">Click me to toggle the popup!
+        <span class="popuptext" id="myPopup">Next Scene</span>
+    </div>-->
+    <label for="controls" id="lable-for-year">Select Scene</label>
+    <button id="2000" onclick="drawLineChart('US', 2000)" style="background-color: powderblue">Scene 1</button>
+    <button id="2008" onclick="drawLineChart('US', 2008)"  disabled>Scene 2</button>
+    <button id="2020" onclick="drawLineChart('US', 2020)"  disabled>Scene 3</button>
+<!--    <button id="next" onclick="addYear()"  disabled>Next Scene></button>-->
+
+    <p>
+        <label for="controls" id="lable-state-dropdown" hidden="hidden">Explore your State</label>
+        <select hidden="hidden" id="state-dropdown" class="button"
+                onchange="clearLineChart();drawLineChart(this.value, 2020)">
+            </option>
+            <option value="US">United States</option>
+            <option value="Alabama">Alabama</option>
+            <option value="Alaska">Alaska</option>
+            <option value="Arizona">Arizona</option>
+            <option value="Arkansas">Arkansas</option>
+            <option value="California">California</option>
+            <option value="Colorado">Colorado</option>
+            <option value="Connecticut">Connecticut</option>
+            <option value="Delaware">Delaware</option>
+            <option value="DC">District of Columbia</option>
+            <option value="Florida">Florida</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Hawaii">Hawaii</option>
+            <option value="Idaho">Idaho</option>
+            <option value="Illinois">Illinois</option>
+            <option value="Indiana">Indiana</option>
+            <option value="Iowa">Iowa</option>
+            <option value="Kansas">Kansas</option>
+            <option value="Kentucky">Kentucky</option>
+            <option value="Louisiana">Louisiana</option>
+            <option value="Maine">Maine</option>
+            <option value="Maryland">Maryland</option>
+            <option value="Massachusetts">Massachusetts</option>
+            <option value="Michigan">Michigan</option>
+            <option value="Minnesota">Minnesota</option>
+            <option value="Mississippi">Mississippi</option>
+            <option value="Missouri">Missouri</option>
+            <option value="Montana">Montana</option>
+            <option value="Nebraska">Nebraska</option>
+            <option value="Nevada">Nevada</option>
+            <option value="New Hampshire">New Hampshire</option>
+            <option value="New Jersey">New Jersey</option>
+            <option value="New Mexico">New Mexico</option>
+            <option value="New York">New York</option>
+            <option value="North Carolina">North Carolina</option>
+            <option value="North Dakota">North Dakota</option>
+            <option value="Ohio">Ohio</option>
+            <option value="Oklahoma">Oklahoma</option>
+            <option value="Oregon">Oregon</option>
+            <option value="Pennsylvania">Pennsylvania</option>
+            <option value="Puerto Rico">Puerto Rico</option>
+            <option value="Rhode Island">Rhode Island</option>
+            <option value="South Carolina">South Carolina</option>
+            <option value="South Dakota">South Dakota</option>
+            <option value="Tennessee">Tennessee</option>
+            <option value="Texas">Texas</option>
+            <option value="Utah">Utah</option>
+            <option value="Vermont">Vermont</option>
+            <option value="Virginia">Virginia</option>
+            <option value="Washington">Washington</option>
+            <option value="Wisconsin">Wisconsin</option>
+            <option value="Wyoming">Wyoming</option>
+        </select>
+        <label for="controls" id="lable-for-year2">Reset Options</label>
+        <button id="clear-chart" onclick="clearLineChart()">Clear</button>
+        <button id="reload-chart" onclick="drawLineChart('US', 2000)">Reload</button>
+    </p>
 </div>
 <svg class="sidechart" id="side_chart" width=1200 height=400>
-    <button id="populate-state-button"
-            class="controls button">Populate all states
-    </button>
 </svg>
-<div class="events" id="events" hidden="hidden"><br> </br></div>
+<div class="events" id="events" hidden="hidden"></div>
 </div>
 
 
