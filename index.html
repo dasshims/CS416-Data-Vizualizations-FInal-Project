@@ -24,14 +24,18 @@
 <br> Data Source: <a href='https://www.zillow.com/research/data/'>Zillow Research</a></strong>
 
 <div class="controls_line_chart" , id="controls">
-    <label for="controls" id="lable-for-year" hidden="hidden">Select Year</label>
+<!--    <div class="popup" onclick="showPopup()">Click me to toggle the popup!-->
+<!--        <span class="popuptext" id="myPopup">Next Scene</span>-->
+<!--    </div>-->
+    <label for="controls" id="lable-for-year" hidden="hidden">Select Slide</label>
     <button id="2000" onclick="drawLineChart('US', 2000)" hidden="hidden">2000</button>
+    <span class="popuptext" id="myPopup">Next Scene</span>
     <button id="2008" onclick="drawLineChart('US', 2008)"  hidden="hidden">2008</button>
     <button id="2020" onclick="drawLineChart('US', 2020)"  hidden="hidden">2020</button>
     <button id="next" onclick="addYear()"  hidden="hidden">></button>
 
-    <label for="controls" id="lable-for-controls">Find your State</label>
-    <select id="state-dropdown" class="button" onchange="clearLineChart();drawLineChart(this.value, 2020)">
+    <label for="controls" id="lable-state-dropdown" hidden="hidden">Explore your State</label>
+    <select hidden="hidden" id="state-dropdown" class="button" onchange="clearLineChart();drawLineChart(this.value, 2020)">
         </option>
         <option value="US">United States</option>
         <option value="Alabama">Alabama</option>

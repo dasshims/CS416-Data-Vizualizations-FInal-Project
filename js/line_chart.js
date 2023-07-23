@@ -101,6 +101,7 @@ async function drawAxisForLineChart() {
 async function drawLineChart(region_name, trigger_year) {
 
     console.log("Inside drawLineChart. RegionName :" + region_name + " year " + trigger_year)
+    await addDescriptionForScene(trigger_year)
 
     if (trigger_year == 2000) {
         year = 2007
@@ -137,7 +138,7 @@ async function drawLineChart(region_name, trigger_year) {
 
 
     await new Promise(r => setTimeout(r, 3000));
-    await addDescriptionForScene(trigger_year)
+
     await new Promise(r => setTimeout(r, 5000));
     if (trigger_year == 2000) {
         const button_2008 = document.getElementById('2008')
@@ -145,12 +146,18 @@ async function drawLineChart(region_name, trigger_year) {
     } else if (trigger_year == 2008) {
         const button_2020 = document.getElementById('2020')
         button_2020.hidden = false;
+    } else if (trigger_year == 2020){
+        const state_dropdown = document.getElementById('state-dropdown')
+        state_dropdown.hidden = false;
+        const lable_state_dropdown = document.getElementById('lable-state-dropdown')
+        lable_state_dropdown.hidden = false;
     }
 
     const event_el = document.getElementById('events');
     event_el.style.backgroundColor = 'whitesmoke'
 
-    //await addAnnotations();
+
+    showPopup()
 }
 
 async function addPaths() {
@@ -400,4 +407,10 @@ async function addAnnotations() {
         .append("g")
         .attr("class", "annotation-group")
         .call(makeAnnotations)
+}
+
+
+function showPopup() {
+    var popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
 }
