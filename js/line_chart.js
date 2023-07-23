@@ -49,6 +49,7 @@ async function drawAxisForLineChart() {
     d3.selectAll('svg').selectAll("#y-axis").remove();
     d3.selectAll('svg').selectAll("#x-axis-dash").remove();
     d3.selectAll('svg').selectAll("#y-axis-dash").remove();
+    d3.selectAll('svg').selectAll('#cue-text').remove();
 
     // data = await d3.csv(data_link, function (d) {
     //     return {date: d3.timeParse("%Y-%m-%d")(d.year), value: d.price, RegionName: d.RegionName, year: d.year}
@@ -168,6 +169,7 @@ async function drawLineChart(region_name, trigger_year) {
 
     await new Promise(r => setTimeout(r, 3000));
 
+    let next_button_name = 'Scene 2'
     if (trigger_year == 2000) {
         const button_2008 = document.getElementById('2008')
         button_2008.style.backgroundColor = 'powderblue'
@@ -177,7 +179,8 @@ async function drawLineChart(region_name, trigger_year) {
         button_2020.disabled = false;
         button_2020.style.backgroundColor = 'powderblue'
         button_2020.disabled = false;
-    } else if (trigger_year == 2020){
+        next_button_name = 'Scene 3'
+    } else if (trigger_year == 2020) {
         const state_dropdown = document.getElementById('state-dropdown')
         state_dropdown.hidden = false;
         const lable_state_dropdown = document.getElementById('lable-state-dropdown')
@@ -187,7 +190,26 @@ async function drawLineChart(region_name, trigger_year) {
     const event_el = document.getElementById('events');
     event_el.style.backgroundColor = 'whitesmoke'
 
-    //openModal(trigger_year)
+    const max_date = d3.max(data, function (d) {
+        return d.date;
+    })
+    svg.append('text')
+        .attr('x', 300)
+        .attr('y', 20)
+        .attr("id", "cue-text")
+        .attr('text-anchor', 'middle')
+        .style('font-family', 'Courier New')
+        .style('font-size', 14)
+        .style('font-weight', 400)
+        .style('background-color', '#003f65')
+        .style("color", "#e6f5ff")
+        .text(function () {
+            if (max_date.getFullYear() == 2023) {
+                return 'Scene 3 finished. Please explore the data using the state selector button, clear or relead'
+            } else {
+                return 'Showing Data till ' + max_date.getFullYear() + '. Click ' + next_button_name + ' to go to next scene.'
+            }
+        });
 }
 
 async function addPaths() {
@@ -433,7 +455,7 @@ function showPopup() {
     popup.hidden = false;
 
     d3.select('svg')
-    .append('text')
+        .append('text')
         .attr('x', 300)
         .attr('y', 12)
         .attr("class", "box")
