@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 
-<body id="line_chart_body" onload="hideControls();drawLineChart('US', 2000)">
+<body id="line_chart_body" onload="drawLineChart('US', 2000)">
 <h1>Interactive Visualization of the US Housing prices: Single Family House</h1>
 <p>Through this interactive visualization, witness the rise and fall of housing prices during each crisis and gain
     valuable insights into the factors that triggered these market upheavals. Engage with dynamic charts, explore
@@ -24,14 +24,14 @@
 <br> Data Source: <a href='https://www.zillow.com/research/data/'>Zillow Research</a></strong>
 
 <div class="controls_line_chart" , id="controls">
-    <label for="controls" id="lable-for-year">Select Year</label>
-    <button id="2000" onclick="drawLineChart(region_name, 2000)">2000</button>
-    <button id="2008" onclick="drawLineChart(region_name, 2008)">2008</button>
-    <button id="2020" onclick="drawLineChart(region_name, 2020)">2020</button>
-    <button id="next" onclick="addYear()">></button>
+    <label for="controls" id="lable-for-year" hidden="hidden">Select Year</label>
+    <button id="2000" onclick="drawLineChart('US', 2000)" hidden="hidden">2000</button>
+    <button id="2008" onclick="drawLineChart('US', 2008)"  hidden="hidden">2008</button>
+    <button id="2020" onclick="drawLineChart('US', 2020)"  hidden="hidden">2020</button>
+    <button id="next" onclick="addYear()"  hidden="hidden">></button>
 
     <label for="controls" id="lable-for-controls">Find your State</label>
-    <select id="state-dropdown" class="button" onchange="clearLineChart();drawLineChart(this.value, 2000)">
+    <select id="state-dropdown" class="button" onchange="clearLineChart();drawLineChart(this.value, 2020)">
         </option>
         <option value="US">United States</option>
         <option value="Alabama">Alabama</option>
@@ -88,6 +88,7 @@
     </select>
     </select>
     <button id="clear-chart" onclick="clearLineChart()">Clear</button>
+    <button id="reload-chart" onclick="drawLineChart('US', 2000)">Reload</button>
 
 </div>
 <svg class="sidechart" id="side_chart" width=1200 height=400>

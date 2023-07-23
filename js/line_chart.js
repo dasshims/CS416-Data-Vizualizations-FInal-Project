@@ -2,14 +2,14 @@ let data, margin, svg, lx, ly, region_name;
 const data_link = 'data/State_zhvi_uc_sfrcondo_tier.csv';
 
 const events = {
-    2000: "the Dot.com (or Technology) Bubble",
-    2003: "Iraq War post 9/11",
-    2007: "Sub-Prime Housing Crisis",
-    2009: "Global Recession & the Collapse of Wall Street",
-    2015: "Chinese stock market crash",
-    2016: "Brexit",
-    2017: "Bitcoin skyrocketed",
-    2020: "Covid hit"
+    2000: "<-- the Dot.com (or Technology) Bubble",
+    2003: "<-- Iraq War post 9/11",
+    2007: "<-- Sub-Prime Housing Crisis",
+    2009: "<-- Global Recession & the Collapse of Wall Street",
+    2015: "<-- Chinese stock market crash",
+    2016: "<-- Brexit",
+    2017: "<-- Bitcoin skyrocketed",
+    2020: "<-- Covid hit"
 }
 
 region_name = (new URL(document.location)).searchParams.get("state");
@@ -29,15 +29,23 @@ async function unHideControls() {
     element_prev.style.visibility = 'visible';
 }
 
-async function drawAxisForLineChart(data, region_name, lx, ly) {
-    console.log("Inside drawAxisForLineChart2. RegionName :" + region_name)
-
+async function drawAxisForLineChart() {
     d3.selectAll('svg').selectAll("#x-axis").remove();
     d3.selectAll('svg').selectAll("#y-axis").remove();
+    d3.selectAll('svg').selectAll("#x-axis-dash").remove();
 
-    data = await d3.csv(data_link, function (d) {
-        return {date: d3.timeParse("%Y-%m-%d")(d.year), value: d.price, RegionName: d.RegionName, year: d.year}
-    });
+    // data = await d3.csv(data_link, function (d) {
+    //     return {date: d3.timeParse("%Y-%m-%d")(d.year), value: d.price, RegionName: d.RegionName, year: d.year}
+    // });
+
+    const max_price = d3.max(data, function (d) {
+        return d.value;
+    })
+    const max_year = d3.max(data, function (d) {
+        return d.year;
+    })
+    console.log(max_price)
+    console.log(max_year)
 
     svg = d3.select("#side_chart")
         .append("svg")
@@ -52,7 +60,7 @@ async function drawAxisForLineChart(data, region_name, lx, ly) {
         // .domain(d3.extent(data, function (d) {
         //     return d.date;
         // }))
-        .domain([new Date("2000-01-01"), new Date("2023-03-03")])
+        .domain([new Date("2000-01-01"), new Date(max_year)]) //"2008-03-03")])
         .range([0, width + 25]);
     svg.append("g")
         .attr("id", "x-axis")
@@ -66,7 +74,7 @@ async function drawAxisForLineChart(data, region_name, lx, ly) {
         .attr('font-family', 'Courier New');
 
     ly = d3.scaleLinear()
-        .domain([0, 900000])
+        .domain([0, max_price])
         .range([height, 10]);
     svg.append("g")
         .attr("id", "y-axis")
@@ -79,6 +87,7 @@ async function drawAxisForLineChart(data, region_name, lx, ly) {
 
     svg.append('g')
         .attr("opacity", ".1")
+        .attr("id", "x-axis-dash")
         .call(d3.axisLeft()
             .scale(ly)
             .tickSize(-width, 0, 0)
@@ -86,15 +95,12 @@ async function drawAxisForLineChart(data, region_name, lx, ly) {
         .attr("stroke-dasharray", "3,3");
 }
 
-window.onload = region_name = 'US';
-drawAxisForLineChart(data, region_name, lx, ly);
+// window.onload = region_name = 'US';
+// drawAxisForLineChart();
 
 async function drawLineChart(region_name, trigger_year) {
 
-    //await hideControls();
     console.log("Inside drawLineChart. RegionName :" + region_name + " year " + trigger_year)
-
-    await addDescriptionForScene(trigger_year)
 
     if (trigger_year == 2000) {
         year = 2007
@@ -116,32 +122,35 @@ async function drawLineChart(region_name, trigger_year) {
         return d3.ascending(a.date, b.date);
     })
 
-    lx = d3.scaleTime()
-        .domain(d3.extent(data, function (d) {
-            return d.date;
-        }))
-        .range([0, width + 10]);
-
-    ly = d3.scaleLinear()
-        .domain([0, 900000])
-        .range([height, 10]);
-
     data = await data.filter(function (d) {
         return d.RegionName == region_name
             && d.date != undefined
-            && d.date.getFullYear() >= trigger_year - 1
+            //&& d.date.getFullYear() >= trigger_year - 1
             && d.date.getFullYear() <= year
     })
-    console.log(data)
 
-
+    await clearLineChart();
+    await drawAxisForLineChart();
     await addPaths();
     await addDots();
-    //await animateEvents(year)
     await unHideControls();
 
-    //Add annotations
 
+    await new Promise(r => setTimeout(r, 3000));
+    await addDescriptionForScene(trigger_year)
+    await new Promise(r => setTimeout(r, 5000));
+    if (trigger_year == 2000) {
+        const button_2008 = document.getElementById('2008')
+        button_2008.hidden = false;
+    } else if (trigger_year == 2008) {
+        const button_2020 = document.getElementById('2020')
+        button_2020.hidden = false;
+    }
+
+    const event_el = document.getElementById('events');
+    event_el.style.backgroundColor = 'whitesmoke'
+
+    //await addAnnotations();
 }
 
 async function addPaths() {
@@ -172,6 +181,8 @@ async function addPaths() {
         .duration(5000)
         .style("stroke", "steelblue");
 
+
+    await new Promise(r => setTimeout(r, 5000));
     svg.append('g')
         .classed('labels-group', true)
         .selectAll('text')
@@ -184,7 +195,7 @@ async function addPaths() {
             return lx(d.date) + 10;
         })
         .attr("y", function (d) {
-            return ly(d.value);
+            return ly(d.value) + 5;
         })
         .text(function (d, i) {
             const curr_year = d.date.getFullYear()
@@ -227,6 +238,7 @@ async function addDescriptionForScene(year) {
     event_el.style.fontWeight = 400;
     event_el.style.fontFamily = 'Courier New';
     event_el.style.color = 'black';
+    event_el.style.backgroundColor = 'steelblue'
 }
 
 function getStateFromDropDown() {
@@ -284,7 +296,7 @@ async function addDots() {
         .attr("cy", height);
 
     dots.transition()
-        .duration(5000)
+        .duration(1000)
         .attr("cx", function (d) {
             return lx(d.date);
         })
@@ -294,7 +306,7 @@ async function addDots() {
         .attr("r", 4)
         .attr("transform", "translate(0,0)")
         .style("fill", "#e6f5ff")
-        .attr('opacity', .1)
+        .attr('opacity', .3)
         .delay(function (d, i) {
             return (i * 20)
         });
@@ -312,7 +324,7 @@ async function addDots() {
             .transition()
             .duration('50')
             .attr('opacity', '.8');
-        tooltip.html("<br><strong> " + d.year + " - " + d.value + "</strong>")
+        tooltip.html("<br><strong> " + d.RegionName + "</strong>" + " - " + d.year + " - " + Math.trunc(d.value))
             .style('top', d3.event.pageY + 12 + 'px')
             .style('left', d3.event.pageX + 25 + 'px')
             .style("opacity", .8);
@@ -350,18 +362,18 @@ async function addAnnotations() {
     const parseTime = d3.timeParse("%Y-%m-%d")
     const timeFormat = d3.timeFormat("%d-%b-%y")
 
-   /* const makeAnnotations = d3.annotation()
-        .editMode(true)
-        .notePadding(15)
-        .type(type)
-        .accessors({
-            x: function (d) {
-                console.log(lx(parseTime('2008-12-31')));
-                return lx(parseTime('2008-12-31'))
-            },
-            y: 50 // function(d) { console.log(d.price); console.log(y(d.price)); return y(d.price)}
-        })
-        .annotations(annotations)*/
+    /* const makeAnnotations = d3.annotation()
+         .editMode(true)
+         .notePadding(15)
+         .type(type)
+         .accessors({
+             x: function (d) {
+                 console.log(lx(parseTime('2008-12-31')));
+                 return lx(parseTime('2008-12-31'))
+             },
+             y: 50 // function(d) { console.log(d.price); console.log(y(d.price)); return y(d.price)}
+         })
+         .annotations(annotations)*/
 
     svg
         .append("g")
