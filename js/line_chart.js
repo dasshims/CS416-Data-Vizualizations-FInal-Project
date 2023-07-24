@@ -193,23 +193,21 @@ async function drawLineChart(region_name, trigger_year) {
     const max_date = d3.max(data, function (d) {
         return d.date;
     })
-    svg.append('text')
-        .attr('x', 300)
-        .attr('y', 20)
-        .attr("id", "cue-text")
-        .attr('text-anchor', 'middle')
-        .style('font-family', 'Courier New')
-        .style('font-size', 14)
-        .style('font-weight', 400)
-        .style('background-color', '#003f65')
-        .style("color", "#e6f5ff")
-        .text(function () {
-            if (max_date.getFullYear() == 2023) {
-                return 'Scene 3 finished. Please explore the data using the state selector button, clear or relead'
-            } else {
-                return 'Showing Data till ' + max_date.getFullYear() + '. Click ' + next_button_name + ' to go to next scene.'
-            }
-        });
+
+    const modal = document.querySelector('#modal')
+    modal.classList.add('active')
+    const modal_body = document.querySelector('#modal')
+    modal_body.style.fontSize = 14;
+    modal_body.style.fontWeight = 8000;
+    modal_body.style.fontFamily = 'Courier New';
+    modal_body.style.color = 'black';
+    modal_body.style.textAlign = 'center'
+    modal_body.style.backgroundColor = 'powderblue'
+    if (max_date.getFullYear() == 2023) {
+        modal_body.innerHTML = 'Scene 3 finished. Please explore the data using the state selector button, clear or relead'
+    } else {
+        modal_body.innerHTML = 'Showing Data till ' + max_date.getFullYear() + '. Click ' + next_button_name + ' to go to next scene!'
+    }
 }
 
 async function addPaths() {
@@ -476,12 +474,7 @@ function openModal(trigger_year) {
         return;
     }
     modal.classList.add('active')
-    //overlay.classList.add('active')
-
     const modal_body = document.querySelector('#modal-body')
-    modal_body.body = acts[trigger_year];
-
-    const button = document.querySelector('#modal-body')
     modal_body.body = acts[trigger_year];
 }
 
