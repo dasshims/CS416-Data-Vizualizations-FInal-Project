@@ -71,14 +71,14 @@ async function drawAxisForLineChart() {
         .attr("height", height + margin.top + margin.bottom + 100)
         .append("g")
         .attr("transform",
-            "translate(" + 70 + "," + 120 + ")");
+            "translate(" + 90 + "," + 30 + ")");
     //"translate(" + margin.left + "," + margin.top + ")");
 
     lx = d3.scaleTime()
         // .domain(d3.extent(data, function (d) {
         //     return d.date;
         // }))
-        .domain([new Date("2000-01-01"), new Date(max_year)]) //"2008-03-03")])
+        .domain([new Date("2000-01-01"), new Date(max_year)])
         .range([0, width + 25]);
     svg.append("g")
         .attr("id", "x-axis")
@@ -96,6 +96,7 @@ async function drawAxisForLineChart() {
         .range([height, 10]);
     svg.append("g")
         .attr("id", "y-axis")
+        .attr("transform", "translate(" + width + ",)")
         .call(d3.axisLeft(ly))
         .attr("stroke-width", "1")
         .style("text-anchor", "end")
@@ -103,7 +104,7 @@ async function drawAxisForLineChart() {
         .attr("opacity", "1")
         .attr('font-family', 'Courier New');
 
-    // Adds the dashes
+    // Adds the grids
     svg.append('g')
         .attr("id", "x-axis-dash")
         .call(d3.axisLeft()
@@ -113,24 +114,35 @@ async function drawAxisForLineChart() {
         .attr("stroke-dasharray", "3,3")
         .attr("opacity", ".1");
 
+    const INNER_WIDTH = width - margin.left - margin.right;
+    const INNER_HEIGHT = height - margin.top - margin.bottom + 60;
+    /*const yAxisGrid = d3.axisLeft(ly).tickSize(-INNER_WIDTH).tickFormat('').ticks(10);
     svg.append('g')
-        .attr("transform", "translate(0," + height + ")")
-        .attr("id", "y-axis-dash")
+        .attr('class', 'y axis-grid')
+        .call(yAxisGrid);*/
+    const xAxisGrid = d3.axisBottom(lx).tickSize(-INNER_HEIGHT).tickFormat('').ticks(10);
+    svg.append('g')
+        .attr('id', 'y-axis-dash')
         .data(data)
-        .call(d3.axisBottom()
-            .scale(lx)
-            .tickSize(-width, 0, 0)
-            .tickFormat(''))
+        .attr('transform', 'translate(0,' + INNER_HEIGHT + ')')
+        .call(xAxisGrid)
         .attr("stroke-dasharray", "3,3")
-        .attr("stroke", "#137fc5")
-        .attr("opacity", ".1")
+        .attr("stroke", function (d) {
+            console.log(d.date.getFullYear());
+            const red_years = [2020, 2008, 2000]
+            if(red_years.includes(d.date.getFullYear())) {
+                console.log("match");
+                return "#ee1313"
+            }
+            else {
+                return "#949494"
+            }
+
+        })
+        .attr("opacity", ".1");
 }
 
-// window.onload = region_name = 'US';
-// drawAxisForLineChart();
-
 async function drawLineChart(region_name, trigger_year) {
-
     console.log("Inside drawLineChart. RegionName :" + region_name + " year " + trigger_year)
     await addDescriptionForScene(trigger_year)
 
@@ -166,6 +178,7 @@ async function drawLineChart(region_name, trigger_year) {
     await addPaths();
     await addDots();
     await unHideControls();
+    //await addAnnotations();
 
     await new Promise(r => setTimeout(r, 3000));
 
@@ -261,6 +274,12 @@ async function addPaths() {
             }
         })
         .attr("transform", "translate(0,0)")
+        .style("text-anchor", "centre")
+        .attr("stroke", "#234109")
+        .attr("opacity", "1")
+        .style('text-align', 'right')
+        .attr('font-family', 'Courier New')
+        .attr('font-size', 12)
 }
 
 async function clearLineChart() {
@@ -404,43 +423,41 @@ async function addAnnotations() {
     const parseTime = d3.timeParse("%Y-%m-%d")
     const timeFormat = d3.timeFormat("%d-%b-%y")
 
-    /* const makeAnnotations = d3.annotation()
-         .editMode(true)
-         .notePadding(15)
-         .type(type)
-         .accessors({
-             x: function (d) {
-                 console.log(lx(parseTime('2008-12-31')));
-                 return lx(parseTime('2008-12-31'))
-             },
-             y: 50 // function(d) { console.log(d.price); console.log(y(d.price)); return y(d.price)}
-         })
-         .annotations(annotations)*/
-
-    svg
-        .append("g")
-        .call(makeAnnotations)
-
     const makeAnnotations = d3.annotation()
         .editMode(true)
-        //also can set and override in the note.padding property
-        //of the annotation object
         .notePadding(15)
         .type(type)
-        //accessors & accessorsInverse not needed
-        //if using x, y in annotations JSON
         .accessors({
-            x: d => x(parseTime(d.date)),
-            y: d => y(d.close)
-        })
-        .accessorsInverse({
-            date: d => timeFormat(x.invert(d.x)),
-            close: d => y.invert(d.y)
+            x: function (d) {
+                console.log(lx(parseTime('2008-12-31')));
+                return 100; //lx(parseTime('2008-12-31'))
+            },
+            y: 50 // function(d) { console.log(d.price); console.log(y(d.price)); return y(d.price)}
         })
         .annotations(annotations)
 
-        .append("g")
-        .attr("class", "annotation-group")
+    /*    const makeAnnotations = d3.annotation()
+            .editMode(true)
+            //also can set and override in the note.padding property
+            //of the annotation object
+            .notePadding(15)
+            .type(type)
+            //accessors & accessorsInverse not needed
+            //if using x, y in annotations JSON
+            .accessors({
+                x: d => x(parseTime(d.date)),
+                y: d => y(d.close)
+            })
+            .accessorsInverse({
+                date: d => timeFormat(x.invert(d.x)),
+                close: d => y.invert(d.y)
+            })
+            .annotations(annotations)
+            .append("g")
+            .attr("class", "annotation-group")
+            .call(makeAnnotations)*/
+
+    svg.append("g")
         .call(makeAnnotations)
 }
 

@@ -18,15 +18,6 @@
     landscape. Join us on this data-driven expedition that paints a vivid picture of the housing market's resilience and
     transformation amidst the challenges of the past two decades.</p>-->
 
-<div class="modal" id="modal">
-<!--    <div class="modal-header" id="modal-header">-->
-<!--        <div class="title" id="modal-title">Scene 1</div>-->
-        <button data-close-button class="close-button" onclick="closeModal()">&times;</button>
-<!--    </div>-->
-    <div class="modal-body" id="modal-body">
-    </div>
-</div>
-<!--<div id="overlay"></div>-->
 
 <div id="controls" style="width:1100;text-align:left;margin-left:40">
     <p>The narrative visualization depicting the US housing prices crash by recession serves as a poignant reminder of
@@ -44,74 +35,81 @@
     </div>-->
     <label for="controls" id="lable-for-year">Select Scene</label>
     <button id="2000" onclick="drawLineChart('US', 2000)" style="background-color: powderblue">Scene 1</button>
-    <button id="2008" onclick="drawLineChart('US', 2008)"  disabled>Scene 2</button>
-    <button id="2020" onclick="drawLineChart('US', 2020)"  disabled>Scene 3</button>
-<!--    <button id="next" onclick="addYear()"  disabled>Next Scene></button>-->
+    <button id="2008" onclick="drawLineChart('US', 2008)" disabled>Scene 2</button>
+    <button id="2020" onclick="drawLineChart('US', 2020)" disabled>Scene 3</button>
+    <!--    <button id="next" onclick="addYear()"  disabled>Next Scene></button>-->
 
     <p>
-        <label for="controls" id="lable-state-dropdown" hidden="hidden">Explore your State</label>
-        <select hidden="hidden" id="state-dropdown" class="button"
-                onchange="clearLineChart();drawLineChart(this.value, 2020)">
-            </option>
-            <option value="US">United States</option>
-            <option value="Alabama">Alabama</option>
-            <option value="Alaska">Alaska</option>
-            <option value="Arizona">Arizona</option>
-            <option value="Arkansas">Arkansas</option>
-            <option value="California">California</option>
-            <option value="Colorado">Colorado</option>
-            <option value="Connecticut">Connecticut</option>
-            <option value="Delaware">Delaware</option>
-            <option value="DC">District of Columbia</option>
-            <option value="Florida">Florida</option>
-            <option value="Georgia">Georgia</option>
-            <option value="Hawaii">Hawaii</option>
-            <option value="Idaho">Idaho</option>
-            <option value="Illinois">Illinois</option>
-            <option value="Indiana">Indiana</option>
-            <option value="Iowa">Iowa</option>
-            <option value="Kansas">Kansas</option>
-            <option value="Kentucky">Kentucky</option>
-            <option value="Louisiana">Louisiana</option>
-            <option value="Maine">Maine</option>
-            <option value="Maryland">Maryland</option>
-            <option value="Massachusetts">Massachusetts</option>
-            <option value="Michigan">Michigan</option>
-            <option value="Minnesota">Minnesota</option>
-            <option value="Mississippi">Mississippi</option>
-            <option value="Missouri">Missouri</option>
-            <option value="Montana">Montana</option>
-            <option value="Nebraska">Nebraska</option>
-            <option value="Nevada">Nevada</option>
-            <option value="New Hampshire">New Hampshire</option>
-            <option value="New Jersey">New Jersey</option>
-            <option value="New Mexico">New Mexico</option>
-            <option value="New York">New York</option>
-            <option value="North Carolina">North Carolina</option>
-            <option value="North Dakota">North Dakota</option>
-            <option value="Ohio">Ohio</option>
-            <option value="Oklahoma">Oklahoma</option>
-            <option value="Oregon">Oregon</option>
-            <option value="Pennsylvania">Pennsylvania</option>
-            <option value="Puerto Rico">Puerto Rico</option>
-            <option value="Rhode Island">Rhode Island</option>
-            <option value="South Carolina">South Carolina</option>
-            <option value="South Dakota">South Dakota</option>
-            <option value="Tennessee">Tennessee</option>
-            <option value="Texas">Texas</option>
-            <option value="Utah">Utah</option>
-            <option value="Vermont">Vermont</option>
-            <option value="Virginia">Virginia</option>
-            <option value="Washington">Washington</option>
-            <option value="Wisconsin">Wisconsin</option>
-            <option value="Wyoming">Wyoming</option>
-        </select>
         <label for="controls" id="lable-for-year2">Reset Options</label>
         <button id="clear-chart" onclick="clearLineChart()">Clear</button>
         <button id="reload-chart" onclick="drawLineChart('US', 2000)">Reload</button>
     </p>
+
+    <label for="controls" id="lable-state-dropdown" hidden="hidden">Explore your State</label>
+    <select hidden="hidden" id="state-dropdown" class="button"
+            onchange="clearLineChart();drawLineChart(this.value, 2020)">
+        </option>
+        <option value="US">United States</option>
+        <option value="Alabama">Alabama</option>
+        <option value="Alaska">Alaska</option>
+        <option value="Arizona">Arizona</option>
+        <option value="Arkansas">Arkansas</option>
+        <option value="California">California</option>
+        <option value="Colorado">Colorado</option>
+        <option value="Connecticut">Connecticut</option>
+        <option value="Delaware">Delaware</option>
+        <option value="DC">District of Columbia</option>
+        <option value="Florida">Florida</option>
+        <option value="Georgia">Georgia</option>
+        <option value="Hawaii">Hawaii</option>
+        <option value="Idaho">Idaho</option>
+        <option value="Illinois">Illinois</option>
+        <option value="Indiana">Indiana</option>
+        <option value="Iowa">Iowa</option>
+        <option value="Kansas">Kansas</option>
+        <option value="Kentucky">Kentucky</option>
+        <option value="Louisiana">Louisiana</option>
+        <option value="Maine">Maine</option>
+        <option value="Maryland">Maryland</option>
+        <option value="Massachusetts">Massachusetts</option>
+        <option value="Michigan">Michigan</option>
+        <option value="Minnesota">Minnesota</option>
+        <option value="Mississippi">Mississippi</option>
+        <option value="Missouri">Missouri</option>
+        <option value="Montana">Montana</option>
+        <option value="Nebraska">Nebraska</option>
+        <option value="Nevada">Nevada</option>
+        <option value="New Hampshire">New Hampshire</option>
+        <option value="New Jersey">New Jersey</option>
+        <option value="New Mexico">New Mexico</option>
+        <option value="New York">New York</option>
+        <option value="North Carolina">North Carolina</option>
+        <option value="North Dakota">North Dakota</option>
+        <option value="Ohio">Ohio</option>
+        <option value="Oklahoma">Oklahoma</option>
+        <option value="Oregon">Oregon</option>
+        <option value="Pennsylvania">Pennsylvania</option>
+        <option value="Puerto Rico">Puerto Rico</option>
+        <option value="Rhode Island">Rhode Island</option>
+        <option value="South Carolina">South Carolina</option>
+        <option value="South Dakota">South Dakota</option>
+        <option value="Tennessee">Tennessee</option>
+        <option value="Texas">Texas</option>
+        <option value="Utah">Utah</option>
+        <option value="Vermont">Vermont</option>
+        <option value="Virginia">Virginia</option>
+        <option value="Washington">Washington</option>
+        <option value="Wisconsin">Wisconsin</option>
+        <option value="Wyoming">Wyoming</option>
+    </select>
+
 </div>
-<svg class="sidechart" id="side_chart" width=1200 height=400>
+<svg id="side_chart" width=1200 height=400>
+    <div class="modal" id="modal">
+        <button data-close-button class="close-button" onclick="closeModal()">&times;</button>
+        <div class="modal-body" id="modal-body">
+        </div>
+    </div>
 </svg>
 <div class="events" id="events" hidden="hidden"></div>
 </div>
