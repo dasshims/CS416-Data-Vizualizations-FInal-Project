@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 
-<body id="line_chart_body" onload="drawLineChart('US', 2000)" onclick="closeModal()">
+<body id="line_chart_body" onload="displayGuides();drawAxisDuringInitialLoad()" onclick="closeModal('modal')">
 <h1>Narrative visualization to study the impact of an Economic Recession on US Housing Market</h1>
 <!--<p>Through this interactive visualization, witness the rise and fall of housing prices during each crisis and gain
     valuable insights into the factors that triggered these market upheavals. Engage with dynamic charts, explore
@@ -30,22 +30,23 @@
     Research</a></strong>
     <hr style="width:100%;text-align:left;margin-left:0">
 
-    <!--<div class="popup" onclick="showPopup()">Click me to toggle the popup!
-        <span class="popuptext" id="myPopup">Next Scene</span>
-    </div>-->
-    <label for="controls" id="lable-for-year">Select Scene</label>
-    <button id="2000" onclick="drawLineChart('US', 2000)" style="background-color: powderblue">Scene 1</button>
+
+    <div class="modal" id="modal_buttons">
+        <div class="modal-body" id="modal_buttons_body"></div>
+        <button data-close-button class="close-button" onclick="closedisplayGuides()">&times;</button>
+    </div>
+    <label for="controls" id="lable-for-year" style="background-color: lightgreen">Select Scene</label>
+    <button id="2000" onclick="drawLineChart('US', 2000)" style="background-color: lightgreen">Scene 1</button>
     <button id="2008" onclick="drawLineChart('US', 2008)" disabled>Scene 2</button>
     <button id="2020" onclick="drawLineChart('US', 2020)" disabled>Scene 3</button>
-    <!--    <button id="next" onclick="addYear()"  disabled>Next Scene></button>-->
 
-    <p>
-        <label for="controls" id="lable-for-year2">Reset Options</label>
-        <button id="clear-chart" onclick="clearLineChart()">Clear</button>
-        <button id="reload-chart" onclick="drawLineChart('US', 2000)">Reload</button>
-    </p>
 
-    <label for="controls" id="lable-state-dropdown" hidden="hidden">Explore your State</label>
+    <label for="controls" id="lable-for-year2" style="background-color: lightgreen">Reset Options</label>
+    <button id="clear-chart" onclick="clearLineChart()">Clear</button>
+    <button id="reload-chart" onclick="drawLineChart('US', 2000)">Reload</button>
+
+
+    <label for="controls" id="lable-state-dropdown" hidden="hidden" style="background-color: lightgreen">Explore your State</label>
     <select hidden="hidden" id="state-dropdown" class="button"
             onchange="clearLineChart();drawLineChart(this.value, 2020)">
         </option>
@@ -102,14 +103,16 @@
         <option value="Wisconsin">Wisconsin</option>
         <option value="Wyoming">Wyoming</option>
     </select>
-
+    <p></p>
+    <label for="controls" id="lable-observations" style="background-color: lightgreen">Author's observations</label>
 </div>
-<div class="events" id="events" hidden="hidden"></div>
+
+<svg width=1000 height=70></svg>
+<div class="events" id="events" width="1000" height="100"></div>
 <svg id="side_chart" width=1200 height=500>
     <div class="modal" id="modal">
-        <button data-close-button class="close-button" onclick="closeModal()">&times;</button>
-        <div class="modal-body" id="modal-body">
-        </div>
+        <button data-close-button class="close-button" onclick="closeModal('modal')">&times;</button>
+        <div class="modal-body" id="modal-body"></div>
     </div>
 </svg>
 

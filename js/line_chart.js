@@ -1,4 +1,4 @@
-let data, margin, svg, lx, ly, region_name;
+let data, margin, svg, lx, ly, region_name, guide_count=1;
 const data_link = 'data/State_zhvi_uc_sfrcondo_tier.csv';
 
 const events = {
@@ -30,7 +30,7 @@ const acts = {
 region_name = (new URL(document.location)).searchParams.get("state");
 
 margin = {top: 30, right: 0, bottom: 30, left: 50},
-    width = 960 - margin.left - margin.right,
+    width = 1050 - margin.left - margin.right,
     height = 400 - margin.top - margin.bottom;
 
 async function hideControls() {
@@ -42,6 +42,14 @@ async function hideControls() {
 async function unHideControls() {
     const element_prev = document.getElementById('controls');
     element_prev.style.visibility = 'visible';
+}
+
+async function drawAxisDuringInitialLoad(){
+    data = await d3.csv(data_link, function (d) {
+        return {date: d3.timeParse("%Y-%m-%d")(d.year), value: d.price, RegionName: d.RegionName, year: d.year}
+    });
+
+    await drawAxisForLineChart();
 }
 
 async function drawAxisForLineChart() {
@@ -110,6 +118,7 @@ async function drawAxisForLineChart() {
     const yAxisGrid = d3.axisLeft(ly).tickSize(-INNER_WIDTH).tickFormat('').ticks(10);
     svg.append('g')
         .attr('transform', 'translate(0,0)')
+        .attr('id', 'x-axis-dash')
         .attr('class', 'y axis-grid')
         .call(yAxisGrid)
         .attr("stroke-dasharray", "3,3")
@@ -179,12 +188,12 @@ async function drawLineChart(region_name, trigger_year) {
     let next_button_name = 'Scene 2'
     if (trigger_year == 2000) {
         const button_2008 = document.getElementById('2008')
-        button_2008.style.backgroundColor = 'powderblue'
+        button_2008.style.backgroundColor = 'lightgreen'
         button_2008.disabled = false;
     } else if (trigger_year == 2008) {
         const button_2020 = document.getElementById('2020')
         button_2020.disabled = false;
-        button_2020.style.backgroundColor = 'powderblue'
+        button_2020.style.backgroundColor = 'lightgreen'
         button_2020.disabled = false;
         next_button_name = 'Scene 3'
     } else if (trigger_year == 2020) {
@@ -205,11 +214,11 @@ async function drawLineChart(region_name, trigger_year) {
     modal.classList.add('active')
     const modal_body = document.querySelector('#modal')
     modal_body.style.fontSize = 14;
-    modal_body.style.fontWeight = 8000;
+    modal_body.style.fontWeight = 300;
     modal_body.style.fontFamily = 'Courier New';
     modal_body.style.color = 'black';
     modal_body.style.textAlign = 'center'
-    modal_body.style.backgroundColor = 'powderblue'
+    modal_body.style.backgroundColor = 'lightgreen'
     if (max_date.getFullYear() == 2023) {
         modal_body.innerHTML = 'Scene 3 finished. Please explore the data using the state selector button, clear or relead'
     } else {
@@ -293,7 +302,7 @@ async function addDescriptionForScene(year) {
     event_el.style.fontWeight = 400;
     event_el.style.fontFamily = 'Courier New';
     event_el.style.color = 'black';
-    event_el.style.backgroundColor = 'powderblue'
+    event_el.style.backgroundColor = 'lightgreen'
 }
 
 function getStateFromDropDown() {
@@ -385,7 +394,7 @@ async function addDots() {
         tooltip.style('top', d3.event.pageY + 12 + 'px')
         tooltip.style('left', d3.event.pageX + 25 + 'px')
         tooltip.style("opacity", .8)
-        tooltip.style('background-color', 'powderblue')
+        tooltip.style('background-color', 'lightgreen')
         tooltip.style('left-padding', 5)
 
         return tooltip.style("visibility", "visible");
@@ -494,11 +503,60 @@ function openModal(trigger_year) {
     modal_body.body = acts[trigger_year];
 }
 
-function closeModal() {
-    modal = document.querySelector('#modal')
-    if (modal == null) {
-        return;
-    }
+function closeModal(id) {
+    console.log(id)
+    let modal = document.querySelector('#' + id)
     modal.classList.remove('active')
-    //overlay.classList.remove('active')
+}
+
+function closedisplayGuides() {
+    if (guide_count < 3) {
+        let modal = document.querySelector('#modal_buttons')
+        modal.classList.remove('active')
+        guide_count = guide_count +1;
+        displayGuides(guide_count);
+    } else {
+        let modal = document.querySelector('#modal_buttons')
+        modal.classList.remove('active')
+        guide_count = guide_count +1;
+
+        const state_dropdown = document.getElementById('state-dropdown')
+        state_dropdown.hidden = true;
+        const lable_state_dropdown = document.getElementById('lable-state-dropdown')
+        lable_state_dropdown.hidden = true;
+
+        drawLineChart('US', 2000);
+    }
+}
+
+async function displayGuides(){
+    const modal = document.querySelector('#modal_buttons')
+    modal.classList.add('active')
+
+
+    const modal_body = document.querySelector('#modal_buttons_body')
+    modal_body.style.fontSize = 14;
+    modal_body.style.fontWeight = 400;
+    modal_body.style.fontFamily = 'Courier New';
+    modal_body.style.color = 'white';
+    modal_body.style.textAlign = 'left'
+    modal_body.style.backgroundColor = 'red'
+    if (guide_count == 1){
+        modal_body.innerHTML = 'Select Scenes/Year here'
+        modal.style.top = 150
+        modal.style.left = 250
+    } else if (guide_count == 2){
+        modal_body.innerHTML = "Author's Observation will be be played here"
+        modal.style.top = 260
+        modal.style.left = 200
+    } else {
+        modal_body.innerHTML = "Your controls and Parameters will be here"
+        modal.style.top = 150
+        modal.style.left = 550
+        const state_dropdown = document.getElementById('state-dropdown')
+        state_dropdown.hidden = false;
+        const lable_state_dropdown = document.getElementById('lable-state-dropdown')
+        lable_state_dropdown.hidden = false;
+    }
+
 }

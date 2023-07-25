@@ -21,15 +21,14 @@ h1 {
 
 .events {
     position: absolute;
-    top: 170;
-    left: 27%;
-    width: 700;
+    top: 220;
+    left: 200;
+    width: 900;
     height: 100;
     padding: 20px;
     padding-left: 20px;
-    background: whitesmoke;
+    background: beige;
     border-radius: 20px;
-    display: flex;
     align-items: start;
     box-shadow: 0px 15px 40px #8ecbe466;
 }
@@ -78,17 +77,29 @@ h1 {
 }
 
 .modal {
-    position: fixed;
-    top: 40%;
-    left: 35%;
+    position: absolute;
+    top: 400;
+    left: 400;
     transform: translate(-50%, -50%) scale(0);
     transition: 500ms ease-in-out;
     border: 1px solid black;
     border-radius: 10px;
     z-index: 10;
     background-color: white;
-    width: 500px;
+    width: auto;
+    height: auto;
     max-width: 80%;
+
+}
+
+.modal .close-button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: #137fc5;
+    font-size: 1.25rem;
+    font-weight: bold;
+    text-align: right;
 }
 
 .modal.active {
