@@ -78,7 +78,7 @@ async function drawAxisForLineChart() {
         // .domain(d3.extent(data, function (d) {
         //     return d.date;
         // }))
-        .domain([new Date("2000-01-01"), new Date(max_year)])
+        .domain([new Date("2000-01-31"), new Date(max_year)])
         .range([0, width + 25]);
     svg.append("g")
         .attr("id", "x-axis")
@@ -96,7 +96,6 @@ async function drawAxisForLineChart() {
         .range([height, 10]);
     svg.append("g")
         .attr("id", "y-axis")
-        .attr("transform", "translate(" + width + ",)")
         .call(d3.axisLeft(ly))
         .attr("stroke-width", "1")
         .style("text-anchor", "end")
@@ -105,21 +104,17 @@ async function drawAxisForLineChart() {
         .attr('font-family', 'Courier New');
 
     // Adds the grids
-    svg.append('g')
-        .attr("id", "x-axis-dash")
-        .call(d3.axisLeft()
-            .scale(ly)
-            .tickSize(-width, 0, 0)
-            .tickFormat(''))
-        .attr("stroke-dasharray", "3,3")
-        .attr("opacity", ".1");
-
-    const INNER_WIDTH = width - margin.left - margin.right;
+    const INNER_WIDTH = width + 30;
     const INNER_HEIGHT = height - margin.top - margin.bottom + 60;
-    /*const yAxisGrid = d3.axisLeft(ly).tickSize(-INNER_WIDTH).tickFormat('').ticks(10);
+
+    const yAxisGrid = d3.axisLeft(ly).tickSize(-INNER_WIDTH).tickFormat('').ticks(10);
     svg.append('g')
+        .attr('transform', 'translate(0,0)')
         .attr('class', 'y axis-grid')
-        .call(yAxisGrid);*/
+        .call(yAxisGrid)
+        .attr("stroke-dasharray", "3,3")
+        .attr("opacity", ".1")
+
     const xAxisGrid = d3.axisBottom(lx).tickSize(-INNER_HEIGHT).tickFormat('').ticks(10);
     svg.append('g')
         .attr('id', 'y-axis-dash')
@@ -127,19 +122,18 @@ async function drawAxisForLineChart() {
         .attr('transform', 'translate(0,' + INNER_HEIGHT + ')')
         .call(xAxisGrid)
         .attr("stroke-dasharray", "3,3")
+        .attr("opacity", ".1")
         .attr("stroke", function (d) {
             console.log(d.date.getFullYear());
             const red_years = [2020, 2008, 2000]
-            if(red_years.includes(d.date.getFullYear())) {
+            if (red_years.includes(d.date.getFullYear())) {
                 console.log("match");
                 return "#ee1313"
-            }
-            else {
+            } else {
                 return "#949494"
             }
 
         })
-        .attr("opacity", ".1");
 }
 
 async function drawLineChart(region_name, trigger_year) {
@@ -378,17 +372,22 @@ async function addDots() {
         .style("z-index", "0")
         .style("visibility", "hidden")
         .style("boarder", "black")
-        .text("a simple tooltip");
+        .text("");
 
     dots.on("mouseover", function (d, i) {
         d3.select(this)
             .transition()
             .duration('50')
             .attr('opacity', '.8');
-        tooltip.html("<br><strong> " + d.RegionName + "</strong>" + " - " + d.year + " - " + Math.trunc(d.value))
-            .style('top', d3.event.pageY + 12 + 'px')
-            .style('left', d3.event.pageX + 25 + 'px')
-            .style("opacity", .8);
+        tooltip.html("<br><strong> State - " + d.RegionName + "</strong>"
+            + "<p>Date - " + d.year
+            + "<p> Housing Price  - " + Math.trunc(d.value));
+        tooltip.style('top', d3.event.pageY + 12 + 'px')
+        tooltip.style('left', d3.event.pageX + 25 + 'px')
+        tooltip.style("opacity", .8)
+        tooltip.style('background-color', 'powderblue')
+        tooltip.style('left-padding', 5)
+
         return tooltip.style("visibility", "visible");
     });
 
