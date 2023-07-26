@@ -21,9 +21,9 @@ h1 {
 
 .events {
     position: absolute;
-    top: 220;
-    left: 200;
-    width: 900;
+    top: 210;
+    left: 260px;
+    width: 860px;
     height: 100;
     padding: 20px;
     padding-left: 20px;
@@ -96,7 +96,7 @@ h1 {
     cursor: pointer;
     border: none;
     outline: none;
-    background: #137fc5;
+    background: lightgreen;
     font-size: 1.25rem;
     font-weight: bold;
     text-align: right;
@@ -104,4 +104,12 @@ h1 {
 
 .modal.active {
     transform: translate(-50%, -50%) scale(1);
+}
+
+.label {
+    font-family: Open-sans, monospace;
+    background: beige;
+    font-size: 16px;
+    color: #1e1c1c;
+    padding-right: 5;
 }

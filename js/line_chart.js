@@ -58,6 +58,8 @@ async function drawAxisForLineChart() {
     d3.selectAll('svg').selectAll("#x-axis-dash").remove();
     d3.selectAll('svg').selectAll("#y-axis-dash").remove();
     d3.selectAll('svg').selectAll('#cue-text').remove();
+    d3.selectAll('svg').selectAll('#x-axis-label').remove();
+    d3.selectAll('svg').selectAll('#y-axis-label').remove();
 
     // data = await d3.csv(data_link, function (d) {
     //     return {date: d3.timeParse("%Y-%m-%d")(d.year), value: d.price, RegionName: d.RegionName, year: d.year}
@@ -79,7 +81,7 @@ async function drawAxisForLineChart() {
         .attr("height", height + margin.top + margin.bottom + 100)
         .append("g")
         .attr("transform",
-            "translate(" + 90 + "," + 70 + ")");
+            "translate(" + 120 + "," + 90 + ")");
     //"translate(" + margin.left + "," + margin.top + ")");
 
     lx = d3.scaleTime()
@@ -143,6 +145,32 @@ async function drawAxisForLineChart() {
             }
 
         })
+
+    svg.append("text")
+        .attr("id", "x-axis-label")
+        .attr("text-anchor", "start")
+        .attr("x", 300)
+        .attr("y", height + 50)
+        .text("Year")
+        .attr("stroke-width", "1")
+        .style("text-anchor", "end")
+        .attr("stroke", "#003f65")
+        .attr("opacity", "1")
+        .attr('font-family', 'Courier New');;
+
+    svg.append("text")
+        .attr("id", "y-axis-label")
+        .attr("text-anchor", "end")
+        .attr("y", -90)
+        .attr("x", -120)
+        .attr("dy", ".75em")
+        .attr("transform", "rotate(-90)")
+        .text("Price in Dollars")
+        .attr("stroke-width", "1")
+        .style("text-anchor", "end")
+        .attr("stroke", "#003f65")
+        .attr("opacity", "1")
+        .attr('font-family', 'Courier New');;
 }
 
 async function drawLineChart(region_name, trigger_year) {
@@ -543,15 +571,15 @@ async function displayGuides(){
     modal_body.style.backgroundColor = 'red'
     if (guide_count == 1){
         modal_body.innerHTML = 'Select Scenes/Year here'
-        modal.style.top = 150
+        modal.style.top = 140
         modal.style.left = 250
     } else if (guide_count == 2){
         modal_body.innerHTML = "Author's Observation will be be played here"
         modal.style.top = 260
-        modal.style.left = 200
+        modal.style.left = 430
     } else {
         modal_body.innerHTML = "Your controls and Parameters will be here"
-        modal.style.top = 150
+        modal.style.top = 140
         modal.style.left = 550
         const state_dropdown = document.getElementById('state-dropdown')
         state_dropdown.hidden = false;
