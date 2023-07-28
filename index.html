@@ -13,8 +13,8 @@
 <body id="line_chart_body" onload="displayGuides();drawAxisDuringInitialLoad()" onclick="closeModal('modal')">
 <h1>Narrative visualization to study the impact of Economic Recessions on US Housing Market</h1>
 
-<div id="controls" style="width:1100;text-align:left;margin-left:40;font-family: 'Courier New'; font-size: 15px;">
-    <p>The U.S. housing market faced significant and distinct impacts during the recessions of 2000, 2008, and 2020.
+<div id="controls" style="width:1100px;text-align:left;margin-left:40px;font-family: 'Courier New'; font-size: 15px;">
+    <p>The U.S. housing market faced significant and distinct impacts during the recessions of <strong>2000, 2008</strong>, and <strong>2020</strong>.
         Through this narrative  visualization project we delve into the correlation between the housing market and economic recession spanning the past two decades across the United States.
     </p>
 
@@ -34,8 +34,10 @@
 
 
     <label for="controls" id="lable-for-year2" class="label">Reset Options</label>
-    <button id="clear-chart" onclick="clearLineChart()">Clear</button>
-    <button id="reload-chart" onclick="drawLineChart('US', 2000)">Reload</button>
+    <button id="clear-chart" onclick="clearLineChart()" style="background-color: lightgreen">Clear</button>
+    <button id="reload-chart" onclick="document.getElementById('state-dropdown').hidden=true;
+        document.getElementById('lable-state-dropdown').hidden=true;drawLineChart('US', 2000)"
+            style="background-color: lightgreen">Reload</button>
 
 
     <label for="controls" id="lable-state-dropdown" hidden="hidden" class="label">Explore your State</label>

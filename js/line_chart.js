@@ -10,23 +10,26 @@ const events = {
     2016: "<-- Brexit",
     2017: "<-- Bitcoin skyrocketed",
     2020: "<-- Covid hit",
-    2022: "<-- 2022 Inflation"
+    2021: "Fed cuts Interest rate",
+    2023: "<-- 2022-23 Inflation"
 }
 
 const acts = {
-    2000: '<strong>The dot-com bubble :</strong> <br> In the early 2000s, the dot-com bubble burst triggered a mild downturn in the housing sector. '+
-        'While not as severe as later recessions, it led to a slowdown in home price appreciation and a brief decrease in housing sales. '+
+    2000: '<strong style="color: #1e1c1c">The dot-com bubble :</strong> ' +
+        '<br> In the early 2000s, <strong style="color: crimson">the dot-com bubble burst triggered a mild downturn </strong>in the housing sector. '+
+        'While not as severe as later recessions to come, it led to a slowdown in home price appreciation and a brief decrease in housing sales also fueled by <strong style="color: crimson">9/11 terroists attack. </strong>'+
         'However, after that the US housing market was on a steady ascent. Economic conditions were favorable, with steady job growth, low-interest rates, ' +
         'and increasing demand for housing.',
-    2008: '<strong>The great recession:</strong> <br> The narrative took an unexpected turn in 2008. A financial storm brewed, known as the Great Recession. ' +
-        'A perfect storm of subprime mortgage crisis, housing bubble, and banking failures struck the housing market with great force. ' +
+    2008: '<strong>The great recession:</strong> ' +
+        '<br> The narrative took an unexpected turn in 2008. A financial storm brewed, known as the Great Recession. ' +
+        'A perfect storm of <strong style="color: crimson">subprime mortgage crisis, housing bubble, and banking failures</strong> struck the housing market with great force. ' +
         'Foreclosures soared, leading to a glut of unsold homes. ' +
         'Homeowners, once hopeful, faced distressing situations as housing prices plummeted. ' +
         'The once thriving housing market now lay in ruins, leaving countless families with homes worth far less than their mortgages.',
     2020: '<strong>Covid Pandemic:</strong> <br> As the years went by, the housing market gradually recovered from the scars of the Great Recession. ' +
-        'But the year 2020 unleashed a wave of economic uncertainties due to <strong> covid </strong>. Businesses shuttered, jobs were lost, and the housing market braced for impact. ' +
-        'Government-mandated lockdowns and fear of the virus led to a slowdown in real estate activity. ' +
-        'However, record-low interest rates and a shift towards remote work sparked a housing boom as demand for homes in suburban and rural areas surged, driving up prices and creating a seller\'s market in many regions.'
+        'But the year 2020 unleashed a wave of economic uncertainties due to <strong style="color: crimson"> covid </strong>. Businesses shuttered, jobs were lost, and the housing market braced for impact. ' +
+        'Government-mandated lockdowns and fear of the <strong style="color: crimson">virus led to a slowdown in real estate activity. </strong>' +
+        'However, <strong style="color: crimson">record-low interest rates</strong> and a shift towards remote work sparked a housing boom as demand for homes in suburban and rural areas surged, driving up prices and creating a seller\'s market in many regions.'
 }
 
 region_name = (new URL(document.location)).searchParams.get("state");
@@ -181,6 +184,7 @@ async function drawAxisForLineChart() {
 
 async function drawLineChart(region_name, trigger_year) {
     console.log("Inside drawLineChart. RegionName :" + region_name + " year " + trigger_year)
+
     await addDescriptionForScene(trigger_year)
 
     if (trigger_year == 2000) {
@@ -214,7 +218,7 @@ async function drawLineChart(region_name, trigger_year) {
     await drawAxisForLineChart();
     await addPaths();
     await addDots();
-    await unHideControls();
+    //await unHideControls();
     //await addAnnotations();
 
     await new Promise(r => setTimeout(r, 3000));
@@ -238,7 +242,7 @@ async function drawLineChart(region_name, trigger_year) {
     }
 
     const event_el = document.getElementById('events');
-    event_el.style.backgroundColor = 'whitesmoke'
+    event_el.style.backgroundColor = 'beige'
 
     const max_date = d3.max(data, function (d) {
         return d.date;
@@ -251,12 +255,14 @@ async function drawLineChart(region_name, trigger_year) {
     modal_body.style.fontWeight = 300;
     modal_body.style.fontFamily = 'Courier New';
     modal_body.style.color = 'black';
-    modal_body.style.textAlign = 'center'
+    modal_body.style.textAlign = 'left'
     modal_body.style.backgroundColor = 'lightgreen'
     if (max_date.getFullYear() == 2023) {
-        modal_body.innerHTML = 'Scene 3 finished. Please explore the data using the state selector button, clear or relead'
+        modal_body.innerHTML = '<strong>Scene 3 </strong>finished!! <br> You can now explore more in the data using the <strong>Explore Your State</strong> drop-down list.' +
+            '<br> Use the <strong>Clear</strong> button to clear the current chart and <strong>Relead</strong> button to reset!'
     } else {
-        modal_body.innerHTML = 'Showing Data till ' + max_date.getFullYear() + '. Click ' + next_button_name + ' to go to next scene!'
+        modal_body.innerHTML = 'Showing Data till <strong>' + max_date.getFullYear() + '</strong>. ' +
+            '<br>Click <strong>' + next_button_name + '</strong> to go to next scene!'
     }
 }
 
@@ -289,7 +295,7 @@ async function addPaths() {
         .style("stroke", "steelblue");
 
 
-    await new Promise(r => setTimeout(r, 5000));
+    await new Promise(r => setTimeout(r, 4000));
     svg.append('g')
         .classed('labels-group', true)
         .selectAll('text')
@@ -353,33 +359,6 @@ async function drawAllStates() {
     })
 }
 
-async function animateEvents(maxYear) {
-
-    var events_el = document.getElementById('events')
-    events_el.style.backgroundColor = 'whitesmoke';
-    events_el.style.visibility = 'visible';
-
-    let currentYear = 2000;
-    while (currentYear <= maxYear) {
-        setEvents(currentYear)
-        await new Promise(r => setTimeout(r, 1000));
-        currentYear += 1;
-    }
-}
-
-async function setEvents(year) {
-
-    var event_el = document.getElementById('events');
-    event_el.style.overflow = 'auto';
-    event_el.scrollTop = event_el.scrollHeight;
-    event_el.innerHTML += '<br>' + events[year]
-    event_el.scrollTop = event_el.scrollHeight;
-    event_el.style.fontSize = 14;
-    event_el.style.fontWeight = 400;
-    event_el.style.fontFamily = 'Courier New';
-    event_el.style.color = 'black';
-}
-
 async function addDots() {
     let dots = svg.append('g')
         .selectAll("dot")
@@ -421,9 +400,9 @@ async function addDots() {
             .transition()
             .duration('50')
             .attr('opacity', '.8');
-        tooltip.html("<br><strong> State - " + d.RegionName + "</strong>"
-            + "<p>Date - " + d.year
-            + "<p> Housing Price  - " + Math.trunc(d.value));
+        tooltip.html("<br><strong> State: " + d.RegionName + "</strong>"
+            + "<p>Date: " + d.year
+            + "<p> Housing Price: " + Math.trunc(d.value));
         tooltip.style('top', d3.event.pageY + 12 + 'px')
         tooltip.style('left', d3.event.pageX + 25 + 'px')
         tooltip.style("opacity", .8)
@@ -579,7 +558,7 @@ async function displayGuides(){
         modal.style.top = 160
         modal.style.left = 250
     } else if (guide_count == 2){
-        modal_body.innerHTML = "Author's Observation will be be played here"
+        modal_body.innerHTML = "Author's Observations will be be played here"
         modal.style.top = 260
         modal.style.left = 470
     } else {
