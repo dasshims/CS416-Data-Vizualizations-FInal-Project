@@ -11,20 +11,12 @@
 </head>
 
 <body id="line_chart_body" onload="displayGuides();drawAxisDuringInitialLoad()" onclick="closeModal('modal')">
-<h1>Narrative visualization to study the impact of an Economic Recession on US Housing Market</h1>
-<!--<p>Through this interactive visualization, witness the rise and fall of housing prices during each crisis and gain
-    valuable insights into the factors that triggered these market upheavals. Engage with dynamic charts, explore
-    state-wise trends, and uncover the lasting effects of these economic downturns on the nation's real estate
-    landscape. Join us on this data-driven expedition that paints a vivid picture of the housing market's resilience and
-    transformation amidst the challenges of the past two decades.</p>-->
+<h1>Narrative visualization to study the impact of Economic Recessions on US Housing Market</h1>
 
-
-<div id="controls" style="width:1100;text-align:left;margin-left:40">
-    <p>The narrative visualization depicting the US housing prices crash by recession serves as a poignant reminder of
-        the
-        cyclical nature of the economy. The story serves as a beacon of hope, showing that even in the face of
-        adversity,
-        the American dream of homeownership endures, standing strong against the winds of uncertainty.</p>
+<div id="controls" style="width:1100;text-align:left;margin-left:40;font-family: 'Courier New'; font-size: 15px;">
+    <p>The U.S. housing market faced significant and distinct impacts during the recessions of 2000, 2008, and 2020.
+        Through this narrative  visualization project we delve into the correlation between the housing market and economic recession spanning the past two decades across the United States.
+    </p>
 
     <br style="text-align:right"> Data Source: <a href='https://www.zillow.com/research/data/'>Zillow
     Research</a></strong>
@@ -108,8 +100,8 @@
 </div>
 
 <svg width=1000 height=70></svg>
-<div class="events" id="events" width="1000" height="100"></div>
-<svg id="side_chart" width=1200 height=500>
+<div class="events" id="events"></div>
+<svg id="side_chart" width=1400 height=500>
     <div class="modal" id="modal">
         <button data-close-button class="close-button" onclick="closeModal('modal')">&times;</button>
         <div class="modal-body" id="modal-body"></div>

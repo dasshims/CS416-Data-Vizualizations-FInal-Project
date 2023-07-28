@@ -9,22 +9,24 @@ const events = {
     2015: "<-- Chinese stock market crash",
     2016: "<-- Brexit",
     2017: "<-- Bitcoin skyrocketed",
-    2020: "<-- Covid hit"
+    2020: "<-- Covid hit",
+    2022: "<-- 2022 Inflation"
 }
 
 const acts = {
-    2000: 'The early 2000s recession was a decline in economic activity which mainly occurred in developed countries. ' +
-        'The recession affected the European Union during 2000 and 2001 and the United States from March to November 2001. ' +
-        'After that the US housing market was on a steady ascent. Economic conditions were favorable, with steady job growth, low-interest rates, ' +
+    2000: '<strong>The dot-com bubble :</strong> <br> In the early 2000s, the dot-com bubble burst triggered a mild downturn in the housing sector. '+
+        'While not as severe as later recessions, it led to a slowdown in home price appreciation and a brief decrease in housing sales. '+
+        'However, after that the US housing market was on a steady ascent. Economic conditions were favorable, with steady job growth, low-interest rates, ' +
         'and increasing demand for housing.',
-    2008: 'The narrative took an unexpected turn in 2008. A financial storm brewed, known as the Great Recession. ' +
+    2008: '<strong>The great recession:</strong> <br> The narrative took an unexpected turn in 2008. A financial storm brewed, known as the Great Recession. ' +
         'A perfect storm of subprime mortgage crisis, housing bubble, and banking failures struck the housing market with great force. ' +
         'Foreclosures soared, leading to a glut of unsold homes. ' +
         'Homeowners, once hopeful, faced distressing situations as housing prices plummeted. ' +
         'The once thriving housing market now lay in ruins, leaving countless families with homes worth far less than their mortgages.',
-    2020: 'As the years went by, the housing market gradually recovered from the scars of the Great Recession. ' +
-        'A sense of stability returned, with housing prices once again on the rise. However, the year 2020 brought a new and unforeseen challenge - a global pandemic known as COVID-19.' +
-        'As COVID-19 swept across the nation, it unleashed a wave of economic uncertainties. Businesses shuttered, jobs were lost, and the housing market braced for impact. Government-mandated lockdowns and fear of the virus led to a slowdown in real estate activity. Housing prices saw a brief dip as the nation grappled with the pandemic\'s impact on the economy.'
+    2020: '<strong>Covid Pandemic:</strong> <br> As the years went by, the housing market gradually recovered from the scars of the Great Recession. ' +
+        'But the year 2020 unleashed a wave of economic uncertainties due to <strong> covid </strong>. Businesses shuttered, jobs were lost, and the housing market braced for impact. ' +
+        'Government-mandated lockdowns and fear of the virus led to a slowdown in real estate activity. ' +
+        'However, record-low interest rates and a shift towards remote work sparked a housing boom as demand for homes in suburban and rural areas surged, driving up prices and creating a seller\'s market in many regions.'
 }
 
 region_name = (new URL(document.location)).searchParams.get("state");
@@ -77,7 +79,7 @@ async function drawAxisForLineChart() {
 
     svg = d3.select("#side_chart")
         .append("svg")
-        .attr("width", width + margin.left + margin.right + 200)
+        .attr("width", width + margin.left + margin.right + 400)
         .attr("height", height + margin.top + margin.bottom + 100)
         .append("g")
         .attr("transform",
@@ -99,7 +101,8 @@ async function drawAxisForLineChart() {
         .attr("stroke", "#555353")
         .attr("opacity", "1")
         .style('text-align', 'right')
-        .attr('font-family', 'Courier New');
+        .attr('font-family', 'Courier New')
+        .attr('font-size', 13)
 
     ly = d3.scaleLinear()
         .domain([100000, max_price])
@@ -111,7 +114,8 @@ async function drawAxisForLineChart() {
         .style("text-anchor", "end")
         .attr("stroke", "#555353")
         .attr("opacity", "1")
-        .attr('font-family', 'Courier New');
+        .attr('font-family', 'Courier New')
+        .attr('font-size', 13)
 
     // Adds the grids
     const INNER_WIDTH = width + 30;
@@ -154,9 +158,10 @@ async function drawAxisForLineChart() {
         .text("Year")
         .attr("stroke-width", "1")
         .style("text-anchor", "end")
-        .attr("stroke", "#003f65")
+        .attr("stroke", "#555353")
         .attr("opacity", "1")
-        .attr('font-family', 'Courier New');;
+        .attr('font-family', 'Courier New')
+        .attr('font-size', 13)
 
     svg.append("text")
         .attr("id", "y-axis-label")
@@ -168,9 +173,10 @@ async function drawAxisForLineChart() {
         .text("Price in Dollars")
         .attr("stroke-width", "1")
         .style("text-anchor", "end")
-        .attr("stroke", "#003f65")
+        .attr("stroke", "#555353")
         .attr("opacity", "1")
-        .attr('font-family', 'Courier New');;
+        .attr('font-family', 'Courier New')
+        .attr('font-size', 13)
 }
 
 async function drawLineChart(region_name, trigger_year) {
@@ -290,7 +296,6 @@ async function addPaths() {
         .data(data)
         .enter()
         .append('text')
-        .classed('label', true)
         .attr("id", "annotations")
         .attr("x", function (d) {
             return lx(d.date) + 10;
@@ -306,11 +311,11 @@ async function addPaths() {
         })
         .attr("transform", "translate(0,0)")
         .style("text-anchor", "centre")
-        .attr("stroke", "#234109")
+        .attr("stroke", "dark grey")
         .attr("opacity", "1")
         .style('text-align', 'right')
         .attr('font-family', 'Courier New')
-        .attr('font-size', 12)
+        .attr('font-size', 13)
 }
 
 async function clearLineChart() {
@@ -367,7 +372,7 @@ async function setEvents(year) {
     var event_el = document.getElementById('events');
     event_el.style.overflow = 'auto';
     event_el.scrollTop = event_el.scrollHeight;
-    event_el.innerHTML += '<br>' + events[year] + '</br>'
+    event_el.innerHTML += '<br>' + events[year]
     event_el.scrollTop = event_el.scrollHeight;
     event_el.style.fontSize = 14;
     event_el.style.fontWeight = 400;
@@ -571,16 +576,16 @@ async function displayGuides(){
     modal_body.style.backgroundColor = 'red'
     if (guide_count == 1){
         modal_body.innerHTML = 'Select Scenes/Year here'
-        modal.style.top = 140
+        modal.style.top = 160
         modal.style.left = 250
     } else if (guide_count == 2){
         modal_body.innerHTML = "Author's Observation will be be played here"
         modal.style.top = 260
-        modal.style.left = 430
+        modal.style.left = 470
     } else {
         modal_body.innerHTML = "Your controls and Parameters will be here"
-        modal.style.top = 140
-        modal.style.left = 550
+        modal.style.top = 160
+        modal.style.left = 560
         const state_dropdown = document.getElementById('state-dropdown')
         state_dropdown.hidden = false;
         const lable_state_dropdown = document.getElementById('lable-state-dropdown')
