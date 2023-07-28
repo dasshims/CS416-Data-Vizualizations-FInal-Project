@@ -245,6 +245,7 @@ async function drawLineChart(region_name, trigger_year) {
         return d.date;
     })
 
+    region_name = region_name == 'US' ? 'United States Average' : region_name;
     const modal = document.querySelector('#modal')
     modal.classList.add('active')
     const modal_body = document.querySelector('#modal')
@@ -254,12 +255,21 @@ async function drawLineChart(region_name, trigger_year) {
     modal_body.style.color = 'black';
     modal_body.style.textAlign = 'left'
     modal_body.style.backgroundColor = 'lightgreen'
-    if (max_date.getFullYear() == 2023) {
-        modal_body.innerHTML = '<strong>Scene 3 </strong>finished!! <br> You can now explore more in the data using the <strong>Explore Your State</strong> drop-down list.' +
+    if (trigger_year == 2000) {
+        modal_body.innerHTML = 'Showing <strong> Scene 1 </strong> for Region: <strong>'+region_name+'</strong>.' +
+            '<br>Click <strong> Scene 2 </strong> button to go to next scene!'
+    } else if (trigger_year == 2008) {
+        modal_body.innerHTML = 'Showing <strong> Scene 2 </strong> for Region: <strong>'+region_name+'</strong>.' +
+            '<br>Click <strong> Scene 3 </strong> button to go to next scene!'
+    } else if (trigger_year == 2020) {
+        modal_body.innerHTML = '<strong>Scene 3 </strong> for Region: <strong>'+region_name+'</strong> finished!! ' +
+            '<br> You can explore more in the data using the <strong>Explore Your State</strong> drop-down list.' +
             '<br> Use the <strong>Clear</strong> button to clear the current chart and <strong>Relead</strong> button to reset!'
+    }
+    if (max_date.getFullYear() == 2023) {
+
     } else {
-        modal_body.innerHTML = 'Showing Data till <strong>' + max_date.getFullYear() + '</strong>. ' +
-            '<br>Click <strong>' + next_button_name + '</strong> to go to next scene!'
+
     }
 
     await new Promise(r => setTimeout(r, 2000));
@@ -401,7 +411,7 @@ async function addDots() {
             .transition()
             .duration('50')
             .attr('opacity', '.8');
-        tooltip.html("<br><strong> State: " + d.RegionName + "</strong>"
+        tooltip.html("<br><strong>" + d.RegionName + "</strong>"
             + "<p>Date: " + d.year
             + "<p> Housing Price: " + Math.trunc(d.value));
         tooltip.style('top', d3.event.pageY + 12 + 'px')
@@ -555,7 +565,7 @@ async function displayGuides(){
     modal_body.style.textAlign = 'left'
     modal_body.style.backgroundColor = 'red'
     if (guide_count == 1){
-        modal_body.innerHTML = 'Select Scenes here'
+        modal_body.innerHTML = 'You can navigate the Scenes here'
         modal.style.top = 160
         modal.style.left = 250
     } else if (guide_count == 2){
