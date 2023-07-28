@@ -555,7 +555,7 @@ async function displayGuides(){
     modal_body.style.textAlign = 'left'
     modal_body.style.backgroundColor = 'red'
     if (guide_count == 1){
-        modal_body.innerHTML = 'Select Scenes/Year here'
+        modal_body.innerHTML = 'Select Scenes here'
         modal.style.top = 160
         modal.style.left = 250
     } else if (guide_count == 2){
