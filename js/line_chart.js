@@ -221,7 +221,7 @@ async function drawLineChart(region_name, trigger_year) {
     //await unHideControls();
     //await addAnnotations();
 
-    await new Promise(r => setTimeout(r, 3000));
+    await new Promise(r => setTimeout(r, 1000));
 
     let next_button_name = 'Scene 2'
     if (trigger_year == 2000) {
@@ -240,9 +240,6 @@ async function drawLineChart(region_name, trigger_year) {
         const lable_state_dropdown = document.getElementById('lable-state-dropdown')
         lable_state_dropdown.hidden = false;
     }
-
-    const event_el = document.getElementById('events');
-    event_el.style.backgroundColor = 'beige'
 
     const max_date = d3.max(data, function (d) {
         return d.date;
@@ -264,6 +261,10 @@ async function drawLineChart(region_name, trigger_year) {
         modal_body.innerHTML = 'Showing Data till <strong>' + max_date.getFullYear() + '</strong>. ' +
             '<br>Click <strong>' + next_button_name + '</strong> to go to next scene!'
     }
+
+    await new Promise(r => setTimeout(r, 2000));
+    const event_el = document.getElementById('events');
+    event_el.style.backgroundColor = 'beige'
 }
 
 async function addPaths() {
@@ -334,7 +335,7 @@ async function clearLineChart() {
 
 async function addDescriptionForScene(year) {
     const event_el = document.getElementById('events');
-    event_el.innerHTML += acts[year] + '<br></br>'
+    event_el.innerHTML += acts[year] + '<br>'
     event_el.scrollTop = event_el.scrollHeight;
     event_el.style.overflow = 'auto';
     event_el.style.fontSize = 14;
