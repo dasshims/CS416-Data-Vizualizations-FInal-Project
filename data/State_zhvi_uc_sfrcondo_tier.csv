@@ -124,7 +124,7 @@ id,SizeRank,RegionName,RegionType,year,price
 122,23,Alabama,state,2022-01-31,193009.219
 123,23,Alabama,state,2012-04-30,97139.8285
 124,23,Alabama,state,2005-09-30,99480.10305
-125,23,Alabama,state,2012-05-31,
+125,23,Alabama,state,2012-05-31,99480.10305
 126,23,Alabama,state,2011-09-30,97169.21299
 127,23,Alabama,state,2006-01-31,102108.2606
 128,23,Alabama,state,2012-06-30,99533.58066
@@ -217,7 +217,6 @@ id,SizeRank,RegionName,RegionType,year,price
 215,23,Alabama,state,2018-04-30,134925.7841
 216,23,Alabama,state,2018-11-30,138500.5211
 217,23,Alabama,state,2008-03-31,111429.8228
-,,,,,
 219,23,Alabama,state,2002-03-31,87428.09352
 220,23,Alabama,state,2001-12-31,87072.99824
 221,23,Alabama,state,2018-12-31,139175.4998
@@ -302,7 +301,7 @@ id,SizeRank,RegionName,RegionType,year,price
 300,48,Alaska,state,2002-01-31,157444.7062
 301,48,Alaska,state,2018-04-30,274548.6258
 302,48,Alaska,state,2021-05-31,314987.3618
-303,48,Alaska,state,2019-03-31,
+303,48,Alaska,state,2019-03-31,290257.8265
 304,48,Alaska,state,2016-10-31,266923.8686
 305,48,Alaska,state,2013-05-31,241930.6648
 306,48,Alaska,state,2002-06-30,160614.09
@@ -358,7 +357,7 @@ id,SizeRank,RegionName,RegionType,year,price
 356,48,Alaska,state,2000-09-30,129269.5869
 357,48,Alaska,state,2018-10-31,275947.5679
 358,48,Alaska,state,2020-05-31,303616.6639
-359,48,Alaska,state,2019-02-28,
+359,48,Alaska,state,2019-02-28,277773.8926
 360,48,Alaska,state,2002-03-31,158518.5701
 361,48,Alaska,state,2012-08-31,238119.4876
 362,48,Alaska,state,2016-03-31,264740.1456
@@ -573,7 +572,7 @@ id,SizeRank,RegionName,RegionType,year,price
 571,13,Arizona,state,2004-04-30,165802.1277
 572,13,Arizona,state,2022-10-31,437276.7653
 573,13,Arizona,state,2015-12-31,205829.4973
-574,13,Arizona,state,2004-07-31,
+574,13,Arizona,state,2004-07-31,164555
 575,13,Arizona,state,2010-03-31,156868.1216
 576,13,Arizona,state,2014-08-31,187884.7872
 577,13,Arizona,state,2020-10-31,301332.8562
