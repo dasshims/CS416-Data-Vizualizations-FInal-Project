@@ -86,7 +86,7 @@ async function drawAxisForLineChart() {
         .attr("height", height + margin.top + margin.bottom + 100)
         .append("g")
         .attr("transform",
-            "translate(" + 120 + "," + 90 + ")");
+            "translate(" + 120 + "," + 40 + ")");
     //"translate(" + margin.left + "," + margin.top + ")");
 
     lx = d3.scaleTime()
