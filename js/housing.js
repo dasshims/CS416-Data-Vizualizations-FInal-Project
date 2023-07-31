@@ -1,6 +1,6 @@
 var data, margin, svg, bx, by;
-//const data_link = 'https://dasshims.github.io/State_zhvi_uc_sfrcondo_tier.csv'
-const data_link = 'data/State_zhvi_uc_sfrcondo_tier.csv'
+const data_link = 'https://dasshims.github.io/State_zhvi_uc_sfrcondo_tier.csv'
+//const data_link = 'data/State_zhvi_uc_sfrcondo_tier.csv'
 
 async function drawAxis() {
     return await drawAxis2(false)
@@ -341,7 +341,7 @@ async function setEvents(year) {
     var event_el = document.getElementById('events');
     event_el.style.overflow = 'auto';
     event_el.scrollTop = event_el.scrollHeight;
-    event_el.innerHTML += '<br>' + events[year] + '</br> <br> </br>'
+    event_el.innerHTML = '<br>' + events[year] + '</br> <br> </br>'
     event_el.scrollTop = event_el.scrollHeight;
     event_el.style.fontSize = 14;
     event_el.style.fontWeight = 400;
@@ -390,7 +390,6 @@ async function clearBars() {
     d3.selectAll('svg').selectAll("#year-text").remove();
     d3.selectAll('svg').selectAll("#annotations").remove();
     d3.selectAll('svg').selectAll("#min-max-annotations").remove();
-
 }
 
 async function addLegendsForBarChart() {

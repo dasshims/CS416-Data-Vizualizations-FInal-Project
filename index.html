@@ -1,8 +1,8 @@
 <html>
 <script src="https://d3js.org/d3.v5.js"></script>
 <script src="https://rawgit.com/susielu/d3-annotation/master/d3-annotation.min.js"></script>
-<script src='./js/housing.js'></script>
-<!-- <script src='./js/line_chart.js'></script> -->
+<!-- <script src='./js/housing.js'></script> -->
+<script src='./js/line_chart.js'></script>
 <link rel="stylesheet" href="./css/style.css" type="text/css">
 
 <head>
@@ -10,53 +10,108 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 
-<body onload='clearBars();drawChart(2020)' id="main_chart_body">
-    <h1>Interactive Visualization of Housing prices in the US : Single Family House</h1>
-    <div >
+<body id="line_chart_body" onload="displayGuides();drawAxisDuringInitialLoad()" onclick="closeModal('modal')">
+<h1>Narrative visualization to study the impact of Economic Recessions on US Housing Market</h1>
 
-        <div class="slider">
-            <label for="date-dropdown">Year Slider </label>
-            <input id="date-dropdown" type="range" min="2000" max="2022" value="1" step="1" list="volsettings"
-                oninput="clearBars();drawChart(this.value)">
-            <datalist id="volsettings">
-                <option>2000</option>
-                <option>2001</option>
-                <option>2002</option>
-                <option>2003</option>
-                <option>2004</option>
-                <option>2005</option>
-                <option>2006</option>
-                <option>2007</option>
-                <option>2008</option>
-                <option>2009</option>
-                <option>2010</option>
-                <option>2011</option>
-                <option>2012</option>
-                <option>2013</option>
-                <option>2014</option>
-                <option>2015</option>
-                <option>2016</option>
-                <option>2017</option>
-                <option>2018</option>
-                <option>2019</option>
-                <option>2020</option>
-                <option>2021</option>
-                <option>2022</option>
-            </datalist>
-        </div>
+<div id="controls" style="width:1100px;text-align:left;margin-left:40px;font-family: 'Courier New'; font-size: 15px;">
+    <p>The U.S. housing market faced significant and distinct impacts during the recessions of <strong>2000, 2008</strong>, and <strong>2020</strong>.
+        Through this narrative  visualization project we delve into the correlation between the housing market and economic recession spanning the past two decades across the United States.
+    </p>
 
-        <div class="controls" id="controls">
-            <label for="controls" id="label-for-controls">Triggers</label>
-            <button id="prev" onclick="subtractYear()"><</button>
-            <button id="next" onclick="addYear()">></button>
-            <button id="animate-chart" onclick="document.getElementById('events').innerHTML = '';clearBars();animateChart()">Animate</button>
-            <button id="clear-chart" onclick="document.getElementById('events').innerHTML = '';clearBars()">Clear</button>
-            <button id="sort-chart" onclick="drawChart2(2020, true)">Sort</button>
-        </div>
+    <br style="text-align:right"> Data Source: <a href='https://www.zillow.com/research/data/'>Zillow
+    Research</a></strong>
+    <hr style="width:100%;text-align:left;margin-left:0">
 
-        <svg class="mainchart" id="main_chart"></svg>
-        <div class="events" id="events"> <br> </br> </div>       
+
+    <div class="modal" id="modal_buttons">
+        <div class="modal-body" id="modal_buttons_body"></div>
+        <button data-close-button class="close-button" onclick="closedisplayGuides()">&times;</button>
     </div>
+    <label for="controls" id="lable-for-year" class="label">Select Scene</label>
+    <button id="2000" onclick="drawLineChart('US', 2000)" style="background-color: lightgreen">Scene 1</button>
+    <button id="2008" onclick="drawLineChart('US', 2008)" disabled>Scene 2</button>
+    <button id="2020" onclick="drawLineChart('US', 2020)" disabled>Scene 3</button>
+
+
+    <label for="controls" id="lable-for-year2" class="label">Reset Options</label>
+    <button id="clear-chart" onclick="clearLineChart()" style="background-color: lightgreen">Clear</button>
+    <button id="reload-chart" onclick="document.getElementById('state-dropdown').hidden=true;
+        document.getElementById('lable-state-dropdown').hidden=true;drawLineChart('US', 2000)"
+            style="background-color: lightgreen">Reload</button>
+
+
+    <label for="controls" id="lable-state-dropdown" hidden="hidden" class="label">Explore your State</label>
+    <select hidden="hidden" id="state-dropdown" class="button"
+            onchange="clearLineChart();drawLineChart(this.value, 2020)">
+        </option>
+        <option value="US">United States</option>
+       <!-- <option value="Alabama">Alabama</option>-->
+        <option value="Alaska">Alaska</option>
+        <option value="Arizona">Arizona</option>
+        <!--<option value="Arkansas">Arkansas</option>-->
+        <option value="California">California</option>
+        <option value="Colorado">Colorado</option>
+        <option value="Connecticut">Connecticut</option>
+        <option value="Delaware">Delaware</option>
+        <option value="DC">District of Columbia</option>
+        <option value="Florida">Florida</option>
+        <option value="Georgia">Georgia</option>
+        <option value="Hawaii">Hawaii</option>
+        <option value="Idaho">Idaho</option>
+        <option value="Illinois">Illinois</option>
+        <!--<option value="Indiana">Indiana</option>
+        <option value="Iowa">Iowa</option>
+        <option value="Kansas">Kansas</option>
+        <option value="Kentucky">Kentucky</option>
+        <option value="Louisiana">Louisiana</option>
+        <option value="Maine">Maine</option>-->
+        <option value="Maryland">Maryland</option>
+        <option value="Massachusetts">Massachusetts</option>
+        <!--<option value="Michigan">Michigan</option>-->
+        <option value="Minnesota">Minnesota</option>
+        <!--<option value="Mississippi">Mississippi</option>
+        <option value="Missouri">Missouri</option>
+        <option value="Montana">Montana</option>-->
+        <option value="Nebraska">Nebraska</option>
+        <option value="Nevada">Nevada</option>
+        <option value="New Hampshire">New Hampshire</option>
+        <option value="New Jersey">New Jersey</option>
+        <!--<option value="New Mexico">New Mexico</option>-->
+        <option value="New York">New York</option>
+        <option value="North Carolina">North Carolina</option>
+        <!--<option value="North Dakota">North Dakota</option>-->
+        <option value="Ohio">Ohio</option>
+        <!--<option value="Oklahoma">Oklahoma</option>-->
+        <option value="Oregon">Oregon</option>
+        <!--<option value="Pennsylvania">Pennsylvania</option>
+        <option value="Puerto Rico">Puerto Rico</option>-->
+        <option value="Rhode Island">Rhode Island</option>
+        <option value="South Carolina">South Carolina</option>
+        <!--<option value="South Dakota">South Dakota</option>
+        <option value="Tennessee">Tennessee</option>-->
+        <option value="Texas">Texas</option>
+        <option value="Utah">Utah</option>
+        <!--<option value="Vermont">Vermont</option>-->
+        <option value="Virginia">Virginia</option>
+        <option value="Washington">Washington</option>
+        <option value="Wisconsin">Wisconsin</option>
+        <option value="Wyoming">Wyoming</option>
+    </select>
+    <p></p>
+    <label for="controls" id="lable-observations" class="label">Author's observations</label>
+</div>
+
+<svg width=1000 height=10></svg>
+<div class="events" id="events"></div>
+<svg id="side_chart" width=1400 height=500>
+    <div class="modal" id="modal">
+        <button data-close-button class="close-button" onclick="closeModal('modal')">&times;</button>
+        <div class="modal-body" id="modal-body"></div>
+    </div>
+</svg>
+
+</div>
+
 
 </body>
 

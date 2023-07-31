@@ -124,7 +124,7 @@ id,SizeRank,RegionName,RegionType,year,price
 122,23,Alabama,state,2022-01-31,193009.219
 123,23,Alabama,state,2012-04-30,97139.8285
 124,23,Alabama,state,2005-09-30,99480.10305
-125,23,Alabama,state,2012-05-31,
+125,23,Alabama,state,2012-05-31,99480.10305
 126,23,Alabama,state,2011-09-30,97169.21299
 127,23,Alabama,state,2006-01-31,102108.2606
 128,23,Alabama,state,2012-06-30,99533.58066
@@ -186,7 +186,7 @@ id,SizeRank,RegionName,RegionType,year,price
 184,23,Alabama,state,2018-01-31,133353.478
 185,23,Alabama,state,2001-10-31,86599.77709
 186,23,Alabama,state,2008-08-31,110934.9431
-187,23,Alabama,state,StateName,
+,,,,,
 188,23,Alabama,state,2018-02-28,133838.4907
 189,23,Alabama,state,2019-09-30,146568.1153
 190,23,Alabama,state,2002-08-31,88322.44313
@@ -217,7 +217,6 @@ id,SizeRank,RegionName,RegionType,year,price
 215,23,Alabama,state,2018-04-30,134925.7841
 216,23,Alabama,state,2018-11-30,138500.5211
 217,23,Alabama,state,2008-03-31,111429.8228
-218,23,Alabama,state,RegionID,4
 219,23,Alabama,state,2002-03-31,87428.09352
 220,23,Alabama,state,2001-12-31,87072.99824
 221,23,Alabama,state,2018-12-31,139175.4998
@@ -302,7 +301,7 @@ id,SizeRank,RegionName,RegionType,year,price
 300,48,Alaska,state,2002-01-31,157444.7062
 301,48,Alaska,state,2018-04-30,274548.6258
 302,48,Alaska,state,2021-05-31,314987.3618
-303,48,Alaska,state,2019-03-31,
+303,48,Alaska,state,2019-03-31,290257.8265
 304,48,Alaska,state,2016-10-31,266923.8686
 305,48,Alaska,state,2013-05-31,241930.6648
 306,48,Alaska,state,2002-06-30,160614.09
@@ -358,7 +357,7 @@ id,SizeRank,RegionName,RegionType,year,price
 356,48,Alaska,state,2000-09-30,129269.5869
 357,48,Alaska,state,2018-10-31,275947.5679
 358,48,Alaska,state,2020-05-31,303616.6639
-359,48,Alaska,state,2019-02-28,
+359,48,Alaska,state,2019-02-28,277773.8926
 360,48,Alaska,state,2002-03-31,158518.5701
 361,48,Alaska,state,2012-08-31,238119.4876
 362,48,Alaska,state,2016-03-31,264740.1456
@@ -495,7 +494,7 @@ id,SizeRank,RegionName,RegionType,year,price
 493,48,Alaska,state,2006-10-31,220948.3842
 494,48,Alaska,state,2006-01-31,209379.9961
 495,48,Alaska,state,2006-06-30,213951.5624
-496,48,Alaska,state,StateName,
+,,,,,
 497,48,Alaska,state,2022-01-31,335348.6896
 498,48,Alaska,state,2009-01-31,233583.9294
 499,48,Alaska,state,2006-05-31,212601.1286
@@ -531,7 +530,7 @@ id,SizeRank,RegionName,RegionType,year,price
 529,48,Alaska,state,2010-10-31,234372.9458
 530,48,Alaska,state,2010-01-31,232929.5274
 531,48,Alaska,state,2011-08-31,230463.46
-532,48,Alaska,state,RegionID,3
+,,,,,
 533,48,Alaska,state,2006-09-30,219137.9118
 534,48,Alaska,state,2010-05-31,234001.6627
 535,48,Alaska,state,2022-05-31,343202.9762
@@ -573,7 +572,7 @@ id,SizeRank,RegionName,RegionType,year,price
 571,13,Arizona,state,2004-04-30,165802.1277
 572,13,Arizona,state,2022-10-31,437276.7653
 573,13,Arizona,state,2015-12-31,205829.4973
-574,13,Arizona,state,2004-07-31,
+574,13,Arizona,state,2004-07-31,164555
 575,13,Arizona,state,2010-03-31,156868.1216
 576,13,Arizona,state,2014-08-31,187884.7872
 577,13,Arizona,state,2020-10-31,301332.8562
@@ -650,7 +649,7 @@ id,SizeRank,RegionName,RegionType,year,price
 648,13,Arizona,state,2002-07-31,148987.2813
 649,13,Arizona,state,2008-07-31,217897.0744
 650,13,Arizona,state,2018-04-30,243619.9634
-651,13,Arizona,state,StateName,
+,,,,,
 652,13,Arizona,state,2007-09-30,258895.7661
 653,13,Arizona,state,2002-06-30,148282.7402
 654,13,Arizona,state,2018-03-31,242116.0287
@@ -677,7 +676,7 @@ id,SizeRank,RegionName,RegionType,year,price
 675,13,Arizona,state,2007-12-31,249446.3266
 676,13,Arizona,state,2019-05-31,263336.5748
 677,13,Arizona,state,2008-02-29,241415.5857
-678,13,Arizona,state,RegionID,8
+,,,,,
 679,13,Arizona,state,2019-01-31,258067.2307
 680,13,Arizona,state,2002-03-31,146484.5075
 681,13,Arizona,state,2023-05-31,414261.5941
@@ -916,7 +915,7 @@ id,SizeRank,RegionName,RegionType,year,price
 914,33,Arkansas,state,2021-11-30,164980.5875
 915,33,Arkansas,state,2018-10-31,126182.5374
 916,33,Arkansas,state,2019-06-30,130061.6333
-917,33,Arkansas,state,RegionID,6
+,,,,,
 918,33,Arkansas,state,2002-04-30,78859.23153
 919,33,Arkansas,state,2018-09-30,126073.4356
 920,33,Arkansas,state,2023-04-30,185505.4784
@@ -962,7 +961,7 @@ id,SizeRank,RegionName,RegionType,year,price
 960,33,Arkansas,state,2022-01-31,168993.3814
 961,33,Arkansas,state,2017-12-31,122030.9868
 962,33,Arkansas,state,2002-09-30,80287.15651
-963,33,Arkansas,state,StateName,
+,,,,,
 964,33,Arkansas,state,2008-09-30,103469.5267
 965,33,Arkansas,state,2005-07-31,94707.71627
 966,33,Arkansas,state,2017-11-30,121451.9458
@@ -1338,7 +1337,7 @@ id,SizeRank,RegionName,RegionType,year,price
 1336,0,California,state,2002-11-30,268070.9943
 1337,0,California,state,2006-06-30,482925.0432
 1338,0,California,state,2002-10-31,264520.9938
-1339,0,California,state,RegionID,9
+,,,,,
 1340,0,California,state,2000-08-31,200598.3391
 1341,0,California,state,2001-04-30,219220.6889
 1342,0,California,state,2022-12-31,748365.861
@@ -1400,7 +1399,7 @@ id,SizeRank,RegionName,RegionType,year,price
 1398,0,California,state,2023-05-31,737900.2551
 1399,0,California,state,2022-02-28,731348.729
 1400,0,California,state,2021-11-30,700863.1411
-1401,0,California,state,StateName,
+,,,,,
 1402,0,California,state,2000-09-30,203164.2437
 1403,0,California,state,2001-09-30,231244.5522
 1404,0,California,state,2020-03-31,563127.7169
@@ -1604,7 +1603,7 @@ id,SizeRank,RegionName,RegionType,year,price
 1602,20,Colorado,state,2023-02-28,548548.4939
 1603,20,Colorado,state,2011-01-31,216877.2471
 1604,20,Colorado,state,2010-12-31,217626.3166
-1605,20,Colorado,state,StateName,
+,,,,,
 1606,20,Colorado,state,2006-06-30,237732.4816
 1607,20,Colorado,state,2008-08-31,229442.0388
 1608,20,Colorado,state,2022-05-31,570179.9233
@@ -1686,7 +1685,7 @@ id,SizeRank,RegionName,RegionType,year,price
 1684,20,Colorado,state,2006-05-31,237253.0473
 1685,20,Colorado,state,2011-06-30,213123.347
 1686,20,Colorado,state,2008-03-31,233922.8773
-1687,20,Colorado,state,RegionID,10
+,,,,,
 1688,20,Colorado,state,2022-04-30,561479.2146
 1689,20,Colorado,state,2019-07-31,401035.8223
 1690,20,Colorado,state,2008-04-30,233143.869
@@ -1750,7 +1749,7 @@ id,SizeRank,RegionName,RegionType,year,price
 1748,28,Connecticut,state,2003-07-31,229247.051
 1749,28,Connecticut,state,2001-07-31,183587.8947
 1750,28,Connecticut,state,2001-06-30,182277.2119
-1751,28,Connecticut,state,StateName,
+,,,,,
 1752,28,Connecticut,state,2008-08-31,290344.9282
 1753,28,Connecticut,state,2016-06-30,248678.5698
 1754,28,Connecticut,state,2003-05-31,224445.4885
@@ -1767,7 +1766,7 @@ id,SizeRank,RegionName,RegionType,year,price
 1765,28,Connecticut,state,2016-03-31,247719.8405
 1766,28,Connecticut,state,2015-10-31,246286.9215
 1767,28,Connecticut,state,2000-01-31,163563.7173
-1768,28,Connecticut,state,RegionID,11
+,,,,,
 1769,28,Connecticut,state,2020-07-31,277668.0922
 1770,28,Connecticut,state,2009-01-31,278638.2649
 1771,28,Connecticut,state,2015-11-30,246811.5001
@@ -2129,7 +2128,7 @@ id,SizeRank,RegionName,RegionType,year,price
 2127,45,Delaware,state,2017-03-31,249146.3697
 2128,45,Delaware,state,2014-10-31,218122.3
 2129,45,Delaware,state,2021-08-31,329765.6784
-2130,45,Delaware,state,RegionID,13
+,,,,,
 2131,45,Delaware,state,2014-07-31,215419.9826
 2132,45,Delaware,state,2006-08-31,257193.7821
 2133,45,Delaware,state,2004-05-31,192877.1156
@@ -2212,7 +2211,7 @@ id,SizeRank,RegionName,RegionType,year,price
 2210,45,Delaware,state,2018-10-31,260207.0593
 2211,45,Delaware,state,2008-10-31,246290.1268
 2212,45,Delaware,state,2020-01-31,269254.8031
-2213,45,Delaware,state,StateName,
+,,,,,
 2214,45,Delaware,state,2007-07-31,262039.8177
 2215,45,Delaware,state,2005-08-31,231765.7674
 2216,45,Delaware,state,2004-10-31,205568.1357
@@ -2481,7 +2480,7 @@ id,SizeRank,RegionName,RegionType,year,price
 2479,49,DC,state,2009-06-30,341890.655
 2480,49,DC,state,2018-12-31,559938.0535
 2481,49,DC,state,2001-07-31,172138.1536
-2482,49,DC,state,StateName,
+,,,,,
 2483,49,DC,state,2016-12-31,503353.4085
 2484,49,DC,state,2008-10-31,351857.4811
 2485,49,DC,state,2002-02-28,186531.7329
@@ -2531,7 +2530,7 @@ id,SizeRank,RegionName,RegionType,year,price
 2529,49,DC,state,2014-04-30,425601.6875
 2530,49,DC,state,2008-04-30,364250.0715
 2531,49,DC,state,2003-01-31,215932.5459
-2532,49,DC,state,RegionID,12
+,,,,,
 2533,49,DC,state,2021-04-30,633465.1713
 2534,49,DC,state,2004-06-30,267083.846
 2535,49,DC,state,2010-03-31,335366.6318
@@ -2580,7 +2579,7 @@ id,SizeRank,RegionName,RegionType,year,price
 2578,2,Florida,state,2021-07-31,304465.7456
 2579,2,Florida,state,2021-03-31,281578.9941
 2580,2,Florida,state,2016-12-31,203267.7351
-2581,2,Florida,state,RegionID,14
+,,,,,
 2582,2,Florida,state,2000-09-30,108681.5788
 2583,2,Florida,state,2004-11-30,174339.0756
 2584,2,Florida,state,2008-02-29,215741.3105
@@ -2614,7 +2613,7 @@ id,SizeRank,RegionName,RegionType,year,price
 2612,2,Florida,state,2005-07-31,202909.7912
 2613,2,Florida,state,2021-01-31,273879.0158
 2614,2,Florida,state,2001-01-31,111401.7001
-2615,2,Florida,state,StateName,
+,,,,,
 2616,2,Florida,state,2007-10-31,229333.4985
 2617,2,Florida,state,2002-01-31,122472.3741
 2618,2,Florida,state,2014-11-30,168075.6012
@@ -2896,7 +2895,7 @@ id,SizeRank,RegionName,RegionType,year,price
 2894,7,Georgia,state,2009-04-30,142147.3431
 2895,7,Georgia,state,2007-05-31,160436.0382
 2896,7,Georgia,state,2008-07-31,154713.8265
-2897,7,Georgia,state,StateName,
+,,,,,
 2898,7,Georgia,state,2007-10-31,160470.2453
 2899,7,Georgia,state,2008-06-30,155552.6254
 2900,7,Georgia,state,2023-04-30,316578.9173
@@ -2909,7 +2908,7 @@ id,SizeRank,RegionName,RegionType,year,price
 2907,7,Georgia,state,2007-12-31,159692.5408
 2908,7,Georgia,state,2008-02-29,158430.0624
 2909,7,Georgia,state,2019-04-30,196994.8035
-2910,7,Georgia,state,RegionID,16
+,,,,,
 2911,7,Georgia,state,2008-01-31,159098.2322
 2912,7,Georgia,state,2008-03-31,157619.3589
 2913,7,Georgia,state,2006-09-30,157617.1929
@@ -3308,7 +3307,7 @@ id,SizeRank,RegionName,RegionType,year,price
 3306,40,Hawaii,state,2004-11-30,307163.7463
 3307,40,Hawaii,state,2007-10-31,429072.9007
 3308,40,Hawaii,state,2004-07-31,284780.5058
-3309,40,Hawaii,state,RegionID,18
+,,,,,
 3310,40,Hawaii,state,2008-04-30,426989.5737
 3311,40,Hawaii,state,2018-01-31,576570.4212
 3312,40,Hawaii,state,2014-06-30,442918.4067
@@ -3360,7 +3359,7 @@ id,SizeRank,RegionName,RegionType,year,price
 3358,40,Hawaii,state,2021-05-31,688112.465
 3359,40,Hawaii,state,2007-07-31,430875.3797
 3360,40,Hawaii,state,2023-03-31,830547.8071
-3361,40,Hawaii,state,StateName,
+,,,,,
 3362,40,Hawaii,state,2008-09-30,415859.427
 3363,40,Hawaii,state,2021-04-30,677820.6391
 3364,40,Hawaii,state,2014-04-30,431929.0535
@@ -3520,7 +3519,7 @@ id,SizeRank,RegionName,RegionType,year,price
 3518,38,Idaho,state,2018-01-31,233215.7825
 3519,38,Idaho,state,2002-08-31,129942.5573
 3520,38,Idaho,state,2022-05-31,485218.557
-3521,38,Idaho,state,2005-10-31,
+3521,38,Idaho,state,2005-10-31,167264.0629
 3522,38,Idaho,state,2018-06-30,246638.7887
 3523,38,Idaho,state,2001-04-30,124576.4684
 3524,38,Idaho,state,2018-02-28,235467.8204
@@ -3536,7 +3535,7 @@ id,SizeRank,RegionName,RegionType,year,price
 3534,38,Idaho,state,2001-09-30,126826.4579
 3535,38,Idaho,state,2004-02-29,135518.4849
 3536,38,Idaho,state,2015-11-30,191397.9381
-3537,38,Idaho,state,RegionID,20
+,,,,,
 3538,38,Idaho,state,2008-04-30,198570.5278
 3539,38,Idaho,state,2010-11-30,150557.2863
 3540,38,Idaho,state,2000-05-31,120488.4708
@@ -3655,7 +3654,7 @@ id,SizeRank,RegionName,RegionType,year,price
 3653,38,Idaho,state,2009-07-31,172518.7331
 3654,38,Idaho,state,2013-02-28,154794.5917
 3655,38,Idaho,state,2006-11-30,192676.4036
-3656,38,Idaho,state,StateName,
+,,,,,
 3657,38,Idaho,state,2000-09-30,121942.8463
 3658,38,Idaho,state,2021-06-30,422824.2254
 3659,38,Idaho,state,2021-09-30,440591.9132
@@ -3703,7 +3702,7 @@ id,SizeRank,RegionName,RegionType,year,price
 3701,5,Illinois,state,2002-12-31,142701.835
 3702,5,Illinois,state,2003-05-31,146406.6743
 3703,5,Illinois,state,2007-05-31,189287.2501
-3704,5,Illinois,state,RegionID,21
+,,,,,
 3705,5,Illinois,state,2009-03-31,162852.9425
 3706,5,Illinois,state,2003-01-31,143318.5441
 3707,5,Illinois,state,2000-07-31,117502.5379
@@ -3790,7 +3789,7 @@ id,SizeRank,RegionName,RegionType,year,price
 3788,5,Illinois,state,2022-07-31,244190.0848
 3789,5,Illinois,state,2003-10-31,151475.1532
 3790,5,Illinois,state,2022-09-30,242546.602
-3791,5,Illinois,state,StateName,
+,,,,,
 3792,5,Illinois,state,2010-09-30,146830.0517
 3793,5,Illinois,state,2003-04-30,145642.8216
 3794,5,Illinois,state,2018-08-31,179131.9922
@@ -4136,7 +4135,7 @@ id,SizeRank,RegionName,RegionType,year,price
 4134,16,Indiana,state,2016-09-30,128860.1276
 4135,16,Indiana,state,2013-02-28,110418.3977
 4136,16,Indiana,state,2013-07-31,112124.1005
-4137,16,Indiana,state,StateName,
+,,,,,
 4138,16,Indiana,state,2005-03-31,109562.4587
 4139,16,Indiana,state,2017-04-30,133208.1766
 4140,16,Indiana,state,2022-03-31,216922.1921
@@ -4156,7 +4155,7 @@ id,SizeRank,RegionName,RegionType,year,price
 4154,16,Indiana,state,2017-11-30,138891.9336
 4155,16,Indiana,state,2006-07-31,114280.0748
 4156,16,Indiana,state,2015-12-31,123807.4963
-4157,16,Indiana,state,RegionID,22
+,,,,,
 4158,16,Indiana,state,2008-05-31,116666.5495
 4159,16,Indiana,state,2011-01-31,110080.4557
 4160,16,Indiana,state,2006-03-31,113333.1329
@@ -4475,14 +4474,14 @@ id,SizeRank,RegionName,RegionType,year,price
 4473,31,Iowa,state,2020-05-31,157449.2278
 4474,31,Iowa,state,2013-11-30,111626.3625
 4475,31,Iowa,state,2011-01-31,103566.6952
-4476,31,Iowa,state,StateName,
+,,,,,
 4477,31,Iowa,state,2011-12-31,102079.994
 4478,31,Iowa,state,2016-05-31,126702.4482
 4479,31,Iowa,state,2014-11-30,115864.5467
 4480,31,Iowa,state,2005-07-31,100157.5161
 4481,31,Iowa,state,2017-01-31,130434.2408
 4482,31,Iowa,state,2021-05-31,174495.5269
-4483,31,Iowa,state,RegionID,19
+,,,,,
 4484,31,Iowa,state,2018-05-31,139073.3536
 4485,31,Iowa,state,2010-01-31,104807.5801
 4486,31,Iowa,state,2018-11-30,142756.6016
@@ -4584,7 +4583,7 @@ id,SizeRank,RegionName,RegionType,year,price
 4582,35,Kansas,state,2018-03-31,129752.845
 4583,35,Kansas,state,2013-11-30,104611.8041
 4584,35,Kansas,state,2023-04-30,218691.5365
-4585,35,Kansas,state,RegionID,23
+,,,,,
 4586,35,Kansas,state,2008-08-31,102316.8543
 4587,35,Kansas,state,2007-08-31,101445.7203
 4588,35,Kansas,state,2013-08-31,103368.8179
@@ -4610,7 +4609,7 @@ id,SizeRank,RegionName,RegionType,year,price
 4608,35,Kansas,state,2002-01-31,82898.68849
 4609,35,Kansas,state,2017-07-31,125260.1276
 4610,35,Kansas,state,2004-12-31,92985.21711
-4611,35,Kansas,state,StateName,
+,,,,,
 4612,35,Kansas,state,2007-10-31,101856.5751
 4613,35,Kansas,state,2008-11-30,102021.1053
 4614,35,Kansas,state,2001-07-31,80736.85379
@@ -5000,7 +4999,7 @@ id,SizeRank,RegionName,RegionType,year,price
 4998,25,Kentucky,state,2003-05-31,94698.99091
 4999,25,Kentucky,state,2003-01-31,93733.00457
 5000,25,Kentucky,state,2001-06-30,88783.99994
-5001,25,Kentucky,state,RegionID,24
+,,,,,
 5002,25,Kentucky,state,2007-05-31,107813.125
 5003,25,Kentucky,state,2005-04-30,101426.1932
 5004,25,Kentucky,state,2004-05-31,97805.75893
@@ -5058,7 +5057,7 @@ id,SizeRank,RegionName,RegionType,year,price
 5056,25,Kentucky,state,2002-09-30,92703.81965
 5057,25,Kentucky,state,2002-11-30,93264.89011
 5058,25,Kentucky,state,2007-02-28,107681.8224
-5059,25,Kentucky,state,StateName,
+,,,,,
 5060,25,Kentucky,state,2002-02-28,91141.47254
 5061,25,Kentucky,state,2006-03-31,105158.5972
 5062,25,Kentucky,state,2000-01-31,83087.94543
@@ -5247,7 +5246,7 @@ id,SizeRank,RegionName,RegionType,year,price
 5245,24,Louisiana,state,2022-06-30,191861.1755
 5246,24,Louisiana,state,2022-02-28,185532.318
 5247,24,Louisiana,state,2004-10-31,110283.1381
-5248,24,Louisiana,state,StateName,
+,,,,,
 5249,24,Louisiana,state,2017-07-31,149265.2923
 5250,24,Louisiana,state,2014-01-31,136400.7784
 5251,24,Louisiana,state,2013-12-31,136551.4651
@@ -5357,7 +5356,7 @@ id,SizeRank,RegionName,RegionType,year,price
 5355,24,Louisiana,state,2011-08-31,127994.2715
 5356,24,Louisiana,state,2011-10-31,127771.157
 5357,24,Louisiana,state,2005-10-31,117256.3316
-5358,24,Louisiana,state,RegionID,25
+,,,,,
 5359,24,Louisiana,state,2020-04-30,166465.597
 5360,24,Louisiana,state,2022-07-31,192523.7394
 5361,24,Louisiana,state,2019-09-30,160404.7257
@@ -5477,7 +5476,7 @@ id,SizeRank,RegionName,RegionType,year,price
 5475,42,Maine,state,2003-06-30,140842.67
 5476,42,Maine,state,2013-08-31,168525.7155
 5477,42,Maine,state,2017-05-31,202896.5844
-5478,42,Maine,state,StateName,
+,,,,,
 5479,42,Maine,state,2014-11-30,174243.1976
 5480,42,Maine,state,2016-06-30,189960.0359
 5481,42,Maine,state,2009-02-28,177825.6869
@@ -5545,7 +5544,7 @@ id,SizeRank,RegionName,RegionType,year,price
 5543,42,Maine,state,2023-01-31,363429.0756
 5544,42,Maine,state,2018-11-30,225631.0781
 5545,42,Maine,state,2001-07-31,114244.9596
-5546,42,Maine,state,RegionID,28
+,,,,,
 5547,42,Maine,state,2002-02-28,121746.7587
 5548,42,Maine,state,2020-09-30,259205.9692
 5549,42,Maine,state,2002-01-31,120545.4667
@@ -5807,7 +5806,7 @@ id,SizeRank,RegionName,RegionType,year,price
 5805,17,Maryland,state,2017-11-30,287399.7895
 5806,17,Maryland,state,2008-06-30,302172.2212
 5807,17,Maryland,state,2013-09-30,245633.377
-5808,17,Maryland,state,StateName,
+,,,,,
 5809,17,Maryland,state,2012-05-31,228177.8366
 5810,17,Maryland,state,2000-12-31,149736.3083
 5811,17,Maryland,state,2019-06-30,305811.8707
@@ -5939,7 +5938,7 @@ id,SizeRank,RegionName,RegionType,year,price
 5937,17,Maryland,state,2009-02-28,273638.211
 5938,17,Maryland,state,2004-11-30,243963.5774
 5939,17,Maryland,state,2017-07-31,283859.881
-5940,17,Maryland,state,RegionID,27
+,,,,,
 5941,17,Maryland,state,2002-12-31,180751.9233
 5942,17,Maryland,state,2004-10-31,240192.711
 5943,14,Massachusetts,state,2012-07-31,286484.2157
@@ -6136,7 +6135,7 @@ id,SizeRank,RegionName,RegionType,year,price
 6134,14,Massachusetts,state,2017-04-30,385152.867
 6135,14,Massachusetts,state,2017-10-31,398288.4846
 6136,14,Massachusetts,state,2009-03-31,305317.7355
-6137,14,Massachusetts,state,StateName,
+,,,,,
 6138,14,Massachusetts,state,2009-01-31,309388.9809
 6139,14,Massachusetts,state,2021-06-30,522718.5722
 6140,14,Massachusetts,state,2002-11-30,278459.4913
@@ -6183,7 +6182,7 @@ id,SizeRank,RegionName,RegionType,year,price
 6181,14,Massachusetts,state,2007-02-28,348701.8626
 6182,14,Massachusetts,state,2001-07-31,232699.5884
 6183,14,Massachusetts,state,2015-12-31,351599.8275
-6184,14,Massachusetts,state,RegionID,26
+,,,,,
 6185,14,Massachusetts,state,2008-03-31,330757.4511
 6186,14,Massachusetts,state,2020-02-29,441173.3735
 6187,14,Massachusetts,state,2015-11-30,349288.9024
@@ -6243,7 +6242,7 @@ id,SizeRank,RegionName,RegionType,year,price
 6241,9,Michigan,state,2005-01-31,133083.3298
 6242,9,Michigan,state,2002-09-30,121987.0601
 6243,9,Michigan,state,2001-06-30,115275.5572
-6244,9,Michigan,state,StateName,
+,,,,,
 6245,9,Michigan,state,2005-02-28,133410.4229
 6246,9,Michigan,state,2000-06-30,107451.4922
 6247,9,Michigan,state,2018-05-31,149953.0001
@@ -6254,7 +6253,7 @@ id,SizeRank,RegionName,RegionType,year,price
 6252,9,Michigan,state,2019-11-30,164564.2827
 6253,9,Michigan,state,2018-04-30,148669.7128
 6254,9,Michigan,state,2008-11-30,110541.3917
-6255,9,Michigan,state,RegionID,30
+,,,,,
 6256,9,Michigan,state,2002-08-31,121637.4259
 6257,9,Michigan,state,2022-04-30,221613.2604
 6258,9,Michigan,state,2005-11-30,135517.5817
@@ -6624,7 +6623,7 @@ id,SizeRank,RegionName,RegionType,year,price
 6622,21,Minnesota,state,2019-11-30,248780.1629
 6623,21,Minnesota,state,2008-08-31,184316.1685
 6624,21,Minnesota,state,2012-01-31,145969.2829
-6625,21,Minnesota,state,RegionID,31
+,,,,,
 6626,21,Minnesota,state,2019-10-31,247784.1202
 6627,21,Minnesota,state,2016-03-31,198792.4427
 6628,21,Minnesota,state,2004-03-31,178945.9954
@@ -6774,7 +6773,7 @@ id,SizeRank,RegionName,RegionType,year,price
 6772,21,Minnesota,state,2016-10-31,205032.9802
 6773,21,Minnesota,state,2012-12-31,157357.735
 6774,21,Minnesota,state,2013-02-28,159732.6414
-6775,21,Minnesota,state,StateName,
+,,,,,
 6776,21,Minnesota,state,2010-02-28,165648.5998
 6777,21,Minnesota,state,2005-04-30,194022.2437
 6778,21,Minnesota,state,2004-11-30,188470.5859
@@ -7047,7 +7046,7 @@ id,SizeRank,RegionName,RegionType,year,price
 7045,34,Mississippi,state,2009-12-31,93697.51167
 7046,34,Mississippi,state,2007-06-30,99359.31084
 7047,34,Mississippi,state,2000-01-31,70557.43819
-7048,34,Mississippi,state,StateName,
+,,,,,
 7049,34,Mississippi,state,2007-04-30,98767.98971
 7050,34,Mississippi,state,2008-01-31,100000.9911
 7051,34,Mississippi,state,2009-09-30,94550.2198
@@ -7071,7 +7070,7 @@ id,SizeRank,RegionName,RegionType,year,price
 7069,34,Mississippi,state,2010-05-31,93187.12427
 7070,34,Mississippi,state,2007-07-31,99501.24654
 7071,34,Mississippi,state,2006-10-31,96417.70303
-7072,34,Mississippi,state,RegionID,34
+,,,,,
 7073,34,Mississippi,state,2022-11-30,165279.1562
 7074,34,Mississippi,state,2022-09-30,166859.7764
 7075,18,Missouri,state,2019-09-30,160041.9469
@@ -7175,7 +7174,7 @@ id,SizeRank,RegionName,RegionType,year,price
 7173,18,Missouri,state,2015-02-28,122862.2365
 7174,18,Missouri,state,2013-12-31,117821.4168
 7175,18,Missouri,state,2001-08-31,98340.35045
-7176,18,Missouri,state,StateName,
+,,,,,
 7177,18,Missouri,state,2022-10-31,230198.3936
 7178,18,Missouri,state,2020-04-30,167085.6288
 7179,18,Missouri,state,2008-04-30,128711.3406
@@ -7318,7 +7317,7 @@ id,SizeRank,RegionName,RegionType,year,price
 7316,18,Missouri,state,2021-11-30,206112.5967
 7317,18,Missouri,state,2015-08-31,126783.4908
 7318,18,Missouri,state,2021-10-31,204711.2626
-7319,18,Missouri,state,RegionID,32
+,,,,,
 7320,18,Missouri,state,2007-06-30,130418.326
 7321,18,Missouri,state,2011-06-30,112943.3435
 7322,18,Missouri,state,2011-07-31,112477.5445
@@ -7398,7 +7397,7 @@ id,SizeRank,RegionName,RegionType,year,price
 7396,44,Montana,state,2011-08-31,167817.7358
 7397,44,Montana,state,2019-07-31,268371.1072
 7398,44,Montana,state,2009-09-30,177940.9741
-7399,44,Montana,state,StateName,
+,,,,,
 7400,44,Montana,state,2020-01-31,277152.6372
 7401,44,Montana,state,2015-05-31,205692.9881
 7402,44,Montana,state,2010-06-30,174655.7798
@@ -7431,7 +7430,7 @@ id,SizeRank,RegionName,RegionType,year,price
 7429,44,Montana,state,2021-06-30,360637.5646
 7430,44,Montana,state,2001-08-31,
 7431,44,Montana,state,2002-11-30,
-7432,44,Montana,state,RegionID,35
+,,,,,
 7433,44,Montana,state,2013-06-30,182611.3392
 7434,44,Montana,state,2007-11-30,181520.2408
 7435,44,Montana,state,2004-01-31,
@@ -7804,7 +7803,7 @@ id,SizeRank,RegionName,RegionType,year,price
 7802,37,Nebraska,state,2004-03-31,116413.7298
 7803,37,Nebraska,state,2001-12-31,105520.4252
 7804,37,Nebraska,state,2011-02-28,122223.1689
-7805,37,Nebraska,state,RegionID,38
+,,,,,
 7806,37,Nebraska,state,2023-01-31,247766.596
 7807,37,Nebraska,state,2005-02-28,121238.8684
 7808,37,Nebraska,state,2001-11-30,105286.5271
@@ -7823,7 +7822,7 @@ id,SizeRank,RegionName,RegionType,year,price
 7821,37,Nebraska,state,2014-02-28,130728.2258
 7822,37,Nebraska,state,2004-01-31,115381.9635
 7823,37,Nebraska,state,2013-05-31,126482.8733
-7824,37,Nebraska,state,StateName,
+,,,,,
 7825,37,Nebraska,state,2016-05-31,147770.4648
 7826,37,Nebraska,state,2010-11-30,123051.5486
 7827,37,Nebraska,state,2009-02-28,122682.3343
@@ -8052,7 +8051,7 @@ id,SizeRank,RegionName,RegionType,year,price
 8050,32,Nevada,state,2022-08-31,450617.5454
 8051,32,Nevada,state,2019-08-31,310047.0902
 8052,32,Nevada,state,2021-07-31,373644.1884
-8053,32,Nevada,state,RegionID,42
+,,,,,
 8054,32,Nevada,state,2012-02-29,130806.5983
 8055,32,Nevada,state,2014-10-31,201658.8478
 8056,32,Nevada,state,2000-09-30,160154.942
@@ -8164,7 +8163,7 @@ id,SizeRank,RegionName,RegionType,year,price
 8162,32,Nevada,state,2014-08-31,199847.0714
 8163,32,Nevada,state,2018-09-30,297206.4261
 8164,32,Nevada,state,2000-05-31,157984.2982
-8165,32,Nevada,state,StateName,
+,,,,,
 8166,32,Nevada,state,2020-08-31,320716.8159
 8167,32,Nevada,state,2019-10-31,310753.2365
 8168,32,Nevada,state,2021-11-30,396128.77
@@ -8278,7 +8277,7 @@ id,SizeRank,RegionName,RegionType,year,price
 8276,41,New Hampshire,state,2007-07-31,249369.7814
 8277,41,New Hampshire,state,2013-12-31,212922.1057
 8278,41,New Hampshire,state,2011-12-31,201904.6657
-8279,41,New Hampshire,state,RegionID,39
+,,,,,
 8280,41,New Hampshire,state,2008-03-31,241914.1351
 8281,41,New Hampshire,state,2013-09-30,210324.4686
 8282,41,New Hampshire,state,2004-10-31,231547.0611
@@ -8325,7 +8324,7 @@ id,SizeRank,RegionName,RegionType,year,price
 8323,41,New Hampshire,state,2010-12-31,210179.1757
 8324,41,New Hampshire,state,2005-10-31,252673.9346
 8325,41,New Hampshire,state,2018-12-31,283205.9831
-8326,41,New Hampshire,state,StateName,
+,,,,,
 8327,41,New Hampshire,state,2017-02-28,251345.9047
 8328,41,New Hampshire,state,2014-01-31,213486.4852
 8329,41,New Hampshire,state,2015-03-31,223454.1871
@@ -8589,7 +8588,7 @@ id,SizeRank,RegionName,RegionType,year,price
 8587,10,New Jersey,state,2020-03-31,347048.8376
 8588,10,New Jersey,state,2014-05-31,275292.5021
 8589,10,New Jersey,state,2023-05-31,468096.2227
-8590,10,New Jersey,state,StateName,
+,,,,,
 8591,10,New Jersey,state,2016-03-31,291963.8041
 8592,10,New Jersey,state,2015-02-28,279693.779
 8593,10,New Jersey,state,2000-12-31,169690.4335
@@ -8757,7 +8756,7 @@ id,SizeRank,RegionName,RegionType,year,price
 8755,10,New Jersey,state,2018-05-31,318362.4044
 8756,10,New Jersey,state,2004-12-31,285683.5643
 8757,10,New Jersey,state,2002-07-31,202238.2874
-8758,10,New Jersey,state,RegionID,40
+,,,,,
 8759,10,New Jersey,state,2000-10-31,166868.5113
 8760,10,New Jersey,state,2007-10-31,332898.9928
 8761,10,New Jersey,state,2016-04-30,292382.7381
@@ -8882,7 +8881,7 @@ id,SizeRank,RegionName,RegionType,year,price
 8880,36,New Mexico,state,2009-01-31,175452.427
 8881,36,New Mexico,state,2006-04-30,163649.1416
 8882,36,New Mexico,state,2019-03-31,187517.0808
-8883,36,New Mexico,state,RegionID,41
+,,,,,
 8884,36,New Mexico,state,2015-06-30,163421.3933
 8885,36,New Mexico,state,2002-01-31,
 8886,36,New Mexico,state,2011-07-31,156166.099
@@ -8913,7 +8912,7 @@ id,SizeRank,RegionName,RegionType,year,price
 8911,36,New Mexico,state,2004-11-30,141522.3016
 8912,36,New Mexico,state,2022-09-30,283655.3402
 8913,36,New Mexico,state,2006-03-31,161690.939
-8914,36,New Mexico,state,StateName,
+,,,,,
 8915,36,New Mexico,state,2002-11-30,128909.196
 8916,36,New Mexico,state,2015-09-30,164412.2049
 8917,36,New Mexico,state,2017-08-31,173971.3827
@@ -9105,7 +9104,7 @@ id,SizeRank,RegionName,RegionType,year,price
 9103,3,New York,state,2018-12-31,308035.3723
 9104,3,New York,state,2017-08-31,272050.8115
 9105,3,New York,state,2002-12-31,165556.9755
-9106,3,New York,state,RegionID,43
+,,,,,
 9107,3,New York,state,2000-06-30,133380.1019
 9108,3,New York,state,2020-01-31,332749.7078
 9109,3,New York,state,2010-01-31,222746.6373
@@ -9295,7 +9294,7 @@ id,SizeRank,RegionName,RegionType,year,price
 9293,3,New York,state,2010-07-31,224290.0124
 9294,3,New York,state,2014-06-30,231890.7725
 9295,3,New York,state,2020-03-31,336350.7468
-9296,3,New York,state,StateName,
+,,,,,
 9297,3,New York,state,2012-07-31,216404.3148
 9298,3,New York,state,2012-08-31,216578.3243
 9299,3,New York,state,2014-02-28,227377.0741
@@ -9416,7 +9415,7 @@ id,SizeRank,RegionName,RegionType,year,price
 9414,8,North Carolina,state,2009-10-31,155418.9727
 9415,8,North Carolina,state,2021-10-31,271216.0696
 9416,8,North Carolina,state,2020-09-30,221917.6437
-9417,8,North Carolina,state,StateName,
+,,,,,
 9418,8,North Carolina,state,2022-04-30,303433.1892
 9419,8,North Carolina,state,2009-07-31,157545.5253
 9420,8,North Carolina,state,2023-05-31,323486.5448
@@ -9518,7 +9517,7 @@ id,SizeRank,RegionName,RegionType,year,price
 9516,8,North Carolina,state,2014-07-31,152168.1158
 9517,8,North Carolina,state,2005-05-31,144312.8113
 9518,8,North Carolina,state,2012-12-31,143698.0316
-9519,8,North Carolina,state,RegionID,36
+,,,,,
 9520,8,North Carolina,state,2012-11-30,143734.7505
 9521,8,North Carolina,state,2021-08-31,266613.7243
 9522,8,North Carolina,state,2021-09-30,268987.8399
@@ -9685,7 +9684,7 @@ id,SizeRank,RegionName,RegionType,year,price
 9683,47,North Dakota,state,2003-08-31,
 9684,47,North Dakota,state,2009-08-31,136429.6935
 9685,47,North Dakota,state,2007-05-31,
-9686,47,North Dakota,state,StateName,
+,,,,,
 9687,47,North Dakota,state,2019-09-30,205380.0325
 9688,47,North Dakota,state,2007-03-31,
 9689,47,North Dakota,state,2007-12-31,136918.0953
@@ -9873,7 +9872,7 @@ id,SizeRank,RegionName,RegionType,year,price
 9871,47,North Dakota,state,2018-09-30,199617.2763
 9872,47,North Dakota,state,2011-03-31,139151.887
 9873,47,North Dakota,state,2010-09-30,138062.0654
-9874,47,North Dakota,state,RegionID,37
+,,,,,
 9875,47,North Dakota,state,2012-10-31,150152.6311
 9876,47,North Dakota,state,2008-08-31,
 9877,47,North Dakota,state,2021-10-31,227846.1388
@@ -9924,7 +9923,7 @@ id,SizeRank,RegionName,RegionType,year,price
 9922,6,Ohio,state,2007-04-30,125325.5005
 9923,6,Ohio,state,2012-11-30,105982.1351
 9924,6,Ohio,state,2000-10-31,104003.9496
-9925,6,Ohio,state,StateName,
+,,,,,
 9926,6,Ohio,state,2022-04-30,202983.8715
 9927,6,Ohio,state,2012-10-31,105840.824
 9928,6,Ohio,state,2010-08-31,112439.7438
@@ -10000,7 +9999,7 @@ id,SizeRank,RegionName,RegionType,year,price
 9998,6,Ohio,state,2006-06-30,125782.4814
 9999,6,Ohio,state,2012-03-31,104657.4397
 10000,6,Ohio,state,2010-06-30,113038.8786
-10001,6,Ohio,state,RegionID,44
+,,,,,
 10002,6,Ohio,state,2013-09-30,110751.7129
 10003,6,Ohio,state,2013-05-31,108422.9761
 10004,6,Ohio,state,2023-04-30,214309.0413
@@ -10325,7 +10324,7 @@ id,SizeRank,RegionName,RegionType,year,price
 10323,27,Oklahoma,state,2008-11-30,98948.62863
 10324,27,Oklahoma,state,2016-08-31,114679.4022
 10325,27,Oklahoma,state,2002-08-31,81319.27469
-10326,27,Oklahoma,state,RegionID,45
+,,,,,
 10327,27,Oklahoma,state,2010-03-31,99411.46529
 10328,27,Oklahoma,state,2018-02-28,121091.8306
 10329,27,Oklahoma,state,2004-08-31,87030.79264
@@ -10408,7 +10407,7 @@ id,SizeRank,RegionName,RegionType,year,price
 10406,27,Oklahoma,state,2016-05-31,113566.8558
 10407,27,Oklahoma,state,2012-11-30,97893.31257
 10408,27,Oklahoma,state,2000-05-31,73916.08515
-10409,27,Oklahoma,state,StateName,
+,,,,,
 10410,27,Oklahoma,state,2001-06-30,78000.7269
 10411,27,Oklahoma,state,2018-09-30,123767.8026
 10412,27,Oklahoma,state,2000-11-30,75711.63085
@@ -10502,9 +10501,9 @@ id,SizeRank,RegionName,RegionType,year,price
 10500,26,Oregon,state,2002-06-30,163668.8579
 10501,26,Oregon,state,2008-10-31,253592.3702
 10502,26,Oregon,state,2002-02-28,161309.3312
-10503,26,Oregon,state,StateName,
+,,,,,
 10504,26,Oregon,state,2021-03-31,431078.9704
-10505,26,Oregon,state,RegionID,46
+,,,,,
 10506,26,Oregon,state,2001-02-28,155238.0097
 10507,26,Oregon,state,2017-06-30,323314.8202
 10508,26,Oregon,state,2003-02-28,168824.0067
@@ -10898,7 +10897,7 @@ id,SizeRank,RegionName,RegionType,year,price
 10896,4,Pennsylvania,state,2014-10-31,150095.5082
 10897,4,Pennsylvania,state,2015-02-28,150301.8217
 10898,4,Pennsylvania,state,2007-07-31,158524.7828
-10899,4,Pennsylvania,state,StateName,
+,,,,,
 10900,4,Pennsylvania,state,2022-04-30,243231.9668
 10901,4,Pennsylvania,state,2002-08-31,106382.2774
 10902,4,Pennsylvania,state,2019-04-30,180277.0345
@@ -10962,7 +10961,7 @@ id,SizeRank,RegionName,RegionType,year,price
 10960,4,Pennsylvania,state,2016-07-31,157878.7606
 10961,4,Pennsylvania,state,2006-08-31,154280.5456
 10962,4,Pennsylvania,state,2000-04-30,93108.89468
-10963,4,Pennsylvania,state,RegionID,47
+,,,,,
 10964,4,Pennsylvania,state,2020-09-30,197849.0639
 10965,4,Pennsylvania,state,2009-06-30,152523.4052
 10966,4,Pennsylvania,state,2016-02-29,156673.7153
@@ -11193,7 +11192,7 @@ id,SizeRank,RegionName,RegionType,year,price
 11191,43,Rhode Island,state,2001-02-28,143941.7485
 11192,43,Rhode Island,state,2000-10-31,139690.194
 11193,43,Rhode Island,state,2007-10-31,282347.6433
-11194,43,Rhode Island,state,StateName,
+,,,,,
 11195,43,Rhode Island,state,2016-10-31,254807.6766
 11196,43,Rhode Island,state,2009-03-31,239989.3902
 11197,43,Rhode Island,state,2003-04-30,202795.2596
@@ -11294,7 +11293,7 @@ id,SizeRank,RegionName,RegionType,year,price
 11292,43,Rhode Island,state,2002-10-31,186220.1683
 11293,43,Rhode Island,state,2022-10-31,421169.3947
 11294,43,Rhode Island,state,2006-12-31,294240.3338
-11295,43,Rhode Island,state,RegionID,50
+,,,,,
 11296,43,Rhode Island,state,2021-12-31,382889.3617
 11297,43,Rhode Island,state,2014-09-30,228533.5883
 11298,43,Rhode Island,state,2004-02-29,234887.4178
@@ -11471,7 +11470,7 @@ id,SizeRank,RegionName,RegionType,year,price
 11469,22,South Carolina,state,2004-06-30,123758.9001
 11470,22,South Carolina,state,2002-09-30,115824.8164
 11471,22,South Carolina,state,2014-09-30,141255.2285
-11472,22,South Carolina,state,StateName,
+,,,,,
 11473,22,South Carolina,state,2020-02-29,190914.5117
 11474,22,South Carolina,state,2008-12-31,146481.9333
 11475,22,South Carolina,state,2017-12-31,168297.743
@@ -11509,7 +11508,7 @@ id,SizeRank,RegionName,RegionType,year,price
 11507,22,South Carolina,state,2003-05-31,118158.4538
 11508,22,South Carolina,state,2009-05-31,142556.4898
 11509,22,South Carolina,state,2016-10-31,157863.9151
-11510,22,South Carolina,state,RegionID,51
+,,,,,
 11511,22,South Carolina,state,2016-11-30,158824.9534
 11512,22,South Carolina,state,2007-04-30,151272.4288
 11513,22,South Carolina,state,2003-04-30,117902.9644
@@ -11703,7 +11702,7 @@ id,SizeRank,RegionName,RegionType,year,price
 11701,46,South Dakota,state,2009-04-30,130211.7815
 11702,46,South Dakota,state,2005-02-28,113391.6708
 11703,46,South Dakota,state,2019-02-28,193100.6668
-11704,46,South Dakota,state,StateName,
+,,,,,
 11705,46,South Dakota,state,2009-05-31,129888.8106
 11706,46,South Dakota,state,2007-10-31,126880.6989
 11707,46,South Dakota,state,2006-04-30,121094.2964
@@ -11812,7 +11811,7 @@ id,SizeRank,RegionName,RegionType,year,price
 11810,46,South Dakota,state,2010-01-31,127850.9475
 11811,46,South Dakota,state,2005-05-31,115252.4953
 11812,46,South Dakota,state,2012-08-31,136023.0632
-11813,46,South Dakota,state,RegionID,52
+,,,,,
 11814,46,South Dakota,state,2017-12-31,181651.8473
 11815,46,South Dakota,state,2008-01-31,128380.9118
 11816,46,South Dakota,state,2008-05-31,129224.8104
@@ -11921,7 +11920,7 @@ id,SizeRank,RegionName,RegionType,year,price
 11919,15,Tennessee,state,2019-09-30,192782.6942
 11920,15,Tennessee,state,2020-04-30,203907.7653
 11921,15,Tennessee,state,2019-10-31,194070.6315
-11922,15,Tennessee,state,RegionID,53
+,,,,,
 11923,15,Tennessee,state,2020-08-31,208116.9772
 11924,15,Tennessee,state,2007-12-31,133249.4536
 11925,15,Tennessee,state,2020-03-31,202480.6511
@@ -12145,7 +12144,7 @@ id,SizeRank,RegionName,RegionType,year,price
 12143,15,Tennessee,state,2000-09-30,100054.3991
 12144,15,Tennessee,state,2018-03-31,171202.6331
 12145,15,Tennessee,state,2012-08-31,119896.6662
-12146,15,Tennessee,state,StateName,
+,,,,,
 12147,15,Tennessee,state,2007-07-31,133204.9539
 12148,15,Tennessee,state,2005-07-31,118872.0532
 12149,15,Tennessee,state,2006-07-31,127241.163
@@ -12209,7 +12208,7 @@ id,SizeRank,RegionName,RegionType,year,price
 12207,1,Texas,state,2011-04-30,130312.9099
 12208,1,Texas,state,2021-11-30,268344.7953
 12209,1,Texas,state,2011-05-31,129973.2677
-12210,1,Texas,state,RegionID,54
+,,,,,
 12211,1,Texas,state,2015-07-31,162129.6485
 12212,1,Texas,state,2006-04-30,131059.395
 12213,1,Texas,state,2004-01-31,117446.1597
@@ -12333,7 +12332,7 @@ id,SizeRank,RegionName,RegionType,year,price
 12331,1,Texas,state,2018-07-31,199169.7738
 12332,1,Texas,state,2007-07-31,138006.1483
 12333,1,Texas,state,2016-08-31,175846.2189
-12334,1,Texas,state,StateName,
+,,,,,
 12335,1,Texas,state,2001-10-31,110416.2614
 12336,1,Texas,state,2009-06-30,134729.8938
 12337,1,Texas,state,2002-06-30,112218.1958
@@ -12569,7 +12568,7 @@ id,SizeRank,RegionName,RegionType,year,price
 12567,30,Utah,state,2012-01-31,185540.3664
 12568,30,Utah,state,2018-07-31,319908.7965
 12569,30,Utah,state,2022-07-31,551338.3684
-12570,30,Utah,state,RegionID,55
+,,,,,
 12571,30,Utah,state,2012-02-29,185716.0849
 12572,30,Utah,state,2005-10-31,188357.3112
 12573,30,Utah,state,2000-04-30,169311.0711
@@ -12698,7 +12697,7 @@ id,SizeRank,RegionName,RegionType,year,price
 12696,30,Utah,state,2007-10-31,245236.1097
 12697,30,Utah,state,2013-06-30,211581.1044
 12698,30,Utah,state,2022-03-31,526918.0131
-12699,30,Utah,state,StateName,
+,,,,,
 12700,30,Utah,state,2020-04-30,369198.5707
 12701,30,Utah,state,2004-12-31,182079.4957
 12702,30,Utah,state,2013-05-31,209225.4556
@@ -12752,10 +12751,10 @@ id,SizeRank,RegionName,RegionType,year,price
 12750,50,Vermont,state,2020-09-30,244815.271
 12751,50,Vermont,state,2021-02-28,263323.0637
 12752,50,Vermont,state,2021-06-30,280406.9841
-12753,50,Vermont,state,StateName,
+,,,,,
 12754,50,Vermont,state,2021-03-31,266763.5929
 12755,50,Vermont,state,2020-11-30,252122.473
-12756,50,Vermont,state,RegionID,58
+,,,,,
 12757,50,Vermont,state,2023-03-31,341492.133
 12758,50,Vermont,state,2000-01-31,93285.74553
 12759,50,Vermont,state,2000-04-30,94163.64255
@@ -13217,7 +13216,7 @@ id,SizeRank,RegionName,RegionType,year,price
 13215,11,Virginia,state,2001-05-31,130850.9458
 13216,11,Virginia,state,2008-03-31,243729.399
 13217,11,Virginia,state,2020-08-31,288521.7232
-13218,11,Virginia,state,RegionID,56
+,,,,,
 13219,11,Virginia,state,2007-12-31,248710.503
 13220,11,Virginia,state,2008-02-29,245636.7816
 13221,11,Virginia,state,2020-09-30,291644.1563
@@ -13238,7 +13237,7 @@ id,SizeRank,RegionName,RegionType,year,price
 13236,11,Virginia,state,2009-01-31,223993.7963
 13237,11,Virginia,state,2009-05-31,218404.3957
 13238,11,Virginia,state,2001-03-31,129070.6581
-13239,11,Virginia,state,StateName,
+,,,,,
 13240,11,Virginia,state,2001-08-31,133816.4954
 13241,11,Virginia,state,2007-07-31,254159.1374
 13242,11,Virginia,state,2020-11-30,299594.0872
@@ -13324,7 +13323,7 @@ id,SizeRank,RegionName,RegionType,year,price
 13322,12,Washington,state,2022-01-31,560442.4656
 13323,12,Washington,state,2008-12-31,291551.2666
 13324,12,Washington,state,2022-05-31,611316.14
-13325,12,Washington,state,StateName,
+,,,,,
 13326,12,Washington,state,2014-08-31,259645.6222
 13327,12,Washington,state,2011-07-31,233510.4865
 13328,12,Washington,state,2005-09-30,265282.6925
@@ -13342,7 +13341,7 @@ id,SizeRank,RegionName,RegionType,year,price
 13340,12,Washington,state,2011-11-30,226400.7974
 13341,12,Washington,state,2008-03-31,316174.3597
 13342,12,Washington,state,2005-12-31,276942.3479
-13343,12,Washington,state,RegionID,59
+,,,,,
 13344,12,Washington,state,2015-04-30,273722.3122
 13345,12,Washington,state,2022-11-30,589584.6211
 13346,12,Washington,state,2005-11-30,273338.9366
@@ -13780,7 +13779,7 @@ id,SizeRank,RegionName,RegionType,year,price
 13778,39,West Virginia,state,2020-04-30,117388.0194
 13779,39,West Virginia,state,2014-10-31,93806.50539
 13780,39,West Virginia,state,2008-07-31,89475.95767
-13781,39,West Virginia,state,RegionID,61
+,,,,,
 13782,39,West Virginia,state,2003-10-31,71987.86482
 13783,39,West Virginia,state,2020-07-31,118871.3366
 13784,39,West Virginia,state,2020-03-31,116213.1419
@@ -13851,7 +13850,6 @@ id,SizeRank,RegionName,RegionType,year,price
 13849,39,West Virginia,state,2007-04-30,87554.60343
 13850,39,West Virginia,state,2009-03-31,87703.02139
 13851,39,West Virginia,state,2000-08-31,62392.51082
-13852,39,West Virginia,state,StateName,
 13853,39,West Virginia,state,2015-03-31,99250.59095
 13854,39,West Virginia,state,2019-10-31,113628.8135
 13855,39,West Virginia,state,2013-11-30,90421.64819
@@ -13899,7 +13897,6 @@ id,SizeRank,RegionName,RegionType,year,price
 13897,19,Wisconsin,state,2008-04-30,163525.7697
 13898,19,Wisconsin,state,2020-10-31,219291.7423
 13899,19,Wisconsin,state,2006-05-31,163082.3437
-13900,19,Wisconsin,state,RegionID,60
 13901,19,Wisconsin,state,2018-07-31,186723.0712
 13902,19,Wisconsin,state,2008-06-30,162442.1401
 13903,19,Wisconsin,state,2001-04-30,117458.0357
@@ -13980,7 +13977,6 @@ id,SizeRank,RegionName,RegionType,year,price
 13978,19,Wisconsin,state,2009-01-31,156488.3949
 13979,19,Wisconsin,state,2007-06-30,165576.7756
 13980,19,Wisconsin,state,2023-03-31,273899.5145
-13981,19,Wisconsin,state,StateName,
 13982,19,Wisconsin,state,2020-01-31,204939.8938
 13983,19,Wisconsin,state,2000-02-29,110886.0385
 13984,19,Wisconsin,state,2019-01-31,191774.673
@@ -14157,12 +14153,12 @@ id,SizeRank,RegionName,RegionType,year,price
 14155,51,Wyoming,state,2009-01-31,191824.2464
 14156,51,Wyoming,state,2007-05-31,188017.5131
 14157,51,Wyoming,state,2020-10-31,262264.2097
-14158,51,Wyoming,state,RegionID,62
+,,,,,
 14159,51,Wyoming,state,2010-12-31,185973.6553
 14160,51,Wyoming,state,2019-11-30,246587.7057
 14161,51,Wyoming,state,2014-03-31,200568.7141
 14162,51,Wyoming,state,2016-05-31,223418.7889
-14163,51,Wyoming,state,2000-03-31,
+14163,51,Wyoming,state,2000-03-31,135660.1078
 14164,51,Wyoming,state,2016-01-31,222325.716
 14165,51,Wyoming,state,2011-10-31,184365.1563
 14166,51,Wyoming,state,2014-07-31,203127.2074
@@ -14197,9 +14193,9 @@ id,SizeRank,RegionName,RegionType,year,price
 14195,51,Wyoming,state,2016-02-29,222834.3975
 14196,51,Wyoming,state,2014-05-31,201612.373
 14197,51,Wyoming,state,2004-09-30,150811.2832
-14198,51,Wyoming,state,2000-09-30,
-14199,51,Wyoming,state,2001-07-31,
-14200,51,Wyoming,state,2001-08-31,
+14198,51,Wyoming,state,2000-09-30,135660.1078
+14199,51,Wyoming,state,2001-07-31,135660.1078
+14200,51,Wyoming,state,2001-08-31,135660.1078
 14201,51,Wyoming,state,2019-12-31,248384.4864
 14202,51,Wyoming,state,2021-02-28,272700.0348
 14203,51,Wyoming,state,2004-07-31,148062.4593
@@ -14207,9 +14203,9 @@ id,SizeRank,RegionName,RegionType,year,price
 14205,51,Wyoming,state,2011-01-31,185781.7019
 14206,51,Wyoming,state,2008-10-31,192219.7351
 14207,51,Wyoming,state,2017-07-31,224985.8752
-14208,51,Wyoming,state,2000-07-31,
+14208,51,Wyoming,state,2000-07-31,135660.1078
 14209,51,Wyoming,state,2004-02-29,142874.2364
-14210,51,Wyoming,state,2001-04-30,
+14210,51,Wyoming,state,2001-04-30,135660.1078
 14211,51,Wyoming,state,2020-07-31,256034.2308
 14212,51,Wyoming,state,2002-06-30,133897.192
 14213,51,Wyoming,state,2006-03-31,169694.0437
@@ -14224,10 +14220,10 @@ id,SizeRank,RegionName,RegionType,year,price
 14222,51,Wyoming,state,2018-05-31,228258.8514
 14223,51,Wyoming,state,2015-02-28,209350.8509
 14224,51,Wyoming,state,2020-09-30,259831.9854
-14225,51,Wyoming,state,2001-03-31,
+14225,51,Wyoming,state,2001-03-31,135660.1078
 14226,51,Wyoming,state,2015-03-31,210935.032
 14227,51,Wyoming,state,2007-12-31,192979.6207
-14228,51,Wyoming,state,2000-08-31,
+14228,51,Wyoming,state,2000-08-31,135660.1078
 14229,51,Wyoming,state,2015-05-31,213626.862
 14230,51,Wyoming,state,2021-10-31,292260.0053
 14231,51,Wyoming,state,2004-01-31,142429.3421
@@ -14259,7 +14255,7 @@ id,SizeRank,RegionName,RegionType,year,price
 14257,51,Wyoming,state,2022-09-30,322352.4394
 14258,51,Wyoming,state,2021-12-31,297880.9429
 14259,51,Wyoming,state,2007-08-31,191075.7831
-14260,51,Wyoming,state,2001-06-30,
+14260,51,Wyoming,state,2001-06-30,135660.1078
 14261,51,Wyoming,state,2006-01-31,167445.9664
 14262,51,Wyoming,state,2014-08-31,203833.6433
 14263,51,Wyoming,state,2018-02-28,227358.1165
@@ -14275,19 +14271,19 @@ id,SizeRank,RegionName,RegionType,year,price
 14273,51,Wyoming,state,2002-07-31,133054.7278
 14274,51,Wyoming,state,2008-05-31,193543.1003
 14275,51,Wyoming,state,2011-07-31,184469.3412
-14276,51,Wyoming,state,2001-05-31,
+14276,51,Wyoming,state,2001-05-31,135660.1078
 14277,51,Wyoming,state,2020-05-31,254032.7407
 14278,51,Wyoming,state,2004-04-30,144249.8555
 14279,51,Wyoming,state,2014-11-30,205849.1622
 14280,51,Wyoming,state,2015-10-31,220664.0653
-14281,51,Wyoming,state,2001-02-28,
+14281,51,Wyoming,state,2001-02-28,135660.1078
 14282,51,Wyoming,state,2007-04-30,186816.5378
-14283,51,Wyoming,state,2000-02-29,
+14283,51,Wyoming,state,2000-02-29,135660.1078
 14284,51,Wyoming,state,2017-02-28,223756.0623
 14285,51,Wyoming,state,2012-12-31,195182.2645
 14286,51,Wyoming,state,2005-09-30,162914.8331
 14287,51,Wyoming,state,2006-11-30,181770.777
-14288,51,Wyoming,state,2002-03-31,
+14288,51,Wyoming,state,2002-03-31,135660.1078
 14289,51,Wyoming,state,2006-07-31,176254.1691
 14290,51,Wyoming,state,2009-12-31,186923.2284
 14291,51,Wyoming,state,2012-03-31,186841.7149
@@ -14319,7 +14315,7 @@ id,SizeRank,RegionName,RegionType,year,price
 14317,51,Wyoming,state,2003-01-31,135127.1258
 14318,51,Wyoming,state,2010-02-28,186546.7896
 14319,51,Wyoming,state,2022-06-30,318499.1062
-14320,51,Wyoming,state,2002-01-31,
+14320,51,Wyoming,state,2002-01-31,135660.1078
 14321,51,Wyoming,state,2002-12-31,134805.6582
 14322,51,Wyoming,state,2022-11-30,323742.8333
 14323,51,Wyoming,state,2005-08-31,161777.167
@@ -14328,7 +14324,7 @@ id,SizeRank,RegionName,RegionType,year,price
 14326,51,Wyoming,state,2017-06-30,224855.1799
 14327,51,Wyoming,state,2005-07-31,160645.6563
 14328,51,Wyoming,state,2021-01-31,270244.8361
-14329,51,Wyoming,state,2002-02-28,
+14329,51,Wyoming,state,2002-02-28,135660.1078
 14330,51,Wyoming,state,2010-05-31,186973.0263
 14331,51,Wyoming,state,2018-12-31,232714.7963
 14332,51,Wyoming,state,2012-05-31,189016.7681
@@ -14341,21 +14337,21 @@ id,SizeRank,RegionName,RegionType,year,price
 14339,51,Wyoming,state,2019-01-31,233247.1535
 14340,51,Wyoming,state,2006-10-31,180323.7907
 14341,51,Wyoming,state,2012-04-30,187825.502
-14342,51,Wyoming,state,2000-01-31,
+14342,51,Wyoming,state,2000-01-31,135660.1078
 14343,51,Wyoming,state,2017-04-30,224202.9504
 14344,51,Wyoming,state,2019-02-28,234036.17
 14345,51,Wyoming,state,2012-09-30,192976.2947
 14346,51,Wyoming,state,2010-07-31,187403.626
 14347,51,Wyoming,state,2005-06-30,159297.0822
 14348,51,Wyoming,state,2010-03-31,186552.9522
-14349,51,Wyoming,state,2001-01-31,
+14349,51,Wyoming,state,2001-01-31,135660.1078
 14350,51,Wyoming,state,2022-05-31,315083.2862
 14351,51,Wyoming,state,2018-11-30,232275.3797
-14352,51,Wyoming,state,2000-11-30,
+14352,51,Wyoming,state,2000-11-30,135660.1078
 14353,51,Wyoming,state,2012-08-31,192125.9211
 14354,51,Wyoming,state,2017-05-31,224522.4568
 14355,51,Wyoming,state,2010-04-30,186647.0416
-14356,51,Wyoming,state,2000-05-31,
+14356,51,Wyoming,state,2000-05-31,135660.1078
 14357,51,Wyoming,state,2009-10-31,188103.1774
 14358,51,Wyoming,state,2013-03-31,197466.8235
 14359,51,Wyoming,state,2016-07-31,223489.9714
@@ -14372,7 +14368,7 @@ id,SizeRank,RegionName,RegionType,year,price
 14370,51,Wyoming,state,2013-09-30,199136.179
 14371,51,Wyoming,state,2016-08-31,223154.0132
 14372,51,Wyoming,state,2013-08-31,198947.202
-14373,51,Wyoming,state,StateName,
+,,,,,
 14374,51,Wyoming,state,2013-10-31,199673.739
 14375,51,Wyoming,state,2004-12-31,154165.5895
 14376,51,Wyoming,state,2009-04-30,190794.2046
@@ -14382,27 +14378,27 @@ id,SizeRank,RegionName,RegionType,year,price
 14380,51,Wyoming,state,2003-06-30,137824.9929
 14381,51,Wyoming,state,2004-10-31,151994.4148
 14382,51,Wyoming,state,2017-11-30,226090.9456
-14383,51,Wyoming,state,2000-04-30,
+14383,51,Wyoming,state,2000-04-30,135660.1078
 14384,51,Wyoming,state,2016-06-30,223556.8883
 14385,51,Wyoming,state,2009-03-31,191357.649
 14386,51,Wyoming,state,2019-10-31,245182.1036
 14387,51,Wyoming,state,2018-08-31,229550.9923
-14388,51,Wyoming,state,2000-06-30,
+14388,51,Wyoming,state,2000-06-30,135660.1078
 14389,51,Wyoming,state,2020-11-30,265081.4145
 14390,51,Wyoming,state,2013-11-30,200009.9902
 14391,51,Wyoming,state,2022-02-28,304453.5763
 14392,51,Wyoming,state,2010-11-30,186265.56
-14393,51,Wyoming,state,2001-09-30,
+14393,51,Wyoming,state,2001-09-30,135660.1078
 14394,51,Wyoming,state,2009-02-28,191723.4905
 14395,51,Wyoming,state,2010-10-31,186594.0468
 14396,51,Wyoming,state,2019-08-31,242586.5932
 14397,51,Wyoming,state,2018-09-30,230770.9131
-14398,51,Wyoming,state,2000-10-31,
+14398,51,Wyoming,state,2000-10-31,135660.1078
 14399,51,Wyoming,state,2019-06-30,239403.9993
 14400,51,Wyoming,state,2017-10-31,225646.0205
 14401,51,Wyoming,state,2022-10-31,322866.2003
 14402,51,Wyoming,state,2007-01-31,184135.8634
-14403,51,Wyoming,state,2001-11-30,
+14403,51,Wyoming,state,2001-11-30,135660.1078
 14404,51,Wyoming,state,2016-11-30,222587.4213
 14405,51,Wyoming,state,2009-09-30,188746.0677
 14406,51,Wyoming,state,2005-02-28,156234.7323
@@ -14417,7 +14413,7 @@ id,SizeRank,RegionName,RegionType,year,price
 14415,51,Wyoming,state,2009-08-31,189369.4766
 14416,51,Wyoming,state,2016-09-30,222636.9444
 14417,51,Wyoming,state,2002-04-30,135660.1078
-14418,51,Wyoming,state,2001-10-31,
+14418,51,Wyoming,state,2001-10-31,135660.1078
 14419,51,Wyoming,state,2013-07-31,198970.1701
 14420,51,Wyoming,state,2007-02-28,184941.8005
 14421,51,Wyoming,state,2006-06-30,174346.6407
@@ -14432,3 +14428,285 @@ id,SizeRank,RegionName,RegionType,year,price
 14430,51,Wyoming,state,2021-04-30,278562.3955
 14431,51,Wyoming,state,2012-01-31,185178.517
 14432,51,Wyoming,state,2023-05-31,333051.9421
+102001,0,US,country,2000-01-31,117171.5268
+102001,0,US,country,2000-02-29,117371.425
+102001,0,US,country,2000-03-31,117619.265
+102001,0,US,country,2000-04-30,118151.3638
+102001,0,US,country,2000-05-31,118763.6246
+102001,0,US,country,2000-06-30,119419.8758
+102001,0,US,country,2000-07-31,120114.1808
+102001,0,US,country,2000-08-31,120865.1951
+102001,0,US,country,2000-09-30,121647.6376
+102001,0,US,country,2000-10-31,122434.5808
+102001,0,US,country,2000-11-30,123219.0522
+102001,0,US,country,2000-12-31,124004.047
+102001,0,US,country,2001-01-31,124726.8563
+102001,0,US,country,2001-02-28,125361.8875
+102001,0,US,country,2001-03-31,125969.8075
+102001,0,US,country,2001-04-30,126621.5441
+102001,0,US,country,2001-05-31,127326.7007
+102001,0,US,country,2001-06-30,128053.2715
+102001,0,US,country,2001-07-31,128802.1306
+102001,0,US,country,2001-08-31,129585.2751
+102001,0,US,country,2001-09-30,130374.9866
+102001,0,US,country,2001-10-31,131161.103
+102001,0,US,country,2001-11-30,131893.2131
+102001,0,US,country,2001-12-31,132579.1077
+102001,0,US,country,2002-01-31,133186.4691
+102001,0,US,country,2002-02-28,133766.7119
+102001,0,US,country,2002-03-31,134357.1666
+102001,0,US,country,2002-04-30,134996.3249
+102001,0,US,country,2002-05-31,135702.4026
+102001,0,US,country,2002-06-30,136469.0275
+102001,0,US,country,2002-07-31,137310.9165
+102001,0,US,country,2002-08-31,138210.5444
+102001,0,US,country,2002-09-30,139121.4702
+102001,0,US,country,2002-10-31,140032.6732
+102001,0,US,country,2002-11-30,140900.0584
+102001,0,US,country,2002-12-31,141743.5062
+102001,0,US,country,2003-01-31,142505.4729
+102001,0,US,country,2003-02-28,143232.5356
+102001,0,US,country,2003-03-31,143956.2059
+102001,0,US,country,2003-04-30,144744.0187
+102001,0,US,country,2003-05-31,145613.8368
+102001,0,US,country,2003-06-30,146521.9771
+102001,0,US,country,2003-07-31,147480.7301
+102001,0,US,country,2003-08-31,148504.3218
+102001,0,US,country,2003-09-30,149589.7198
+102001,0,US,country,2003-10-31,150687.3649
+102001,0,US,country,2003-11-30,151703.6503
+102001,0,US,country,2003-12-31,152657.6171
+102001,0,US,country,2004-01-31,153565.1671
+102001,0,US,country,2004-02-29,154536.4532
+102001,0,US,country,2004-03-31,155608.6337
+102001,0,US,country,2004-04-30,156805.3161
+102001,0,US,country,2004-05-31,158151.6739
+102001,0,US,country,2004-06-30,159615.4363
+102001,0,US,country,2004-07-31,161196.5508
+102001,0,US,country,2004-08-31,162799.5871
+102001,0,US,country,2004-09-30,164381.2098
+102001,0,US,country,2004-10-31,165895.6219
+102001,0,US,country,2004-11-30,167319.75
+102001,0,US,country,2004-12-31,168721.4955
+102001,0,US,country,2005-01-31,170078.3006
+102001,0,US,country,2005-02-28,171456.9929
+102001,0,US,country,2005-03-31,172873.59
+102001,0,US,country,2005-04-30,174465.4646
+102001,0,US,country,2005-05-31,176155.5399
+102001,0,US,country,2005-06-30,177930.5279
+102001,0,US,country,2005-07-31,179717.5278
+102001,0,US,country,2005-08-31,181524.9277
+102001,0,US,country,2005-09-30,183301.4299
+102001,0,US,country,2005-10-31,184986.3916
+102001,0,US,country,2005-11-30,186531.0387
+102001,0,US,country,2005-12-31,187929.2829
+102001,0,US,country,2006-01-31,189125.898
+102001,0,US,country,2006-02-28,190238.8733
+102001,0,US,country,2006-03-31,191358.6152
+102001,0,US,country,2006-04-30,192558.8643
+102001,0,US,country,2006-05-31,193744.6859
+102001,0,US,country,2006-06-30,194797.2987
+102001,0,US,country,2006-07-31,195634.5585
+102001,0,US,country,2006-08-31,196291.9472
+102001,0,US,country,2006-09-30,196738.816
+102001,0,US,country,2006-10-31,197071.4512
+102001,0,US,country,2006-11-30,197260.9595
+102001,0,US,country,2006-12-31,197389.9572
+102001,0,US,country,2007-01-31,197458.4752
+102001,0,US,country,2007-02-28,197528.3092
+102001,0,US,country,2007-03-31,197590.9518
+102001,0,US,country,2007-04-30,197659.2785
+102001,0,US,country,2007-05-31,197621.0455
+102001,0,US,country,2007-06-30,197424.5491
+102001,0,US,country,2007-07-31,197015.7025
+102001,0,US,country,2007-08-31,196523.2334
+102001,0,US,country,2007-09-30,195925.5096
+102001,0,US,country,2007-10-31,195278.02
+102001,0,US,country,2007-11-30,194491.7816
+102001,0,US,country,2007-12-31,193654.9887
+102001,0,US,country,2008-01-31,192686.1005
+102001,0,US,country,2008-02-29,191617.6477
+102001,0,US,country,2008-03-31,190414.1516
+102001,0,US,country,2008-04-30,189115.1847
+102001,0,US,country,2008-05-31,187757.4556
+102001,0,US,country,2008-06-30,186322.1476
+102001,0,US,country,2008-07-31,184785.719
+102001,0,US,country,2008-08-31,183073.0857
+102001,0,US,country,2008-09-30,181337.8577
+102001,0,US,country,2008-10-31,179644.8735
+102001,0,US,country,2008-11-30,177984.8484
+102001,0,US,country,2008-12-31,176336.6956
+102001,0,US,country,2009-01-31,174724.2818
+102001,0,US,country,2009-02-28,173349.8894
+102001,0,US,country,2009-03-31,172091.4171
+102001,0,US,country,2009-04-30,170908.2884
+102001,0,US,country,2009-05-31,169711.6756
+102001,0,US,country,2009-06-30,168583.8871
+102001,0,US,country,2009-07-31,167564.841
+102001,0,US,country,2009-08-31,166623.5421
+102001,0,US,country,2009-09-30,165758.5469
+102001,0,US,country,2009-10-31,165050.269
+102001,0,US,country,2009-11-30,164654
+102001,0,US,country,2009-12-31,164479.2693
+102001,0,US,country,2010-01-31,164427.0562
+102001,0,US,country,2010-02-28,164369.4837
+102001,0,US,country,2010-03-31,164380.0301
+102001,0,US,country,2010-04-30,164493.4942
+102001,0,US,country,2010-05-31,164571.5495
+102001,0,US,country,2010-06-30,164462.3999
+102001,0,US,country,2010-07-31,163980.7771
+102001,0,US,country,2010-08-31,163252.7145
+102001,0,US,country,2010-09-30,162339.0994
+102001,0,US,country,2010-10-31,161390.7699
+102001,0,US,country,2010-11-30,160424.7977
+102001,0,US,country,2010-12-31,159519.4322
+102001,0,US,country,2011-01-31,158678.4463
+102001,0,US,country,2011-02-28,157895.5394
+102001,0,US,country,2011-03-31,157153.6722
+102001,0,US,country,2011-04-30,156378.4911
+102001,0,US,country,2011-05-31,155570.6678
+102001,0,US,country,2011-06-30,154778.829
+102001,0,US,country,2011-07-31,154117.8618
+102001,0,US,country,2011-08-31,153564.4822
+102001,0,US,country,2011-09-30,153093.5389
+102001,0,US,country,2011-10-31,152625.1585
+102001,0,US,country,2011-11-30,152221.445
+102001,0,US,country,2011-12-31,151869.1985
+102001,0,US,country,2012-01-31,151654.8264
+102001,0,US,country,2012-02-29,151647.9227
+102001,0,US,country,2012-03-31,151878.5591
+102001,0,US,country,2012-04-30,152269.8489
+102001,0,US,country,2012-05-31,152742.2556
+102001,0,US,country,2012-06-30,153292.3548
+102001,0,US,country,2012-07-31,153882.9007
+102001,0,US,country,2012-08-31,154391.6897
+102001,0,US,country,2012-09-30,154962.4369
+102001,0,US,country,2012-10-31,155578.2444
+102001,0,US,country,2012-11-30,156313.3757
+102001,0,US,country,2012-12-31,157092.6526
+102001,0,US,country,2013-01-31,157950.4815
+102001,0,US,country,2013-02-28,158848.7593
+102001,0,US,country,2013-03-31,159760.7807
+102001,0,US,country,2013-04-30,160771.2503
+102001,0,US,country,2013-05-31,161963.2457
+102001,0,US,country,2013-06-30,163300.1316
+102001,0,US,country,2013-07-31,164517.9673
+102001,0,US,country,2013-08-31,165714.3802
+102001,0,US,country,2013-09-30,166801.1695
+102001,0,US,country,2013-10-31,168018.8161
+102001,0,US,country,2013-11-30,169029.0122
+102001,0,US,country,2013-12-31,169967.1721
+102001,0,US,country,2014-01-31,170804.3223
+102001,0,US,country,2014-02-28,171691.2473
+102001,0,US,country,2014-03-31,172599.4689
+102001,0,US,country,2014-04-30,173489.6989
+102001,0,US,country,2014-05-31,174495.2894
+102001,0,US,country,2014-06-30,175380.5474
+102001,0,US,country,2014-07-31,176245.6451
+102001,0,US,country,2014-08-31,176914.1376
+102001,0,US,country,2014-09-30,177546.8987
+102001,0,US,country,2014-10-31,177993.606
+102001,0,US,country,2014-11-30,178570.0617
+102001,0,US,country,2014-12-31,179268.4048
+102001,0,US,country,2015-01-31,180115.7494
+102001,0,US,country,2015-02-28,180969.2282
+102001,0,US,country,2015-03-31,181831.4366
+102001,0,US,country,2015-04-30,182772.3593
+102001,0,US,country,2015-05-31,183800.51
+102001,0,US,country,2015-06-30,184800.904
+102001,0,US,country,2015-07-31,185828.3646
+102001,0,US,country,2015-08-31,186905.8107
+102001,0,US,country,2015-09-30,188104.5052
+102001,0,US,country,2015-10-31,189368.9851
+102001,0,US,country,2015-11-30,190515.2956
+102001,0,US,country,2015-12-31,191646.9231
+102001,0,US,country,2016-01-31,192859.187
+102001,0,US,country,2016-02-29,194061.1176
+102001,0,US,country,2016-03-31,194963.3248
+102001,0,US,country,2016-04-30,195775.8494
+102001,0,US,country,2016-05-31,196597.0672
+102001,0,US,country,2016-06-30,197572.5844
+102001,0,US,country,2016-07-31,198342.5154
+102001,0,US,country,2016-08-31,199073.3462
+102001,0,US,country,2016-09-30,199870.9025
+102001,0,US,country,2016-10-31,200832.8718
+102001,0,US,country,2016-11-30,201882.2991
+102001,0,US,country,2016-12-31,202998.6008
+102001,0,US,country,2017-01-31,204131.5667
+102001,0,US,country,2017-02-28,205319.6635
+102001,0,US,country,2017-03-31,206543.3001
+102001,0,US,country,2017-04-30,207877.26
+102001,0,US,country,2017-05-31,209077.9932
+102001,0,US,country,2017-06-30,210201.9051
+102001,0,US,country,2017-07-31,211155.7799
+102001,0,US,country,2017-08-31,212121.3081
+102001,0,US,country,2017-09-30,213134.6186
+102001,0,US,country,2017-10-31,214279.6017
+102001,0,US,country,2017-11-30,215504.8735
+102001,0,US,country,2017-12-31,216767.1095
+102001,0,US,country,2018-01-31,218024.9771
+102001,0,US,country,2018-02-28,219251.3179
+102001,0,US,country,2018-03-31,220672.3132
+102001,0,US,country,2018-04-30,221970.6143
+102001,0,US,country,2018-05-31,223248.2145
+102001,0,US,country,2018-06-30,224217.1368
+102001,0,US,country,2018-07-31,225416.1074
+102001,0,US,country,2018-08-31,226564.0172
+102001,0,US,country,2018-09-30,227708.5769
+102001,0,US,country,2018-10-31,228513.2346
+102001,0,US,country,2018-11-30,229319.9147
+102001,0,US,country,2018-12-31,230181.9436
+102001,0,US,country,2019-01-31,231223.9293
+102001,0,US,country,2019-02-28,232426.3951
+102001,0,US,country,2019-03-31,233696.2258
+102001,0,US,country,2019-04-30,234835.4712
+102001,0,US,country,2019-05-31,235706.7828
+102001,0,US,country,2019-06-30,236495.2169
+102001,0,US,country,2019-07-31,237236.2234
+102001,0,US,country,2019-08-31,238048.2907
+102001,0,US,country,2019-09-30,238767.3853
+102001,0,US,country,2019-10-31,239724.822
+102001,0,US,country,2019-11-30,240985.6447
+102001,0,US,country,2019-12-31,242443.9025
+102001,0,US,country,2020-01-31,244014.5407
+102001,0,US,country,2020-02-29,245575.9531
+102001,0,US,country,2020-03-31,247226.6631
+102001,0,US,country,2020-04-30,248671.905
+102001,0,US,country,2020-05-31,249529.9616
+102001,0,US,country,2020-06-30,250075.5546
+102001,0,US,country,2020-07-31,250924.8517
+102001,0,US,country,2020-08-31,252735.5432
+102001,0,US,country,2020-09-30,255721.1088
+102001,0,US,country,2020-10-31,259311.7078
+102001,0,US,country,2020-11-30,263350.426
+102001,0,US,country,2020-12-31,267279.6574
+102001,0,US,country,2021-01-31,271108.1305
+102001,0,US,country,2021-02-28,275035.9969
+102001,0,US,country,2021-03-31,279109.722
+102001,0,US,country,2021-04-30,283512.5837
+102001,0,US,country,2021-05-31,288346.6724
+102001,0,US,country,2021-06-30,293532.825
+102001,0,US,country,2021-07-31,298162.1338
+102001,0,US,country,2021-08-31,301428.9742
+102001,0,US,country,2021-09-30,303395.736
+102001,0,US,country,2021-10-31,305315.4458
+102001,0,US,country,2021-11-30,307963.2542
+102001,0,US,country,2021-12-31,311261.0812
+102001,0,US,country,2022-01-31,315971.6876
+102001,0,US,country,2022-02-28,321683.661
+102001,0,US,country,2022-03-31,328408.1467
+102001,0,US,country,2022-04-30,335017.2277
+102001,0,US,country,2022-05-31,340859.9001
+102001,0,US,country,2022-06-30,345704.3888
+102001,0,US,country,2022-07-31,348271.9194
+102001,0,US,country,2022-08-31,348746.3058
+102001,0,US,country,2022-09-30,347565.585
+102001,0,US,country,2022-10-31,346424.3172
+102001,0,US,country,2022-11-30,345467.7572
+102001,0,US,country,2022-12-31,344298.4529
+102001,0,US,country,2023-01-31,343554.7258
+102001,0,US,country,2023-02-28,343445.0317
+102001,0,US,country,2023-03-31,344604.9108
+102001,0,US,country,2023-04-30,345809.6682
+102001,0,US,country,2023-05-31,347432.1894
+102001,0,US,country,2023-06-30,349328.5963
