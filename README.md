@@ -30,8 +30,8 @@ Once all the scenes are finished loading. Users are prompted with more options t
     The annotations in each scene urges the viewer to focus on either a tipping point in the chart or a long upward rally that occurred because of favorable conditions. It ensures to enhance the audience's understanding, engagement, and overall storytelling. 
 
 
-Figure 1: All the components of visualization
-
+Figure 1: All the components of visualization -
+![Alt text](<img/Screenshot 2023-07-28 at 1.35.33 PM.png>)
 
 
 ## Scenes
