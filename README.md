@@ -1,5 +1,7 @@
 # Narrative visualization to study the impact of an Economic Recessions on US Housing Market
 
+## Preview
+The project is live [here](https://dasshims.github.io/us_housing_market/)
 
 ## Overview
 Home prices in the US have always remained susceptible to market dynamics, exhibiting fluctuations over time as they rise and fall in response to the overall market outlook. Through this narrative visualization project we delve into the intricacies of the housing market and economic recession.
